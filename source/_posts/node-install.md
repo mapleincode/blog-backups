@@ -135,3 +135,36 @@ export NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node
 
 
 
+
+## CNPM
+
+> 淘宝 NPM 镜像 [官网](https://npm.taobao.org/)
+
+### 安装
+
+```sh
+$ (sudo) npm install -g cnpm --registry=https://registry.npm.taobao.org
+```
+
+or
+
+```sh
+alias cnpm="npm --registry=https://registry.npm.taobao.org \
+--cache=$HOME/.npm/.cache/cnpm \
+--disturl=https://npm.taobao.org/dist \
+--userconfig=$HOME/.cnpmrc"
+
+# Or alias it in .bashrc or .zshrc
+$ echo '\n#alias for cnpm\nalias cnpm="npm --registry=https://registry.npm.taobao.org \
+  --cache=$HOME/.npm/.cache/cnpm \
+  --disturl=https://npm.taobao.org/dist \
+  --userconfig=$HOME/.cnpmrc"' >> ~/.zshrc && source ~/.zshrc
+```
+
+or
+
+```sh
+npm install --registry=https://registry.npm.taobao.org
+```
+
+
