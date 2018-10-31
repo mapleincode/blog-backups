@@ -1,3 +1,4 @@
+---
 title: GitLab 推送了更新(二) - 安装 docker GitLab
 date: 2017-10-27 16:40:53
 tags: [ Docker, GitLab ]
@@ -9,9 +10,9 @@ tags: [ Docker, GitLab ]
 
 
 ## 环境
-不知名 AMD 主机，4 核心， 12G DDR3 内存。
 
-ubuntu 16.04.02 Desktop。
+> AMD CPU 主机，4 核心， 12G DDR3 内存。
+> ubuntu 16.04.02 Desktop。
 
 Docker 版本:
 
@@ -61,7 +62,7 @@ docker run --detach \
     --volume /data/gitlab/logs:/var/log/gitlab \
     --volume /data/gitlab/data:/var/opt/gitlab \
     gitlab/gitlab-ce
-``` 
+```
 
 #### 参数说明
 
@@ -78,9 +79,8 @@ docker run --detach \
 	
 * `--name`
 
-	运行的实名的名称。
-	
-	
+  运行的实名的名称。
+
 * `--restart always`
 
 	Restart policy to apply when a container exits (default "no")
@@ -101,11 +101,10 @@ GitLab 安装就直接完成了。
 
 1. 怎么进入到容器内。
 
-	`sudo docker exec -it 容器id bash`
-	
-	`docker exec` 好像说是比较后期开发出的一个功能，用来执行和 `docker run` 不一样的函数执行。我一般 (zhihui) 用来启动 bash 来进入到容器中。
-	比较方便的一点是，就算使用`exit`来退出容器，容器也不会停止运行。
-	
+  `sudo docker exec -it 容器id bash`
+
+  `docker exec` 好像说是比较后期开发出的一个功能，用来执行和 `docker run` 不一样的函数执行。我一般 (zhihui) 用来启动 bash 来进入到容器中。
+  比较方便的一点是，就算使用`exit`来退出容器，容器也不会停止运行。
 
 2. GitLab 文件配置
 

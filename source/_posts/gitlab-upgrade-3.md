@@ -1,3 +1,4 @@
+---
 title: GitLab 推送了更新(三) - Nginx 反向代理
 date: 2017-11-03 19:18:41
 tags: [ Nginx ]

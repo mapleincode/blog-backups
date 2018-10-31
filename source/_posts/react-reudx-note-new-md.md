@@ -1,7 +1,7 @@
 ---
 title: React-Redux 笔记 - 其他
 date: 2018-05-13 23:51:01
-tags: [React.js ]
+tags: [ React.js ]
 ---
 
 > 参考了阮一峰老师的文章

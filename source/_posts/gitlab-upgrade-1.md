@@ -1,3 +1,4 @@
+---
 title: GitLab 推送了更新(一) - 树莓派安装GitLab
 date: 2017-10-26 11:16:52
 tags: [ 树莓派, Ubuntu, GitLab ]

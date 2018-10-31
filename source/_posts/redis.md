@@ -1,7 +1,7 @@
 ---
 title: redis 学习笔记
 date: 2018-07-03 18:02:16
-tags: [ redis ]
+tags: [ Redis ]
 ---
 # Redis 学习笔记
 

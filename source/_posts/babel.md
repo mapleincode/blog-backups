@@ -1,7 +1,7 @@
 ---
 title: Babel 学习笔记
 date: 2018-05-22 17:32:01
-tags:
+tags: [ Babel ]
 ---
 # Babel  学习
 

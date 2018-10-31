@@ -1,3 +1,4 @@
+---
 title: 常用数据库(缓存)的简单安装配置
 date: 2017-11-21 17:35:52
 tags: [ MySQL, MongoDB, Redis, Memcache ]
@@ -57,7 +58,7 @@ GRANT ALL ON *.* to 'USER'@'%';
 
 
 #### MySQL中的操作权限
-```bash
+```sql
 | `ALTER`                  | Allows use of `ALTER TABLE`.             |
 | ------------------------ | ---------------------------------------- |
 | `ALTER ROUTINE`          | Alters or drops stored routines.         |
@@ -118,7 +119,7 @@ bind_ip = 0.0.0.0
 
 在本机上登录 mongodb，
 输入: 
-```sql
+```javascript
 use admin; // 切换数据库
 
 db.createUser({
@@ -133,7 +134,7 @@ db.createUser({
 
 官方给的`createUser`文档:
 
-```sql
+```javascript
 { user: "<name>",
   pwd: "<cleartext password>",
   customData: { <any information> },
@@ -146,7 +147,7 @@ db.createUser({
 
 其实还有个快捷的方法(应该说是准备被淘汰的方法):
 
-```
+```javascript
 db.addUser('username', 'password');
 ```
 
@@ -155,7 +156,7 @@ db.addUser('username', 'password');
 #### 命令行鉴权
 
 在`mongo`命令行的方式为:
-```
+```javascript
 use admin;
 db.auth('username', 'password');
 ```
@@ -164,7 +165,7 @@ db.auth('username', 'password');
 
 
 ### 安装
-```
+```shell
 sudo apt install redis-server
 ```
 
@@ -183,7 +184,7 @@ redis 的配置文件一般为`/etc/redis/redis.conf`。
 redis 并没有用户系统。但是可以设置口令登录。
 
 修改 conf 中的`requirepass`。
-```
+```shell
 ···
 requirepass password
 ···
@@ -195,7 +196,7 @@ requirepass password
 
 ### 安装
 
-```
+```shell
 sudo apt install memcached
 ```
 

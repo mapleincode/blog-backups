@@ -11,14 +11,14 @@ tags: [SAN, OpenSSL]
 ```shell
 ├── ca.srl
 ├── certs
-│   ├── ca.cer // ca 证书
-│   └── server.cer // server 证书
+│   ├── ca.cer # ca 证书
+│   └── server.cer # server 证书
 ├── private
-│   ├── ca.csr // ca csr 文件
-│   ├── ca.pem // ca 私钥
-│   ├── server.pem // server 私钥 
-│   └── server.csr // server csr 文件
-└── san.conf // san.conf 配置文件
+│   ├── ca.csr # ca csr 文件
+│   ├── ca.pem # ca 私钥
+│   ├── server.pem # server 私钥 
+│   └── server.csr # server csr 文件
+└── san.conf # san.conf 配置文件
 ```
 
 ## 生成 CA 证书

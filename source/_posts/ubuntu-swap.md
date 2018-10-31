@@ -1,3 +1,4 @@
+---
 title: Ubuntu 新增 swap
 date: 2017-12-06 19:46:12
 tags: Ubuntu

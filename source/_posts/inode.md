@@ -1,3 +1,4 @@
+---
 title: 优化 Ext4 分区 inode 占用空间问题
 date: 2017-11-20 07:11:49
 tags: [ Linux ]
