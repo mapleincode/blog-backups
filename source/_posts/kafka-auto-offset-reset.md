@@ -38,3 +38,10 @@ topic各分区都存在已提交的offset时，从offset后开始消费；只要
 也就是对于一个服务，如果这个 Topic 的旧消息也要做处理，则选择 esliest;
 
 而如果你不关心在服务启动前的旧数据，而是关心从服务启动之后的旧数据，那就选择 latest，旧的消息会被过滤掉。
+
+
+
+## 其他
+
+在`kafka-node`这个包中，采用的配置为 `options.fromOffset`，默认 `latest`。
+
