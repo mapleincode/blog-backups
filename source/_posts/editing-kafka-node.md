@@ -1,0 +1,93 @@
+---
+title: Kafka-node 的使用 Demo
+date: 2018-11-01 10:37:54
+tags: [Kafka, Node.js]
+---
+
+
+
+# Kafka-node
+
+Kafka 是基于磁盘文件顺序存储而设计的类 AMQP 消息队列服务，支持集群和数据备份。有着超高的稳定性和吞吐量。
+
+前段时间我司拟推广 Kafka，也乘机借着项目学了下 Kafka 的相关知识，虽然最后还是一直决定使用 ONS...
+
+
+
+在 Node 环境使用量比较高的是 `Kafka-node`这个包，是一个搜狐的大佬写的。
+
+因为大佬忙活着别的原因，文档和 Demo 对于很多细节没有补充，所以因此补充下。
+
+
+
+## client
+
+Kafka-node 支持连接 zookeeper 或者直接连接 broker。文档上说，以后将推广直接连接 broker 的操作，而可能抛弃直接连接 zookeeper 的操作 ??? Kafka 的确想把 zookeeper 隐藏起来，但是这样的话要怎么连接集群呢 ？
+
+原话:
+
+> This zookeeper based client has been deprecated and is likely to be removed in the future. Please use the KafkaClient instead.
+
+无论怎么样，对于没有集群的 Kafka 来说，直接连接 broker 问题不大。
+
+**连接 broker**
+
+```javascript
+const client = new kafka.KafkaClient({kafkaHost: '10.3.100.196:9092'});
+```
+
+**连接 zookeeper**
+
+```javascript
+const client = new Kafka.Client('localhost:2181', clientId);
+```
+
+在目前版本(version: 3.0.1)两者暂时都能使用，都可以作为 client。
+
+## Producer
+
+Producer 相对比较简单:
+
+```javascript
+const kafka = require('kafka');
+const Producer = kafka.Producer;
+const client = new Client();
+producer = new Producer(client);
+
+function sendMsg(callback) {
+    producer.send([
+    {
+   		topic: 'topicName',
+   		messages: ['message body'], // multi messages should be a array, single message can be just a string or a KeyedMessage instance
+   		key: 'theKey', // string or buffer, only needed when using keyed partitioner
+   		partition: 0, // default 0
+   		attributes: 2, // default: 0
+   		timestamp: Date.now() // <-- defaults to Date.now() (only available with kafka v0.10 and KafkaClient only)
+	}
+], callback);
+}
+
+producer.on('ready', function() {
+    sendMsg(function(err, data) {
+        if(err) {
+            console.log(err);
+        }
+        console.log(data);
+    });
+});
+```
+
+除了普通的字符串 Message，kafka-node 还支持简单的序列化消息。
+
+```javascript
+const kafka = require('kafka-node');
+const KeyedMessage = kafka.KeyedMessage;
+const km = new KeyedMessage('key', 'message'),
+      
+	producer.send([
+		topic: 'topicName',
+         messages: [km]
+    ], callback);
+```
+
+
