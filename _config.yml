@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
-description:
-author: John Doe
+title: Maple's Bolg
+subtitle: a coder
+description: 
+author: Maple
 language:
 timezone:
 
@@ -73,14 +73,39 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: archer
-
+# theme: landscape
+# theme: aloha
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
   repo: git@github.com:mapleincode/mapleincode.github.io.git
+  #jsonContent:
+  #meta: false
+  #pages: false
+  #posts:
+          #title: true
+    #date: true
+    #path: true
+    #text: false
+    #raw: false
+    #content: false
+    #slug: false
+    #updated: false
+    #comments: false
+    #link: false
+    #permalink: false
+    #excerpt: false
+    #categories: false
+    #tags: true
+# 自动生成sitemap
+sitemap: 
+  path: sitemap.xml
+baidusitemap: 
+  path: baidusitemap.xml
+
 jsonContent:
-  meta: false
+  meta: true
   pages: false
   posts:
     title: true
@@ -93,12 +118,7 @@ jsonContent:
     updated: false
     comments: false
     link: false
-    permalink: false
+    permalink: true
     excerpt: false
-    categories: false
+    categories: true
     tags: true
-# 自动生成sitemap
-sitemap: 
-  path: sitemap.xml
-baidusitemap: 
-  path: baidusitemap.xml
