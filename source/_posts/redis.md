@@ -3,8 +3,6 @@ title: redis 学习笔记
 date: 2018-07-03 18:02:16
 tags: [ Redis ]
 ---
-# Redis 学习笔记
-
 ## Redis 数据类型
 
 1. redis 支持五种数据类型: String, Hash, List, Set, ZSet。

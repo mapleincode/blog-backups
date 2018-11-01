@@ -4,6 +4,8 @@ date: 2018-05-21 16:25:33
 tags: [ JavaScript ]
 ---
 
+基于 JavaScript 实现的 Base64 算法
+
 ```js
 /**
  * https://blog.csdn.net/u012369749/article/details/73784897
