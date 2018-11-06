@@ -82,7 +82,7 @@ producer.on('ready', function() {
 ```javascript
 const kafka = require('kafka-node');
 const KeyedMessage = kafka.KeyedMessage;
-const km = new KeyedMessage('key', 'message'),
+const km = new KeyedMessage('key', 'message'); // 序列化消息
       
 	producer.send([
 		topic: 'topicName',
