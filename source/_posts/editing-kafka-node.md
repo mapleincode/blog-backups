@@ -20,15 +20,22 @@ Kafka 是基于磁盘文件顺序存储而设计的类 AMQP 消息队列服务�
 
 
 
+## Lower Level 和 High Level
+
+
+
+
+
 ## client
 
-Kafka-node 支持连接 zookeeper 或者直接连接 broker。文档上说，以后将推广直接连接 broker 的操作，而可能抛弃直接连接 zookeeper 的操作 ??? Kafka 的确想把 zookeeper 隐藏起来，但是这样的话要怎么连接集群呢 ？
+Kafka-node 支持两种 client:
 
-原话:
+1. KafkaNode.Client
+2. KafkaNode.KafkaClient
 
-> This zookeeper based client has been deprecated and is likely to be removed in the future. Please use the KafkaClient instead.
+前者是直接连接  zookeeper，后者是直接连接 broker。
 
-无论怎么样，对于没有集群的 Kafka 来说，直接连接 broker 问题不大。
+
 
 **连接 broker**
 
