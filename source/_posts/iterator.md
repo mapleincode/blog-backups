@@ -1,7 +1,7 @@
 ---
 title: iterator(迭代器)
 date: 2018-08-30 12:38:46
-tags: [ Node.js Python ]
+tags: [ Node.js, Python ]
 ---
 
 Node 版本:
