@@ -50,6 +50,8 @@ Kafka 是基于磁盘文件顺序存储而设计的类 AMQP 消息队列服务�
 > - Fetch 数据
 > - 识别 Leader 的变化，并对之作出必要的响应
 
+
+
 FROM: [Kafka设计解析（四）- Kafka Consumer设计解析](http://www.jasongj.com/2015/08/09/KafkaColumn4/)
 
 ## client
@@ -110,7 +112,7 @@ producer.on('ready', function() {
 });
 ```
 
-除了普通的字符串 Message，kafka-node 还支持简单的序列化消息。
+除了普通的字符串 Message，kafka-node 还支持 key 消息。
 
 ```javascript
 const kafka = require('kafka-node');
@@ -118,9 +120,14 @@ const KeyedMessage = kafka.KeyedMessage;
 const km = new KeyedMessage('key', 'message'); // 序列化消息
       
 	producer.send([
-		topic: 'topicName',
-        messages: [km]
+        {
+			topic: 'topicName',
+        	messages: [km]
+        }
     ], callback);
 ```
 
+
+
+## Lower Level Consumer
 

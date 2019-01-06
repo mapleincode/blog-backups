@@ -81,7 +81,7 @@ Offline disk manipulation utility
 
 VMware 还很贴心的给了 example。
 
-我们需要的是
+按照上面的提示，我们需要的是:
 
 ```bash
 vmware-vdiskmanager -x 36GB myDisk.vmdk
@@ -89,7 +89,7 @@ vmware-vdiskmanager -x 36GB myDisk.vmdk
 
 关闭虚拟机，然后输入命令指令，大约花了几分钟就扩容完毕了。
 
-之后会给出一个 warn，说明虽然硬盘扩容了，但是系统本身的磁盘容量还是不变的，需要第三方工具对系统分区进行扩容。
+之后会给出一个 warn，意思是说虽然硬盘扩容了，但是系统本身的磁盘容量还是不变的，需要第三方工具对系统分区进行扩容。
 
 然后进入系统，对硬盘进行扩容，就能成功升级了。
 
