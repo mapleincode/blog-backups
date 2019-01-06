@@ -14,26 +14,23 @@ Kafka 是基于磁盘文件顺序存储而设计的类 AMQP 消息队列服务�
 
 
 
-在 Node 环境使用量比较高的是 `Kafka-node`这个包，是一个搜狐的大佬写的。
+在 Node 环境使用量比较高的是 `Kafka-node`这个包。所以本文主要讲诉这个包的一些简单用例。
 
-因为大佬忙活着别的原因，文档和 Demo 对于很多细节没有补充，所以因此补充下。
+## 关于 `Lower Level Consumer` 和 `High Level Consumer` 的区别
 
-## Lower Level Consumer 和 High Level Consumer
-
-一开始在没有怎么对 Kafka 的了解的情况下，一直分不清楚两者的关系。后来在一大佬的文章中得到了解释:
+一开始在不怎么了解的情况下，一直分不清楚两者的关系。后来在一大佬的文章中得到了解释:
 
 > 很多时候，客户程序只是希望从Kafka读取数据，不太关心消息 offset 的处理。同时也希望提供一些语义，例如同一条消息只被某一个 Consumer 消费（单播）或被所有 Consumer 消费（广播）。因此，Kafka Hight Level Consumer 提供了一个从 Kafka 消费数据的高层抽象，从而屏蔽掉其中的细节并提供丰富的语义。
 
 > 而使用 Low Level Consumer (Simple Consumer)的主要原因是，用户希望比Consumer Group 更好的控制数据的消费。比如：
 >
 > - 同一条消息读多次
->
 > - 只读取某个 Topic 的部分 Partition
->
 > - 管理事务，从而确保每条消息被处理一次，且仅被处理一次
 >
->
->
+
+---
+
 >   与 Consumer Group 相比，Low Level Consumer 要求用户做大量的额外工作。
 >
 > - 必须在应用程序中跟踪 offset，从而确定下一条应该消费哪条消息
@@ -50,9 +47,7 @@ Kafka 是基于磁盘文件顺序存储而设计的类 AMQP 消息队列服务�
 > - Fetch 数据
 > - 识别 Leader 的变化，并对之作出必要的响应
 
-
-
-FROM: [Kafka设计解析（四）- Kafka Consumer设计解析](http://www.jasongj.com/2015/08/09/KafkaColumn4/)
+参考: [Kafka设计解析（四）- Kafka Consumer设计解析](http://www.jasongj.com/2015/08/09/KafkaColumn4/)
 
 ## client
 
@@ -63,12 +58,10 @@ Kafka-node 支持两种 client:
 
 前者是直接连接  zookeeper，后者是直接连接 broker。
 
-
-
 **连接 broker**
 
 ```javascript
-const client = new kafka.KafkaClient({kafkaHost: '10.3.100.196:9092'});
+const client = new kafka.KafkaClient({kafkaHost: 'localhost:9092'});
 ```
 
 **连接 zookeeper**
@@ -77,16 +70,20 @@ const client = new kafka.KafkaClient({kafkaHost: '10.3.100.196:9092'});
 const client = new Kafka.Client('localhost:2181', clientId);
 ```
 
-在目前版本(version: 3.0.1)两者暂时都能使用，都可以作为 client。
+
+
+Kafaka-Node 作者推荐，如果是 LowLevelConsumer 建议用 broker 的 client。如果是 HighLevelConsumer 只能连接  zookeeper 的 client。
 
 ## Producer
 
 Producer 相对比较简单:
 
 ```javascript
-const kafka = require('kafka');
+'use strict';
+
+const kafka = require('kafka-node');
 const Producer = kafka.Producer;
-const client = new Client();
+const client = new kafka.KafkaClient({kafkaHost: 'localhost:9092'});
 producer = new Producer(client);
 
 function sendMsg(callback) {
@@ -112,7 +109,7 @@ producer.on('ready', function() {
 });
 ```
 
-除了普通的字符串 Message，kafka-node 还支持 key 消息。
+除了普通的字符串 Message，kafka-node 还支持序列化消息。
 
 ```javascript
 const kafka = require('kafka-node');
@@ -129,5 +126,92 @@ const km = new KeyedMessage('key', 'message'); // 序列化消息
 
 
 
-## Lower Level Consumer
+## High Level Producer
+
+```js
+'use strict';
+
+const kafka = require('kafka-node');
+const HighLevelProducer = kafka.HighLevelProducer;
+const Client = kafka.Client;
+const client = new Client();
+const topic = 'topic1';
+const producer = new HighLevelProducer(client);
+
+producer.on('ready', function () {
+  setInterval(send, 1000);
+});
+
+producer.on('error', function (err) {
+  console.log('error', err);
+});
+
+function send() {
+  const message = new Date().toString();
+  producer.send([
+    { topic: topic, messages: [ message] }
+  ], function (err, data) {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(data);
+      }
+  });
+}
+```
+
+和 LowLeverProducer 不同，不需要指定  partition。参数也相对简单。
+
+
+
+## Consumer
+
+Low Lever Consumer
+
+```javascript
+'use strict';
+
+const kafka = require('kafka-node');
+const Consumer = kafka.Consumer;
+const Offset = kafka.Offset;
+const Client = kafka.KafkaClient;
+
+const client = new Client('localhost:9092');
+
+const topics = [
+  { topic: topic, partition: 1 },
+  { topic: topic, partition: 0 }
+];
+
+const options = {
+  autoCommit: false,
+  fetchMaxWaitMs: 1000,
+  fetchMaxBytes: 1024 * 1024
+};
+
+const consumer = new Consumer(client, topics, options);
+const offset = new Offset(client);
+
+consumer.on('message', function (message) {
+  console.log(message);
+});
+
+consumer.on('error', function (err) {
+  console.log('error', err);
+});
+
+/*
+* If consumer get `offsetOutOfRange` event, fetch data from the smallest(oldest) offset
+*/
+consumer.on('offsetOutOfRange', function (topic) {
+  topic.maxNum = 2;
+  offset.fetch([ topic ], function (err, offsets) {
+    if (err) {
+      return console.error(err);
+    }
+    var min = Math.min.apply(null, offsets[topic.topic][topic.partition]);
+    consumer.setOffset(topic.topic, topic.partition, min);
+  });
+});
+```
 
