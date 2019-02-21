@@ -81,7 +81,7 @@ sudo update-grub
 ## Grub 菜单的配置文件
 
 ```
-sudo gedit /boot/grub/grub.cfg
+/boot/grub/grub.cfg
 ```
 
 
