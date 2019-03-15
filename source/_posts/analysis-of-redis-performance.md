@@ -10,6 +10,10 @@ tags: [ Redis ]
 
 **原文:** https://www.jianshu.com/p/67093716547b
 
+---
+
+
+
 ![img](https://upload-images.jianshu.io/upload_images/1269937-42e1506cb8d8f59b.jpg)
 
 在一些网络服务的系统中，Redis 的性能，可能是比 MySQL 等硬盘数据库的性能更重要的课题。比如微博，把热点微博[[1\]](https://www.jianshu.com/p/67093716547b#fn1)，最新的用户关系[[2\]](https://www.jianshu.com/p/67093716547b#fn2)，都存储在 Redis 中，大量的查询击中 Redis，而不走 MySQL。
