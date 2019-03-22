@@ -209,7 +209,7 @@ await redis.pipeline([
 ]).exec();
 ```
 
-### 事务(Transaction)
+## 事务(Transaction)
 
 关于数据库的事务，一直以来给我两个印象:
 
