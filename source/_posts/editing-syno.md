@@ -26,6 +26,15 @@ tags: [黑群晖]
 
 
 
+##  PhotoStation 支持视频缩略图 办法 1
+
+ ```bash
+cp /volume1/@appstore/ffmpeg/bin/ffmpeg /volume1/@appstore/VideoStation/bin/
+cp /volume1/@appstore/ffmpeg/bin/ffmpeg /usr/bin
+ ```
+
+
+
 ## 完全关闭图片转码
 
 为了加快 Photo Station 的浏览速度，群晖默认开启图片转码功能。其实在设置里可以设置相册不转换。或者在 Photo Station 内可以设置新相册不转码。如果有特殊的需求，可以在命令行关闭图片转码服务：
@@ -35,3 +44,4 @@ sudo synoservicecfg –stop synomkthumbd
 ```
 
 这个关闭好像是永久的或者什么，反正我关了一次之后。之后重启也不会转码，之后忘记了还以为系统出问题了\_(:з」∠)\_。
+
