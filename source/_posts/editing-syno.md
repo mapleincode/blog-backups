@@ -35,14 +35,26 @@ tags: [黑群晖]
 7. 在 nas 上用 u 盘启动。
 8. 然后按照下一步安装系统即可。
 
-##  PhotoStation 支持视频缩略图 办法 1
+##  PhotoStation 支持视频缩略图
+
+> 此办法不算洗白，只是换了一个不需要 SN 验证的 ffmpeg 执行文件。
+
+在套件中心 - 套件来源加入社区源: 
+
+```bash
+packages.synocommunity.com
+```
+
+信任任何人开发安装。
+
+安装 ffmpeg 。
+
+ssh 到 nas。
 
  ```bash
 cp /volume1/@appstore/ffmpeg/bin/ffmpeg /volume1/@appstore/VideoStation/bin/
 cp /volume1/@appstore/ffmpeg/bin/ffmpeg /usr/bin
  ```
-
-
 
 ## PhotoStation 支持视频缩略图 & 转码
 
@@ -67,4 +79,8 @@ sudo synoservicecfg –stop synomkthumbd
 ```
 
 这个关闭好像是永久的或者什么，反正我关了一次之后。之后重启也不会转码，之后忘记了还以为系统出问题了\_(:з」∠)\_。
+
+## 关于完全洗白
+
+据说在黑群晖上洗白，就算洗白了 ，不出几天就会被封号，对于普通(程序猿)用户来说。洗白之后的功能真的意义不大：局域网穿透、DDNS。所以一般半洗白，支持转码就基本 OK 了。
 
