@@ -24,7 +24,7 @@ tags: [黑群晖]
 
 [<https://pan.baidu.com/s/1BVbFroBwtCCdNm2xCuaCHg#list/path=%2F>](https://pan.baidu.com/s/1BVbFroBwtCCdNm2xCuaCHg#list/path=%2F)
 
-## 制作镜像
+## 安装群晖系统
 
 1. 首先获取 nas 的 mac 并记录。获取办法建议通过路由器。
 2. 获取 U 盘的 vid 和 cid 。通过 ChipEasy 获取。linux 上可以通过 `lsusb` 指令获取。
@@ -33,7 +33,7 @@ tags: [黑群晖]
 5. 用文本编辑软件打开，修改 vid 、cid 、mac 地址。(搜索下 mac 就能定位地址)。
 6. 将 cfg 文件覆盖回 U 盘。
 7. 在 nas 上用 u 盘启动。
-8. 然后按照下一步安装系统即可。
+8. 然后按照下一步下载 & 安装系统即可。
 
 ##  PhotoStation 支持视频缩略图
 
