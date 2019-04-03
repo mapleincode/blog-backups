@@ -39,7 +39,7 @@ tags: [黑群晖]
 
 > 此办法不算洗白，只是换了一个不需要 SN 验证的 ffmpeg 执行文件。
 
-在套件中心 - 套件来源加入社区源: 
+在套件中心 - 设置 - 套件来源加入社区源: 
 
 ```bash
 packages.synocommunity.com
