@@ -5,11 +5,16 @@ tags: [ Redis ]
 ---
 ## Redis 数据类型
 
-1. redis 支持五种数据类型: String, Hash, List, Set, ZSet。
+1. redis 支持五种数据类型
+   - String: 字符串
+   -  Hash: Hash 散列
+   - List: 列表
+   - Set: 集合
+   - ZSet: 有序集合(Sorted Set)
 
 ## KEY
 
-```sh
+```bash
 set key
 get key
 del key
@@ -31,7 +36,7 @@ type key // 返回 key 所存储的值的类型
 
 ## String
 
-```sh
+```bash
 set key value
 get key
 getrange key start end
@@ -55,7 +60,7 @@ append key value // 如果 key 存在且为字符串，追加 value 到该 key�
 
 ## Hash
 
-```
+```bash
 hdel key field1 [field2]
 hexists key field
 hget key field
@@ -76,11 +81,52 @@ hscan key cursor [MATCH pattern] [COUNT count]
 
 ## List
 
-```
+```bash
 blpop key [key2] timeout // pop left 列表。如果列表没有元素就堵塞，直到有元素或者超时。
 brpop key [key2] timeout // pop right 列表。如果列表没有元素就堵塞，直到有元素或者超时。
 brpoplpush source destination timeout // 将一个元素从 A 列表弹出并插入到 B 列表。并返回。如果没有元素就等待超时。
-
+lindex key index // 通过索引获得列表中的元素
+linsert key BEFORE|AFTER pivot value // 在列表 pivot 元素<前|后>插入数据
+llen key // 列表长度
+lpop key // list pop
+lpush key value k v k1 v1 // list push
+lpushx key value // list push 列表不存在时操作无效
+lrange key start stop //获取指定范围的元素 。index 从 0 开始。
+lrem key count value // 移除列表元素 count > 0 表头开始 count < 0 表尾开始 count=0 移除所有
+lset key index value
+ltrim key start stop // 剪辑 key 的元素
+rpop key // rpop key
+rpoplpush source destination // 移除列表最后一个元素并把其添加到另外一个列表并返回
+rpush key value [value2] // push 到队列尾部
+rpushx key value // push 到队列尾部，队列不存在则操作无效
 ```
+
+## Set
+
+```bash
+sadd key member1 [member2]
+scard key // 获得成员数
+sdiff key [key2] // 返回两个集合的差集
+sdiffstore destination key1 [key2] // 返回给定集合的差集并存储到 destination 中
+sinter key1 [key2] // 返回两个集合的交集
+sinterstore destination key1 [key2] // 返回两个集合的交集并存储到 destination 中
+sismember key member // 判断 member is member of Set
+smembers key // 返回集合中所有的成员
+smove source destination member // 把 member 从一个集合移动到另个集合
+spop key  // 随机移除一个成员并返回
+srandmember key [count] // 返回集合中的随机一个 or 多个
+srem key member1 [member2] // remove 成员
+sunion key [ key2] // 返回两个集合的并集
+sunionstore destination key1 [key2] // 返回集合的并集并存储到 destination
+sscan key cursor [MATCH pattern] [COUNT count] // 匹配返回 key: key, cursor: index, match 正则, count 数量
+```
+
+
+
+
+
+
+
+
 
 
