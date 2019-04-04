@@ -123,6 +123,32 @@ sscan key cursor [MATCH pattern] [COUNT count] // 匹配返回 key: key, cursor:
 
 
 
+## 有序集合
+
+```
+zadd key score1 member1 [score2 member2] 
+zcard key // 获取成员数
+zcount key min max // 获得某个区间的成员数
+zincrby key increment member
+zinterstore destination numkeys key[key ..] // 计算若干个 key 的分数交集并保存到 destination
+zlexcount key min max // 命令在计算有序集合中指定字典区间内成员数量 在 score 相同的情况下可以按照 member 进行排序按照 member 计算数量
+zrange key start stop [WITHSCORES] // 返回索引区间的 member
+zrangebylex key min max [LIMIT offset count] // 通过字典序返回 member
+zrangebyscore key min max [WITHSCORES] [LIMIT] // 通过 score 返回 member
+zrank key member// 返回有序集合指定成员的索引
+zrem key member [member...] // 移除成员
+zremrangebylex key min max // 根据字典序移除成员
+zremrangebyrank key start stop // 根据排名区间移除成员
+zrevrank key member // 返回某个成员的排名
+zscore key member// 返回某个成员的 score
+zunionstore destination numkeys key [key...] // 计算 num 个 key 的 member 的 并集并存储到 destination
+
+```
+
+
+
+
+
 
 
 
