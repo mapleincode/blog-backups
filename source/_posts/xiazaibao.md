@@ -597,7 +597,7 @@ transmission-control-full.tar解包全部覆盖
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/181123ebbaxntnwn06znaa-20190429182804253.png) 
+![img](/assets/181123ebbaxntnwn06znaa-20190429182804253.png) 
 
  
 
@@ -622,7 +622,7 @@ transmission-control-full.tar解包全部覆盖
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/181124jld0r4yyqltsrwkh-20190429182804254.png) 
+![img](/assets/181124jld0r4yyqltsrwkh-20190429182804254.png) 
 
  
 
@@ -632,7 +632,7 @@ transmission-control-full.tar解包全部覆盖
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/181124p03notnhqnnh3hib-20190429182804255.png) 
+![img](/assets/181124p03notnhqnnh3hib-20190429182804255.png) 
 
  
 
@@ -642,7 +642,7 @@ transmission-control-full.tar解包全部覆盖
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/181125lj0zzqalag4gelf9-20190429182804256.png) 
+![img](/assets/181125lj0zzqalag4gelf9-20190429182804256.png) 
 
  
 
@@ -678,7 +678,7 @@ transmission-control-full.tar解包全部覆盖
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/181126tmaryby88v2orb4v-20190429182804257.png) 
+![img](/assets/181126tmaryby88v2orb4v-20190429182804257.png) 
 
  
 
@@ -702,7 +702,7 @@ transmission-control-full.tar解包全部覆盖
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/181123hx3b6bcq9q88xna6-20190429182804257.png) 
+![img](/assets/181123hx3b6bcq9q88xna6-20190429182804257.png) 
 
  
 
@@ -732,7 +732,7 @@ Luci图形管理界面：http://下载宝ip:88，默认用户名：root，密码
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/075719nsh61xxpbx1nozxo-20190429182804258.png) 
+![img](/assets/075719nsh61xxpbx1nozxo-20190429182804258.png) 
 
  
 
@@ -770,7 +770,7 @@ www.ngrok.cc/login
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/080923w0g80guw0zg5ug94-20190429182804259.png) 
+![img](/assets/080923w0g80guw0zg5ug94-20190429182804259.png) 
 
  
 
@@ -784,11 +784,11 @@ www.ngrok.cc/login
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/075738rwytoi1g410lyzz0-20190429182804260.png) 
+![img](/assets/075738rwytoi1g410lyzz0-20190429182804260.png) 
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/075743v0ffxf49sl9l0d0h-20190429182804261.png) 
+![img](/assets/075743v0ffxf49sl9l0d0h-20190429182804261.png) 
 
  
 
@@ -812,7 +812,7 @@ a) 因下载宝视频播放占用了80端口，luci改用88端口，请访问：
  
 
 b) 因下载宝的闪存只有16M，空间已所剩无几，在此界面上基本无法再安装合适的应用包。不过，可以通过命令行：opkg install -d sd XXXX 将应用安装到SD卡上。
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/070403rj3djq1j1fj9jfpw-20190429182804262.png) 
+![img](/assets/070403rj3djq1j1fj9jfpw-20190429182804262.png) 
 
  
 
@@ -833,7 +833,7 @@ b) 因下载宝的闪存只有16M，空间已所剩无几，在此界面上基�
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/094003vu2kxk4v06hj9k1v-20190429182804262.png) 
+![img](/assets/094003vu2kxk4v06hj9k1v-20190429182804262.png) 
 
  
 
@@ -841,7 +841,7 @@ b) 因下载宝的闪存只有16M，空间已所剩无几，在此界面上基�
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/001432shhhah989f8hhfah-20190429182804263.png) 
+![img](/assets/001432shhhah989f8hhfah-20190429182804263.png) 
 
  
 
@@ -853,19 +853,19 @@ b) 因下载宝的闪存只有16M，空间已所剩无几，在此界面上基�
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/001439fj0p550j85p69v4j-20190429182804264.png) 
+![img](/assets/001439fj0p550j85p69v4j-20190429182804264.png) 
 
  
 
 5、
 
 设置好各参数及同步目录，“保存&应用”。云端同步目录请设为“/apps/SyncY”，必须事先在百度网盘上的“我的应用数据”下建立“SyncY”目录（注意大小写）。
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/002229ogqsmm77kml0p5pq-20190429182804265.png) 
+![img](/assets/002229ogqsmm77kml0p5pq-20190429182804265.png) 
 6、点击：“启动”，百度云同步在后台运行。
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/001440lvr7aw7ww1ava3ww-20190429182804265.png) 
+![img](/assets/001440lvr7aw7ww1ava3ww-20190429182804265.png) 
 
  
 
@@ -923,7 +923,7 @@ http://www.canyouseeme.org/
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/214206bjwhzjadztakt4a4-20190429182804266.jpg) 
+![img](/assets/214206bjwhzjadztakt4a4-20190429182804266.jpg) 
 
  
 
@@ -985,7 +985,7 @@ ransmission：
 
  
 
-![img](/Users/maple/code-try/blog-backups/source/_posts/assets/154844vum75ka288n7m2kn-20190429182804267.png) 
+![img](/assets/154844vum75ka288n7m2kn-20190429182804267.png) 
 
  
 
