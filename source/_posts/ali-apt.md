@@ -47,8 +47,11 @@ deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted unive
 
 ```
 
-## 18.04 阿里更新源
+## 18.04
 
+阿里源:
+
+```
 deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
@@ -59,3 +62,20 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted univer
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+```
+
+网易源:
+
+```
+deb http://mirrors.163.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ bionic-backports main restricted universe multiverse
+```
+
