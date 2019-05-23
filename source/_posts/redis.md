@@ -1,6 +1,6 @@
 ---
 title: redis 学习笔记
-date: 2018-07-03 18:02:16
+date: 2019-05-23 15:48:09
 tags: [ Redis ]
 ---
 ## Redis 数据类型
@@ -145,13 +145,121 @@ zunionstore destination numkeys key [key...] // 计算 num 个 key 的 member �
 
 ```
 
+## Redis HyperLogLOg
+
+* Redis HyperLogLog 是用来做技术统计的算法
+* 计算基数所需要的空间固定、很小
+* 12KB 内存 vs 2^64 个不同元素的基数
+
+```
+> PFADD runoobkey "redis"
+> PFADD runoobkey "mongodb"
+> PFADD runoobkey "mysql"
+> PFCOUNT runoobkey
+> PFMERGE runoobkey runoobkey2 // 合并 HyperLogLog
+```
+
+## 发布订阅
+
+```
+SUBSCRIBE redisChat
+PUBLISH redisChat "some string"
+
+PUNSUBSCRIBE redisChat // 退订
+PSUBSCRIBE pattern [pattern] // 订阅符合模式的频道
+```
+
+
+
+## 事物
+
+```bash
+> MULTI
+
+> set key xx
+> set key2 yy
+
+> EXEC // 执行事物
+or
+> DISCARD // 取消事物
+
+UNWATCH // 取消 WATCH 对 key 的见识
+WATCH // 监视某些 KEY 是否被改动，改动则打断事物
+```
+
+
+
+## 脚本
+
+```
+EVAL script numkeys key arg // 
+EVALSHA sha1 numkeys key arg //
+
+SCRIPT EXISTS script
+SCRIPT FLUSH // 删除所有脚本
+SCRIPT KILL // 杀死所有运行脚本的进程
+SCRIPT LOAD script // 将脚本保存到脚本缓存中 & 不执行脚本
+```
+
+## 链接
+
+```bash
+AUTH password
+ECHO message
+PING
+QUIT
+SELECT index // 切换数据库
+```
 
 
 
 
 
+## 备份 & 恢复
 
+```
+> SAVE // 生成 dump.rdb
 
+> CONFIG GET dir
+
+> BGSAVE // 后台备份
+```
+
+## 服务器命令
+
+| 指令                                         | 说明                                                         |
+| -------------------------------------------- | ------------------------------------------------------------ |
+| BGREWRITEAOF                                 | 异步执行一个 AOF（AppendOnly File） 文件重写操作             |
+| BGSAVE                                       | 在后台异步保存当前数据库的数据到磁盘                         |
+| CLIENT KILL [ip:port]\[ID client-id]         | 关闭客户端连接                                               |
+| CLIENT LIST                                  | 获取连接到服务器的客户端连接列表                             |
+| CLIENT GETNAME                               | 获取连接的名称                                               |
+| CLIENT PAUSE timeout                         | 在指定时间内终止运行来自客户端的命令                         |
+| CLIENT SETNAME connection-name               | 设置当前连接的名称                                           |
+| CLUSTER SLOTS                                | 获取集群节点的映射数组                                       |
+| COMMAND                                      | 获取 Redis 命令详情数组                                      |
+| COMMAND COUNT                                | 获取 Redis 命令总数                                          |
+| COMMAND GETKEYS                              | 获取给定命令的所有键                                         |
+| TIME                                         | 返回当前服务器时间                                           |
+| COMMAND INFO command-name [command-name ...] | 获取指定 Redis 命令描述的数组                                |
+| CONFIG GET parameter                         | 获取指定配置参数的值                                         |
+| CONFIG REWRITE                               | 对启动 Redis 服务器时所指定的 redis.conf 配置文件进行改写    |
+| CONFIG SET parameter value                   | 修改 redis 配置参数，无需重启                                |
+| CONFIG RESETSTAT                             | 重置 INFO 命令中的某些统计数据                               |
+| DBSIZE                                       | 返回当前数据库的 key 的数量                                  |
+| DEBUG OBJECT key                             | 获取 key 的调试信息                                          |
+| DEBUG SEGFAULT                               | 让 Redis 服务崩溃                                            |
+| FLUSHALL                                     | 删除所有数据库的所有key                                      |
+| FLUSHDB                                      | 删除当前数据库的所有key                                      |
+| INFO [section]                               | 获取 Redis 服务器的各种信息和统计数值                        |
+| LASTSAVE                                     | 返回最近一次 Redis 成功将数据保存到磁盘上的时间，以 UNIX 时间戳格式表示 |
+| MONITOR                                      | 实时打印出 Redis 服务器接收到的命令，调试用                  |
+| ROLE                                         | 返回主从实例所属的角色                                       |
+| SAVE                                         | 同步保存数据到硬盘                                           |
+| SHUTDOWN [NOSAVE]\[SAVE]                     | 异步保存数据到硬盘，并关闭服务器                             |
+| SLAVEOF host port                            | 将当前服务器转变为指定服务器的从属服务器(slave server)       |
+| SLOWLOG subcommand [argument]                | 管理 redis 的慢日志                                          |
+| SYNC                                         | 用于复制功能(replication)的内部命令                          |
 
 
 
