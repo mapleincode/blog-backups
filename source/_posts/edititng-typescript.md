@@ -67,5 +67,36 @@ tags: [ TypeScript ]
 3. `const [a, b]: = [1, 2];`
 4. `const { a: c, b } = { a: 1, b: 2 };`
 5. `type C = { a: string, b?: number }`
-6. const newList = [ ...oldList ];
+6. `const newList = [ ...oldList ];` 
+7. `[ a ] =  [ 1 ]`
+
+
+
+## 接口
+
+1. interface
+
+   ```js
+   interface SquareConfig {
+     readonly name: string;
+     color: string;
+     width: number;
+   }
+   
+   const config: SquareConfig = {
+     name: "Bob",
+     color: "red",
+     width: 300
+   };
+   ```
+
+2. ReadonlyArray
+
+   ```ts
+   let ro: ReadOnlyArray<number> = a;
+   ```
+
+   
+
+
 
