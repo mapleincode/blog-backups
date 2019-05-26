@@ -96,7 +96,112 @@ tags: [ TypeScript ]
    let ro: ReadOnlyArray<number> = a;
    ```
 
+3. interface 和 type 的区别见<其他>
+
+4. `createSquare({ xxx: "xxx" } as SquareConfig)`
+
+5. propName
+
+   - 适合在外部传入数据并且在不知道结构的情况下全全保存。
+
+   ```ts
+   interface U {
+     [propName: string]: any
+   }
+   ```
+
+6. 函数类型的 interface
+
+   ```ts
+   interface SearchFunc {
+     (source: string, subString: string): boolean;
+   }
+   ```
+
+7. 数组类型的 iunterface
+
+   ```ts
+   interface StringArray {
+   	[index: number]: string;
+   }
+   ```
+
+8. 索引
+
+   1. 字符串 or 数字
+   2. 数字的索引返回值的集合 必须是 字符串索引返回值的集合的子集。
+   3. 索引可以限制所有子类型的返回值。 (type or readonly)
+
+9. 类类型
+
+   ```ts
+   interface C {
+     new (hour: number: minute?: number)
+     time: Date;
+     setTime(d: Date): boolean;
+   }
+   ```
+
+10. 继承多个接口
+
+   ```ts
+   interface Square extends Shape, PenStroke {
+       sideLength: number;
+   
+   ```
+
+11. 支持 对象和函数混合接口
+
+12. 接口继承类
+
+    ```ts
+    class Button extends Control implements SelectableControl {
+        select() { }
+    }
+    ```
+
+##  类
+
+1. public
+
+2. private
+
+3. protected
+
+   1. `protected`修饰符与 `private`修饰符的行为很相似，但有一点不同， `protected`成员在派生类中仍然可以访问。
+
+4. readonly
+
+5. constructor 的参数支持直接赋值为 class 属性;<参数属性>;
+
+   ```ts
+   class F {
+     constructor(public readonly f: string) {
+       
+     }
+   }
+   const f = new F("Bob");
+   console.log(f.f);
+   ```
+
+6. get/set 支持<存储器>
+
+   ```ts
+   class G {
+     private _fullName: string;
+     get fullName() {
+       return this._fullName;
+     }
+     
+     set fullName(name: string) {
+       this._fullName = name;
+     }
+   }
+   ```
+
    
 
+## 其他
 
+### type 和 interface 的区别
 
