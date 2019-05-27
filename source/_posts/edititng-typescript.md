@@ -68,7 +68,7 @@ tags: [ TypeScript ]
 4. `const { a: c, b } = { a: 1, b: 2 };`
 5. `type C = { a: string, b?: number }`
 6. `const newList = [ ...oldList ];` 
-7. `[ a ] =  [ 1 ]`
+7. `const [ a ] =  [ 1 ]`
 
 
 
@@ -144,11 +144,13 @@ tags: [ TypeScript ]
 
 10. 继承多个接口
 
-   ```ts
-   interface Square extends Shape, PenStroke {
-       sideLength: number;
-   
-   ```
+    ```ts
+       interface Square extends Shape, PenStroke {
+           sideLength: number;
+       }
+    ```
+
+    
 
 11. 支持 对象和函数混合接口
 
@@ -162,11 +164,11 @@ tags: [ TypeScript ]
 
 ##  类
 
-1. public
+1. `public`
 
-2. private
+2. `private`
 
-3. protected
+3. `protected`
 
    1. `protected`修饰符与 `private`修饰符的行为很相似，但有一点不同， `protected`成员在派生类中仍然可以访问。
 
@@ -184,7 +186,7 @@ tags: [ TypeScript ]
    console.log(f.f);
    ```
 
-6. get/set 支持<存储器>
+6. get/set 支持<存取器>
 
    ```ts
    class G {
@@ -199,7 +201,97 @@ tags: [ TypeScript ]
    }
    ```
 
+7. `static origin = { a: 1, b: 2 };`
+
+8. 抽象类
+
+   ```ts
+   abstract class Department {
+       abstract printMeeting(): void;
+   }
    
+   class AccountingDepartment extends Department {
+       printMeeting() {
+           console.log("printf");
+       }
+   }
+   ```
+
+9. 把<类>当做<接口>
+
+   ```ts
+   class Point {
+       x: number;
+       y: number;
+   }
+   interface Point3D extends Point {
+       z: number;
+   }
+   ```
+
+## 函数
+
+1. 基本结构
+
+   ```ts
+   // 1
+   function done(q: string): string {
+       return q;
+   }
+   
+   // 2
+   const redone: (q: string) => string = function(q: string): string {
+       return q;
+   };
+   
+   // 3
+   type Q = {
+       (q: string): string;
+   };
+   
+   const reredone: Q = function(q: string): string {
+       return q;
+   };
+   
+   // 4
+   const rrrrdone: ({ (q: string): string; }) = function(q: string): string {
+       return q;
+   };
+   
+   // 5
+   
+   interface P {
+       (q: string): string;
+   }
+   
+   const rrrrrdone: P = function(q: string) {
+       return q;
+   }
+   ```
+
+2. 可选参数
+
+   ```ts
+   function buildName(firstName: string, lastName?: string): void {
+       
+   }
+   ```
+
+3. 支持默认参数 `function Q(q = "xxx") {}`
+
+4. 剩余参数
+
+   ```ts
+   function buildName(firstName: string, ...restOfName: string[]) {
+       
+   }
+   ```
+
+5. 支持重载
+
+## 泛型
+
+
 
 ## 其他
 
