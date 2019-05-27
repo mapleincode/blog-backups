@@ -316,7 +316,55 @@ tags: [ TypeScript ]
    }
    ```
 
+4. 泛型约束
+
+   ``` ts
+   interface LengthWish {
+   	length: number;
+   }
    
+   function loggingIdentityZ<T extends LengthWise>(arg: T): T {
+     console.log(arg.length);
+     return arg;
+   }
+   ```
+
+
+
+## 枚举
+
+1. `enum Direction { Up=1, Down, Left, Right }`
+
+2. 默认从 0 开始
+
+3. 数字枚举 or 字符串枚举。
+
+4. 异构枚举(Heterogeneous enums)
+
+5. 反向映射
+
+   ```ts
+   enum Enum {
+     A
+   }
+   
+   let a = Enum.A;
+   let nameofA = Enum[a]; // "A"
+   ```
+
+6. `const enum { A, B }`
+
+7. 外部枚举
+
+   ```ts
+   declare enum Enum {
+       A = 1,
+       B,
+       C = 2
+   }
+   ```
+
+8. 
 
 ## 其他
 
