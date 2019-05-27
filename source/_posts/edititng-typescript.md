@@ -291,7 +291,32 @@ tags: [ TypeScript ]
 
 ## 泛型
 
+1. demo
 
+   ``` ts
+   function identity<T>(arg: T): T {
+       return arg;
+   }
+   const output = identity<string>("hello world");
+   ```
+
+2. multi
+
+   ```ts
+   function id<T, S>(argA: T, argB: S): S {
+       
+   }
+   ```
+
+3. interface
+
+   ```ts
+   interface A {
+       <T>(arg: T): T;
+   }
+   ```
+
+   
 
 ## 其他
 
