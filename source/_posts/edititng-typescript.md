@@ -316,9 +316,47 @@ tags: [ TypeScript ]
    }
    ```
 
+4. 外部枚举
+
+   1. 外部枚举是用来引入其他非 ts 代码的外部包已存在的枚举
+
+   ```ts
+   declare enum Enum {
+       A = 1,
+       B,
+       C = 2
+   }
+   ```
+
+## 类型推论
+
+1. `(number|string|boolean)`
+
+## 类型兼容性
+
+1. 属性相同的 class 和 interface 可以兼容。
+
+2. 函数比较的是参数
+
+   ```ts
+   let x = (a: number) => 0;
+   let y = (b: number, s: string) => 0;
    
+   y = x; // OK
+   x = y; // Error
+   ```
+
+3. 可选参数和剩余参数在转换时不会产生错误
+
+4. 类之对比实例成员，不对比静态成员和构造函数
+
+5. private 和 protect 只允许赋值给父类。
+
+6. 泛型在结构相同的情况下可以转换，但是前提是不包含属性不同的成员。如果两者都是 any 就不会有问题。
 
 ## 其他
+
+## ts 代码中引入 js
 
 ### type 和 interface 的区别
 
