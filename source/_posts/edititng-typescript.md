@@ -18,7 +18,7 @@ tags: [ TypeScript ]
 
 
 
-## 基础类型
+## 1. 基础类型
 
 1. 支持 const、let
 
@@ -60,7 +60,7 @@ tags: [ TypeScript ]
 
 11. `let a = b as number`
 
-## 变量声明
+## 2. 变量声明
 
 1. `let`
 2. `const`
@@ -72,7 +72,7 @@ tags: [ TypeScript ]
 
 
 
-## 接口
+## 3. 接口
 
 1. interface
 
@@ -162,7 +162,7 @@ tags: [ TypeScript ]
     }
     ```
 
-##  类
+##  4. 类
 
 1. `public`
 
@@ -229,7 +229,7 @@ tags: [ TypeScript ]
    }
    ```
 
-## 函数
+## 5. 函数
 
 1. 基本结构
 
@@ -289,7 +289,7 @@ tags: [ TypeScript ]
 
 5. 支持重载
 
-## 泛型
+## 6. 泛型
 
 1. demo
 
@@ -315,27 +315,53 @@ tags: [ TypeScript ]
        <T>(arg: T): T;
    }
    ```
-4. 外部枚举
 
-   1. 外部枚举是用来引入其他非 ts 代码的外部包已存在的枚举
+## 7. 枚举
+
+1. `enum Direction { Up=1, Down, Left, Right }`
+
+2. 默认从 0 开始
+
+3. 数字枚举 or 字符串枚举。
+
+4. 异构枚举(Heterogeneous enums)
+
+5. 反向映射
 
    ```ts
-   declare enum Enum {
+   enum Enum {
+     A
+   }
+   
+   let a = Enum.A;
+   let nameofA = Enum[a]; // "A"
+   ```
+
+6. `const enum { A, B }`
+
+7. 外部枚举
+
+  8. 外部枚举是用来引入其他非 ts 代码的外部包已存在的枚举
+
+     ```ts
+     declare enum Enum {
        A = 1,
        B,
        C = 2
-   }
-   ```
+     }
+     ```
 
-## 类型推论
+## 8. 类型推论
 
 1. `(number|string|boolean)`
 
-## 类型兼容性
+## 9. 类型兼容性
 
-1. 属性相同的 class 和 interface 可以兼容。
+1. 兼容性只得是某个对象能否被赋值给另一个对象
 
-2. 函数比较的是参数
+2. 属性相同的 class 和 interface 可以兼容。
+
+3. 函数比较的是参数
 
    ```ts
    let x = (a: number) => 0;
@@ -345,15 +371,44 @@ tags: [ TypeScript ]
    x = y; // Error
    ```
 
-3. 可选参数和剩余参数在转换时不会产生错误
+4. 可选参数和剩余参数在转换时不会产生错误
 
-4. 类之对比实例成员，不对比静态成员和构造函数
+5. 类之对比实例成员，不对比静态成员和构造函数
 
-5. private 和 protect 只允许赋值给父类。
+6. private 和 protect 只允许赋值给父类。
 
-6. 泛型在结构相同的情况下可以转换，但是前提是不包含属性不同的成员。如果两者都是 any 就不会有问题。
+7. 泛型在结构相同的情况下可以转换，但是前提是不包含属性不同的成员。如果两者都是 any 就不会有问题。
 
 ## 高级类型
+
+### 交叉类型(Intersection Types)
+
+1. 指的是某个对象拥有多个 type，属于多个 type 的成员。
+
+2. `T & U`
+
+3. 检查类型检查的是所拥有的 key。如果吧  A、B 的key 都复制到 C 上面。那么`typeof C == typeof A & typeof B`
+
+4. demo
+
+   ```ts
+   function extend<T, U>(first: T, second: U): T & U {
+       let result = <T & U>{};
+       for (let id in first) {
+           (<any>result)[id] = (<any>first)[id];
+       }
+       for (let id in second) {
+           if (!result.hasOwnProperty(id)) {
+               (<any>result)[id] = (<any>second)[id];
+           }
+       }
+       return result;
+   }
+   ```
+
+### 联合类型
+
+1. 
 
 ## Symbols
 
