@@ -118,7 +118,7 @@ tags: [ TypeScript ]
    }
    ```
 
-7. 数组类型的 iunterface
+7. 数组类型的 interface
 
    ```ts
    interface StringArray {
@@ -136,7 +136,7 @@ tags: [ TypeScript ]
 
    ```ts
    interface C {
-     new (hour: number: minute?: number)
+     new (hour: number: minute?: number);
      time: Date;
      setTime(d: Date): boolean;
    }
@@ -406,9 +406,136 @@ tags: [ TypeScript ]
    }
    ```
 
-### 联合类型
+### 联合类型(Union Types)
 
-1. 
+1. `number | string`
+2. 出参如果是联合类型，因为无法确定具体属于什么类型。导致只有两个类型共有部分的属性可以被使用。
+3. 可以使用强制转换。
+
+### 类型保护与区分类型(Type Guards and Differentiating Types)
+
+1. 为了解决 **联合类型** 输出参数类型不确定问题
+
+2. 类型断言
+
+   ```ts
+   let pet = getSmallPet();
+   if ((<Fish>pet).swim) {
+       (<Fish>pet).swim();
+   }
+   ```
+
+3. 用户自定义的类型保护
+
+   ```ts
+   function isFish(pet: Fish|Bird): pet is Fish {
+       return <Fish>pet).swim !== undefined;
+   }
+   
+   if (isFish(pet)) {
+       pet.swim();
+   }
+   ```
+
+4. `typeof` 类型保护
+
+   1. typeof 仅支持 `number`, `string`, `boolean`, `symbol`
+   2. `if (typeof xx === 'string') { ... }`
+
+5. `instanceof` 类型保护
+
+   1. 此构造函数的 `prototype`属性的类型，如果它的类型不为 `any`的话
+   2. 构造签名所返回的类型的联合
+
+   > 上面两个感觉是机翻，没有例子也看不懂。
+
+6. 可以为 null 的类型
+
+   1. `null`与 `undefined`是所有其它类型的一个有效值。
+   2. `--strictNullChecks`标记可以解决此错误
+
+7. 类型别名
+
+   1. type
+
+   2. 不能出现在创建一个<声明>时，右侧有任何的声明
+
+   3.   <我感觉一辈子都不会这么去用 orz>
+
+      ```ts
+      type LinkedList<T> = T & { next: LinkedList<T> };
+      
+      interface Person {
+          name: string;
+      }
+      
+      var people: LinkedList<Person>;
+      var s = people.name;
+      var s = people.next.name;
+      var s = people.next.next.name;
+      var s = people.next.next.next.name;
+      ```
+
+   4. type 和 interface 的区别
+
+      1. type 更像是一个指针，在很多地方【错误】【提示】 等都会显示 type 原始的类型。
+      2. interface 可以被 extends 和 implement 而 type 不行。
+
+8. 字符串字面量类型
+
+   1. `type Easing = "ease-in" | "ease-out" | "ease-in-out";`
+   2. 字符串字面量类型还能区别与 string 而用于重载。
+
+9. 数字子面型类型
+
+   1. 同上
+   2. 可以用来调试代码，缩小 number 范围带来的变量的报错。
+
+10. 枚举成员类型<不知道为什么要在这里插一小节>
+
+11. 可辨识联合(Discriminated Unions)
+
+    1. <标签联合>、<代数数据联合>
+
+    2. demo
+
+       ```ts
+       interface Square {
+           kind: "square";
+           size: number;
+       }
+       interface Rectangle {
+           kind: "rectangle";
+           width: number;
+           height: number;
+       }
+       interface Circle {
+           kind: "circle";
+           radius: number;
+       }
+       
+       type Shape = Square | Rectangle | Circle;
+       
+       function assertNever(x: never): never {
+           throw new Error("Unexpected object: " + x);
+       }
+       function area(s: Shape) {
+           switch (s.kind) {
+               case "square": return s.size * s.size;
+               case "rectangle": return s.height * s.width;
+               case "circle": return Math.PI * s.radius ** 2;
+               default: return assertNever(s); // error here if there are missing cases
+           }
+       }
+       ```
+
+12. 多态的 this 类型
+
+    1. 菊花链的故事
+
+13. 索引类型(Index Types)
+
+    1. 
 
 ## Symbols
 
@@ -439,8 +566,6 @@ tags: [ TypeScript ]
 ## 其他
 
 ### 1. ts 代码中引入 js
-
-### 2. type 和 interface 的区别
 
 ### 3. 声明文件
 ### 4. 项目配置
