@@ -491,7 +491,9 @@ tags: [ TypeScript ]
    1. 同上
    2. 可以用来调试代码，缩小 number 范围带来的变量的报错。
 
-10. 枚举成员类型<不知道为什么要在这里插一小节>
+10. 枚举成员类型
+
+    参照 <枚举> 。
 
 11. 可辨识联合(Discriminated Unions)
 
@@ -535,7 +537,72 @@ tags: [ TypeScript ]
 
 13. 索引类型(Index Types)
 
-    1. 
+    1. `let personProps: keyof Person; // 'name' | 'age'`
+
+    2. demo
+
+       ```ts
+       function getProperty<T, K extends keyof T>(o: T, name: K): T[K] {
+           return o[name]; // o[name] is of type T[K]
+       }
+       ```
+
+14. 映射类型
+
+    1. 可以支持把一个类型的 type 转换成另个类型的 type。
+
+    2. 常用的几个类型
+
+       ```ts
+       // 把 type 所有类型都转成 ReadOnly
+       type Readonly<T> = {
+           readonly [P in keyof T]: T[P];
+       }
+       
+       // 把 type 所有类型转成可选
+       type Partial<T> = {
+           [P in keyof T]?: T[P];
+       }
+       
+       // 拆分 type 的若干个类型转换成一个新的 type
+       type Pick<T, K extends keyof T> = {
+           [P in K]: T[P];
+       }
+                 
+       // 用 T 作为属性转成新的类型
+       type Record<K extends string, T> = {
+           [P in K]: T;
+       }
+       ```
+
+    3. 包装 & 拆包
+
+       ```ts
+       // 包装
+       type Proxy<T> = {
+           get(): T;
+           set(value: T): void;
+       }
+       type Proxify<T> = {
+           [P in keyof T]: Proxy<T[P]>;
+       }
+       function proxify<T>(o: T): Proxify<T> {
+          // ... wrap proxies ...
+       }
+       let proxyProps = proxify(props);
+       // 拆包
+       function unproxify<T>(t: Proxify<T>): T {
+           let result = {} as T;
+           for (const k in t) {
+               result[k] = t[k].get();
+           }
+           return result;
+       }
+       
+       let originalProps = unproxify(proxyProps);
+       ```
+
+    4. 类似 `K extends keyof T`。因为 keyof 类似 Object.keys 返回的是复数的属性，而且在<> 也可以传入类似 `<'aa'|'bb'>`。所以在使用必须用 `[key in K]`。
 
 ## Symbols
 
