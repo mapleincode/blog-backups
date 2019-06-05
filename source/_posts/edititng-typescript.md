@@ -602,7 +602,41 @@ tags: [ TypeScript ]
        let originalProps = unproxify(proxyProps);
        ```
 
-    4. 类似 `K extends keyof T`。因为 keyof 类似 Object.keys 返回的是复数的属性，而且在<> 也可以传入类似 `<'aa'|'bb'>`。所以在使用必须用 `[key in K]`。
+    4. 实际包装完整代码(琢磨了半天)
+    
+       ```ts
+       type Proxy<T> = {
+           get(): T;
+           set(value: T): void;
+       }
+       type Proxify<T> = {
+           [P in keyof T]: Proxy<T[P]>;
+       }
+       
+       function pro<T>(a: T): Proxy<T> {
+           const b: Proxy<T> = {
+               get() {
+                   return a;
+               },
+               set(value: T) {
+                   
+               }
+           }
+           return b;
+       }
+       
+       function proxify<T extends Object>(o: T): Proxify<T> {
+           const p: Proxify<T> = {} as Proxify<T>;
+           for(const key in o) {
+               p[key] = pro(o[key]);
+           }
+           return p;
+       }
+       
+       let proxyProps = proxify({ a: '2333'});
+       ```
+    
+    5. 类似 `K extends keyof T`。因为 keyof 类似 Object.keys 返回的是复数的属性，而且在<> 也可以传入类似 `<'aa'|'bb'>`。所以在使用必须用 `[key in K]`。
 
 ## Symbols
 
