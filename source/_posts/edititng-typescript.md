@@ -603,7 +603,7 @@ tags: [ TypeScript ]
        ```
 
     4. 实际包装完整代码(琢磨了半天)
-    
+
        ```ts
        type Proxy<T> = {
            get(): T;
@@ -635,10 +635,23 @@ tags: [ TypeScript ]
        
        let proxyProps = proxify({ a: '2333'});
        ```
-    
+
     5. 类似 `K extends keyof T`。因为 keyof 类似 Object.keys 返回的是复数的属性，而且在<> 也可以传入类似 `<'aa'|'bb'>`。所以在使用必须用 `[key in K]`。
 
+    6. 预定义的有条件类型
+
+       TypeScript 2.8在`lib.d.ts`里增加了一些预定义的有条件类型：
+
+       - `Exclude<T, U>` -- 从`T`中剔除可以赋值给`U`的类型。
+       - `Extract<T, U>` -- 提取`T`中可以赋值给`U`的类型。
+       - `NonNullable<T>` -- 从`T`中剔除`null`和`undefined`。 
+       - `ReturnType<T>` -- 获取函数返回值类型。
+       - `InstanceType<T>` -- 获取构造函数类型的实例类型。
+
 ## Symbols
+
+1. `let sym1 = Symbol(); let sym2 = Symbol("key");`
+2. 还有很多内置的特性参照：<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator>
 
 ## 迭代器 & 生成器
 
