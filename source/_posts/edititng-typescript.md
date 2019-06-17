@@ -343,6 +343,8 @@ tags: [ TypeScript ]
 
   8. 外部枚举是用来引入其他非 ts 代码的外部包已存在的枚举
 
+     > 说白了就是写在 index.d.ts 里
+
      ```ts
      declare enum Enum {
        A = 1,
@@ -655,7 +657,43 @@ tags: [ TypeScript ]
 
 ## 迭代器 & 生成器
 
+1. `for...of`
+2. `for...in`
+
 ## 模块
+
+1. export
+
+2. export xx as 'yy'
+
+3. export default
+
+4. import 
+
+5. import * as xx from 'xx';
+
+6. 使用其他的 JavaScript 库
+
+   1. demo
+
+      ```ts
+      // index.d.ts
+      declare module "url" {
+          export interface Url {
+              protocol?: string;
+              hostname?: string;
+              pathname?: string;
+          }
+      
+          export function parse(urlStr: string, parseQueryString?, slashesDenoteHost?): Url;
+      }
+      
+      // main.ts
+      import url from 'url';
+      import * as url from 'url';
+      ```
+
+      
 
 ## 命名空间
 
