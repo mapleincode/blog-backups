@@ -672,7 +672,12 @@ tags: [ TypeScript ]
 
 5. import * as xx from 'xx';
 
-6. 使用其他的 JavaScript 库
+6. CommonJS 和 AMD 的 exports
+
+   1. `export =`
+   2. `import xx require=`
+
+7. 使用其他的 JavaScript 库
 
    1. demo
 
@@ -697,11 +702,47 @@ tags: [ TypeScript ]
 
 ## 命名空间
 
+> 个人理解，命名空间适合前端在编写 ts 时，在一个大文件维持各个 module 之间的关系，并确保变量名不会相互影响。而 Node 在编写代码时使用文件的方式来分隔。
+
+> **关于术语的一点说明:** 请务必注意一点，TypeScript 1.5里术语名已经发生了变化。 “内部模块”现在称做“命名空间”。 “外部模块”现在则简称为“模块”，这是为了与 [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/)里的术语保持一致，(也就是说 `module X {`	相当于现在推荐的写法 `namespace X {`)。
+>
+> 引用 <https://www.tslang.cn/docs/handbook/namespaces-and-modules.html>
+
+```ts
+namespace Validation {
+    export interface xxx {
+        
+    }
+    
+    export class Q {
+        
+    }
+}
+```
+
+1. 多个文件的同个命名空间会把他们合并到一起
+2. `/// <reference path="Test.ts" />` 要预先引用
+3. 引入原生 js 库。需要提供 `.d.ts` 文件
+
 ## 命名空间 & 模块
+
+1. 内部模块 = namespace + reference
+2. 外部模块 = export + import
+3. 拒绝 `export namespace XX {}`
 
 ## 模块解析
 
+1. `export xx;export yy` = `import { xx, yy } from './module'`
+2. `export xx;export yy;` = `import * as zz from './module'; zz.xx; zz.yy;`
+3. `export default xx;` = `import xx from './module'`;
+4. `module.exports = xx` = `import xx = require('module');`
+
 ## 声明合并
+
+1. 接口 (interface) 可以合并
+2. 空间(namespace) 可以合并
+3. **非导出成员仅在其原有的（合并前的）命名空间内可见。**
+4. 命名空间和类 - 命名空间里的成员必须导出，才能在类里面被调用
 
 ## JSX
 
