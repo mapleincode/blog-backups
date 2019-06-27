@@ -56,7 +56,7 @@ target.a === 37; // true
 
 ## GET
 
-```javasc
+```javascript
 let handler = {
     get: function(target, name) {
     	if(name !== 'world') return target[name];
@@ -78,62 +78,37 @@ let handler = {
 }
 ```
 
-## 扩展构造函数
 
-**`Object.getOwnPropertypDescriptor`**
 
-获得对象属性描述。
+## 实现简单的 demo
 
 ```javascript
-function Person(name) {
-    this.name = name;
-}
-Object.getOwnPropertypDescriptor(Person.prototype, 'constructor'); 
-// { value: [Function: Person],
-//  writable: true,
-//  enumerable: false,
-//  configurable: true }
-```
+let handler = {
+    get: function(target, name) {
+        const send = target.send;
 
-
-
-```javascript
-function extend(sup, base) {
-    let descriptor = Object.getOwnPropertyDescriptor(
-    	base.prototype, 'construsctor'
-    );
-    base.prototype = Object.create(sub.prototype);
-    let handler = {
-        construct: function(target, args) {
-            let obj = Object.create(base.prototype);
-            this.apply(target, obj, args);
-        },
-        apply: function(target, that, args) {
-            sup.apply(that, args);
-            base.apply(that, args);
-        }
-    };
-    
-    let proxy = new Proxy(base, handler);
-    descriptor.value = proxy;
-    Object.defineProperty(base.prototype, 'constructor', descriptor);
-    return proxy;
-}
-
-let Person = function(name) {
-    this.name = name;
+        return send.bind(target, name);
+    }
 };
 
-let Boy = extend(Person, function(name, age) {
-    this.age = age;
-});
+class Done {
+    constructor() {
+        this.startId = 0;
+    }
 
-Boy.prototype.sex = 'M';
+    send(value, nextValue) {
+        console.log(`id is ${this.startId ++} and value is ${value}, ${nextValue}!`);
+    }
+}
 
-let Peter = new Boy('Peter', 13);
+function init() {
+    const done = new Done();
+    return new Proxy(done, handler);
+}
 
-console.log(Peter.sex);  // "M"
-console.log(Peter.name); // "Peter"
-console.log(Peter.age);  // 13
+const end = init();
+
+end.hello('world'); // 等同 end.send('hello', 'world');
+end.你好('世界');
 ```
 
