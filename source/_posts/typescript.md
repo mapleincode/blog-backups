@@ -740,26 +740,93 @@ namespace Validation {
 ## 声明合并
 
 1. 接口 (interface) 可以合并
+
 2. 空间(namespace) 可以合并
+
 3. **非导出成员仅在其原有的（合并前的）命名空间内可见。**
+
 4. 命名空间和类 - 命名空间里的成员必须导出，才能在类里面被调用
+
+5. 全局扩展
+
+   ```ts
+   declare global {
+       interface xxx {
+           
+       }
+   }
+   ```
+
+   
 
 ## JSX
 
+1. `.tsx`
+
 ## 装饰器
+
+1. 配置
+
+   ```ts
+   {
+       "compilerOptions": {
+           "target": "ES5",
+           "experimentalDecorators": true
+       }
+   }
+   ```
+
+2. 基本格式
+
+   ```ts
+   function f() {
+       return function (target, propertyKey: string, descriptor: PropertyDescriptor) {
+       }
+   }
+   ```
 
 ## Mixins
 
+1. demo
+
+   ```ts
+   function applyMixins(derivedCtor: any, baseCtors: any[]) {
+       baseCtors.forEach(baseCtor => {
+           Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
+               derivedCtor.prototype[name] = baseCtor.prototype[name];
+           })
+       });
+   }
+   ```
+
+2. 用与混合两个类
+
+3. `class newClass implements oldClassA, oldClassB {}`
+
+4. 需要在 `newClass` 简单的实现需要转移的参数和方法
+
 ## 三斜线指令
+
+1. 三斜线指令是包含单个XML标签的单行注释
+2. ``/// <reference types="..." />`
+3. `/// <reference path="..." />`
 
 ## JavaScript 文件类型检查
 
----
+1. 支持用 JSDoc 类型来表示类型信息(js 文件)
 
-## 其他
+   > 个人吐槽千万别这么做
 
-### 1. ts 代码中引入 js
+2. 支持的 JSDoc
 
-### 3. 声明文件
-### 4. 项目配置
+   - `@type`
+   - `@param` (or `@arg` or `@argument`)
+   - `@returns` (or `@return`)
+   - `@typedef`
+   - `@callback`
+   - `@template`
+   - `@class` (or `@constructor`)
+   - `@this`
+   - `@extends` (or `@augments`)
+   - `@enum`
 
