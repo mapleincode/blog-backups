@@ -41,6 +41,8 @@ penssl req -new -x509 -days 36500 -key private/ca.pem -out certs/ca.cer -subj "/
 
 ### 生成 CSR 证书请求文件
 
+> server.csr
+
 ```sh
 [ req ]
 default_bits = 2048
@@ -85,7 +87,7 @@ openssl req -new -out private/server.csr -nodes -config san.conf -batch
 ### 用 CA 证书签名并生成 Server 证书
 
 ```sh
-openssl x509 -req -sha256 -in private/server.csr -CA certs/ca.cer -CAkey private/ca.pem -CAcreateserial -out certs/server.cer -extensions req_ext -extfile san.conf -days 3650
+openssl x509 -req -sha256 -in private/server.csr -CA certs/ca.cer -CAkey private/ca.pem -CAcreateserial -out certs/server.cer -extensions req_ext -extfile san.conf -days 7300
 ```
 
 `-days` 证书有效期。
