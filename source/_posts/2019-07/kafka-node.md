@@ -4,13 +4,11 @@ date: 2019-01-07 03:20:39
 tags: [Kafka, Node.js]
 ---
 
-# Kafka-node
-
-Kafka 是基于磁盘文件顺序存储而设计的类 AMQP 消息队列服务，支持集群和数据备份。有着超高的稳定性和吞吐量。
-
-前段时间我司拟推广 Kafka，也乘机借着项目学了下 Kafka 的相关知识，虽然最后还是一直决定使用 ONS..
-
-在 Node 环境使用量比较高的是 `Kafka-node`这个包。所以本文主要讲诉这个包的一些简单用例。
+>  Kafka 是基于磁盘文件顺序存储而设计的类 AMQP 消息队列服务，支持集群和数据备份。有着超高的稳定性和吞吐量。
+>
+> 前段时间我司拟推广 Kafka，也乘机借着项目学了下 Kafka 的相关知识，虽然最后还是一直决定使用 ONS..
+>
+> 在 Node 环境使用量比较高的是 `Kafka-node`这个包。所以本文主要讲诉这个包的一些简单用例。
 
 ## 关于 `Lower Level Consumer` 和 `High Level Consumer` 的区别
 
@@ -69,6 +67,8 @@ const client = new Kafka.Client('localhost:2181', clientId);
 
 
 Kafaka-Node 作者推荐，如果是 LowLevelConsumer 建议用 broker 的 client。如果是 HighLevelConsumer 只能连接  zookeeper 的 client。
+
+
 
 ## Producer
 
@@ -398,9 +398,60 @@ process.once('SIGINT', function () {
 
 ## 其他的一系列函数
 
-其实大部分的函数作者都描述的很详细了，例如`producer.createTopics(topics, cb)`, `consumer.addTopics(topics, cb, fromOffset)`, `consumer.removeTopics(topics, cb)`, `consumer.setOffset(topic, partition, offset)`。
+### createTopics(topics, cb)
+
+```js
+const kafka = require('kafka-node');
+const client = new kafka.KafkaClient();
+
+const topicsToCreate = [
+    {
+        topic: 'topic1',
+        partitions: 1, // 一个分区
+        replicationFactor: 2 // 备份数
+    },
+    {
+        topic: 'topic2',
+        partitions: 5,
+        replicationFactor: 3,
+        // Optional set of config entries
+        configEntries: [
+            {
+                name: 'compression.type',
+                value: 'gzip'
+            },
+            {
+                name: 'min.compaction.lag.ms',
+                value: '50'
+            }
+        ],
+        // Optional explicit partition / replica assignment
+        // When this property exists, partitions and replicationFactor properties are ignored
+        replicaAssignment: [
+            {
+                partition: 0,
+                replicas: [3, 4]
+            },
+            {
+                partition: 1,
+                replicas: [2, 1]
+            }
+        ]
+    }];
+
+client.createTopics(topicsToCreate, (error, result) => {
+    // result is an array of any errors if a given topic could not be created
+});
+```
 
 
+
+其他 API
+
+- `producer.createTopics(topics, cb)`
+-  `consumer.addTopics(topics, cb, fromOffset)`
+-  `consumer.removeTopics(topics, cb)`
+- `consumer.setOffset(topic, partition, offset)`。
 
 ## 其他的一些坑
 
