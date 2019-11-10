@@ -381,9 +381,9 @@ tags: [ TypeScript ]
 
 7. 泛型在结构相同的情况下可以转换，但是前提是不包含属性不同的成员。如果两者都是 any 就不会有问题。
 
-## 高级类型
+## 10. 高级类型
 
-### 交叉类型(Intersection Types)
+### 10.1 交叉类型(Intersection Types)
 
 1. 指的是某个对象拥有多个 type，属于多个 type 的成员。
 
@@ -408,13 +408,13 @@ tags: [ TypeScript ]
    }
    ```
 
-### 联合类型(Union Types)
+### 10.2 联合类型(Union Types)
 
 1. `number | string`
 2. 出参如果是联合类型，因为无法确定具体属于什么类型。导致只有两个类型共有部分的属性可以被使用。
 3. 可以使用强制转换。
 
-### 类型保护与区分类型(Type Guards and Differentiating Types)
+### 10.3 类型保护与区分类型(Type Guards and Differentiating Types)
 
 1. 为了解决 **联合类型** 输出参数类型不确定问题
 
@@ -650,17 +650,17 @@ tags: [ TypeScript ]
        - `ReturnType<T>` -- 获取函数返回值类型。
        - `InstanceType<T>` -- 获取构造函数类型的实例类型。
 
-## Symbols
+## 11. Symbols
 
 1. `let sym1 = Symbol(); let sym2 = Symbol("key");`
 2. 还有很多内置的特性参照：<https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator>
 
-## 迭代器 & 生成器
+## 12. 迭代器 & 生成器
 
 1. `for...of`
 2. `for...in`
 
-## 模块
+## 13. 模块
 
 1. export
 
@@ -700,7 +700,7 @@ tags: [ TypeScript ]
 
       
 
-## 命名空间
+## 14. 命名空间
 
 > 个人理解，命名空间适合前端在编写 ts 时，在一个大文件维持各个 module 之间的关系，并确保变量名不会相互影响。而 Node 在编写代码时使用文件的方式来分隔。
 
@@ -724,20 +724,20 @@ namespace Validation {
 2. `/// <reference path="Test.ts" />` 要预先引用
 3. 引入原生 js 库。需要提供 `.d.ts` 文件
 
-## 命名空间 & 模块
+## 15. 命名空间 & 模块
 
 1. 内部模块 = namespace + reference
 2. 外部模块 = export + import
 3. 拒绝 `export namespace XX {}`
 
-## 模块解析
+## 16. 模块解析
 
 1. `export xx;export yy` = `import { xx, yy } from './module'`
 2. `export xx;export yy;` = `import * as zz from './module'; zz.xx; zz.yy;`
 3. `export default xx;` = `import xx from './module'`;
 4. `module.exports = xx` = `import xx = require('module');`
 
-## 声明合并
+## 17. 声明合并
 
 1. 接口 (interface) 可以合并
 
@@ -759,11 +759,11 @@ namespace Validation {
 
    
 
-## JSX
+## 18. JSX
 
 1. `.tsx`
 
-## 装饰器
+## 19. 装饰器
 
 1. 配置
 
@@ -785,7 +785,7 @@ namespace Validation {
    }
    ```
 
-## Mixins
+## 20. Mixins
 
 1. demo
 
@@ -805,17 +805,15 @@ namespace Validation {
 
 4. 需要在 `newClass` 简单的实现需要转移的参数和方法
 
-## 三斜线指令
+## 21. 三斜线指令
 
 1. 三斜线指令是包含单个XML标签的单行注释
 2. ``/// <reference types="..." />`
 3. `/// <reference path="..." />`
 
-## JavaScript 文件类型检查
+## 22. JavaScript 文件类型检查
 
 1. 支持用 JSDoc 类型来表示类型信息(js 文件)
-
-   > 个人吐槽千万别这么做
 
 2. 支持的 JSDoc
 
@@ -830,3 +828,51 @@ namespace Validation {
    - `@extends` (or `@augments`)
    - `@enum`
 
+
+
+## 100. Demo
+
+1. Pick
+
+   ```ts
+   interface a {
+       a: string;
+   };
+   
+   interface b {
+       a: any
+   }
+   
+   interface d extends Pick<a, keyof b> {
+       c: number;
+   }
+   
+   const test: d = {
+       a: '123',
+       c: 123
+   };
+   ```
+
+   
+
+2. Omit
+
+   ```ts
+   interface a {
+       a: string;
+   };
+   
+   interface b {
+       a: any
+   }
+   
+   interface d extends Omit<a, keyof b> {
+       a: number;
+   }
+   
+   const test: d = {
+       a: 1
+   };
+   ```
+
+   

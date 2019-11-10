@@ -4,13 +4,17 @@ date: 2019-01-07 03:20:39
 tags: [Kafka, Node.js]
 ---
 
->  Kafka 是基于磁盘文件顺序存储而设计的类 AMQP 消息队列服务，支持集群和数据备份。有着超高的稳定性和吞吐量。
->
-> 前段时间我司拟推广 Kafka，也乘机借着项目学了下 Kafka 的相关知识，虽然最后还是一直决定使用 ONS..
->
-> 在 Node 环境使用量比较高的是 `Kafka-node`这个包。所以本文主要讲诉这个包的一些简单用例。
 
-## 关于 `Lower Level Consumer` 和 `High Level Consumer` 的区别
+
+Kafka 是基于磁盘文件顺序存储而设计的类 AMQP 消息队列服务，支持集群和数据备份。有着超高的稳定性和吞吐量。
+
+前段时间我司拟推广 Kafka，也乘机借着项目学了下 Kafka 的相关知识，虽然最后还是一直决定使用 ONS..
+
+在 Node 环境使用量比较高的是 `Kafka-node`这个包。所以本文主要讲诉这个包的一些简单用例。
+
+
+
+**关于 `Lower Level Consumer` 和 `High Level Consumer` 的区别**
 
 一开始在不怎么了解的情况下，一直分不清楚两者的关系。后来在一大佬的文章中得到了解释:
 
@@ -47,18 +51,18 @@ tags: [Kafka, Node.js]
 
 Kafka-node 支持两种 client:
 
-1. KafkaNode.Client
-2. KafkaNode.KafkaClient
+1. KafkaNode.Client 直接连接 Zookeeper 
+2. KafkaNode.KafkaClient 直接连接 broker
 
-前者是直接连接  zookeeper，后者是直接连接 broker。
 
-**连接 broker**
+
+**1. 连接 broker**
 
 ```javascript
 const client = new kafka.KafkaClient({kafkaHost: 'localhost:9092'});
 ```
 
-**连接 zookeeper**
+**2. 连接 zookeeper**
 
 ```javascript
 const client = new Kafka.Client('localhost:2181', clientId);
