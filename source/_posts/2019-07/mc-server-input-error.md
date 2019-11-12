@@ -1,7 +1,7 @@
 ---
 title: MC 服务器启动之后无法在服务端输入指令
 date: 2019-02-25 15:21:42
-tags: [ MC, Java ]
+tags: [ MineCraft, Java ]
 ---
 
 

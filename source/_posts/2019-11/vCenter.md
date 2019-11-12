@@ -1,6 +1,7 @@
 ---
 date: 2019-11-11 02:31:16
 title: vCenter 和 vCSA 对比
+tags: VMware
 ---
 
 vCenter Server与vCenter Server Virtual Appliance（vCSA）都提供对企业中[VMware vSphere](https://baike.baidu.com/item/VMware vSphere)部署的集中管理。虽然拥有相同的功能，两者安装却不同，所支持的功能也不同。
@@ -22,3 +23,7 @@ vCSA也不支持链接模式Linked Mode，该功能能让多个vCenter Server实
 vCenter Server完整版确实支持更多数据库、Linked Mode与[IPv6](https://baike.baidu.com/item/IPv6)，但安装过程要求较多。首先需要64位[Windows Server 2008 R2](https://baike.baidu.com/item/Windows Server 2008 R2)版本，受支持的数据库，如Microsoft SQL Server Express。还有其他要求，如Microsoft .NET 3.5 SP1架构或Microsoft Windows Installer 4.5。最后，还需要一台安装vCenter Server的物理或虚拟服务器。
 
 通常，[数据中心](https://baike.baidu.com/item/数据中心)的大小决定着是选择vCenter Server还是vCSA。 [1]
+
+
+
+> 尝试安装了 vCSA。其实类似 vCenter 更注重的是对集群的管理，但对于我这种个人而言，vCenter 的意义不是特别大，即使功能更加丰富，你也得额外开销一个虚拟机用于运行 vCenter 服务。而 ESXi 自带的功能已经足够满足一个个人的使用了。

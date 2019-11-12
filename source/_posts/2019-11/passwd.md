@@ -22,3 +22,12 @@ password
 EOF
 ```
 
+
+
+> 第一种方法是 sudo 函数独有，但是输入重定向，对其他需要输入密码的函数也会有效
+
+
+
+参考:
+
+1. https://blog.csdn.net/qiyueqinglian/article/details/48290905

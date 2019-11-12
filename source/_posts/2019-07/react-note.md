@@ -1,7 +1,7 @@
 ---
 title: React.js 小书 - 第三阶段 - 学习笔记
 date: 2018-05-08 17:38:23
-tags: [ React, Redux ]
+tags: [ React.js, Redux ]
 ---
 
 > [React.js 小书](http://huziketang.mangojuice.top/books/react/)
@@ -156,7 +156,7 @@ tags: [ React, Redux ]
 
    > subscribe subscribe subscribe subscribe … 我只是在背单词/(ㄒoㄒ)/
 
-   ​
+   
 
 ### Lession 32 - 动手实现 Redux（三）：纯函数（Pure Function）简介
 

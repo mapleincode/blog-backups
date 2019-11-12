@@ -1,7 +1,7 @@
 ---
 title: node.js 请求 redis 的性能优化和 redis 的管道和事务机制
 date: 2019-03-13 17:16:44
-tags: [Node.js, redis]
+tags: [ Node.js, Redis ]
 ---
 
 最近做了一个项目，涉及了大量的 redis IO 读写。
