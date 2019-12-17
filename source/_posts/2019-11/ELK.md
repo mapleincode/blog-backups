@@ -1,5 +1,5 @@
 ---
- date: 2019-11-12 10:56:21
+date: 2019-11-12 10:56:21
 title: ELK 搭建
 tags: ELK
 ---
@@ -183,8 +183,12 @@ curl http://elastic:changeme@192.168.3.242:9200
   - 修改文件 `/etc/security/limits.conf`，末尾增加如下内容:
 
   ```bash
+  
+  ```
 * soft nofile 65536
   * hard nofile 65536
+  ```
+  
   ```
   
 * max virtual memory
