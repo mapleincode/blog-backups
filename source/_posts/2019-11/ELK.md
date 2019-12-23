@@ -464,17 +464,9 @@ $ ./bin/kibana
 
 
 
-
-
-
-
 ---
 
 FileBeat 为了解决 Logstash 开销大的问题。
-
-
-
-
 
 
 
