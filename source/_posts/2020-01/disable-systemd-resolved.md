@@ -1,3 +1,9 @@
+<!--
+ * @Author: maple
+ * @Date: 2020-01-18 01:47:22
+ * @LastEditors: maple
+ * @LastEditTime: 2020-02-15 17:27:39
+ -->
 ---
 date: 2020-01-18 01:48:00
 title: nameserver 127.0.0.53
@@ -16,6 +22,8 @@ nameserver 127.0.0.53
 $ sudo systemctl disable systemd-resolved
 $ sudo reboot
 ```
+
+> 建议正常运作的情况下不需要卸载这个组件
 
 
 
