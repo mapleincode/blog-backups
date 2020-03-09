@@ -64,9 +64,13 @@ echo ''
 ## 运行方式
 
 ```sh
-wget http://blog.mpae.cc/unixbench.sh # 感谢 GayHub
-chmod +x unixbench.sh
-(sudo) ./unixbench.sh
+sh -c "$(curl -fsSL https://blog.mpae.cc/unixbench.sh)"
+```
+
+OR
+
+```sh
+sh -c "$(wget https://blog.mpae.cc/unixbench.sh -O -)"
 ```
 
 ## Result
