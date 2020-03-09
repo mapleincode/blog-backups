@@ -1,3 +1,9 @@
+###
+ # @Author: maple
+ # @Date: 2019-04-29 18:05:34
+ # @LastEditors: maple
+ # @LastEditTime: 2020-03-09 10:57:31
+ ###
 #! /bin/bash
 #==============================================================#
 #   Description:  Unixbench script                             #
@@ -30,7 +36,7 @@ if [ -s UnixBench5.1.3.tgz ]; then
     echo "UnixBench5.1.3.tgz [found]"
 else
     echo "UnixBench5.1.3.tgz not found!!!download now..."
-    if ! wget -c http://lamp.teddysun.com/files/UnixBench5.1.3.tgz; then
+    if ! wget -c https://blog.mpae.cc/UnixBench5.1.3.tgz; then
         echo "Failed to download UnixBench5.1.3.tgz, please download it to ${cur_dir} directory manually and try again."
         exit 1
     fi

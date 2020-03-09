@@ -1,14 +1,10 @@
-<!--
- * @Author: maple
- * @Date: 2020-01-18 01:47:22
- * @LastEditors: maple
- * @LastEditTime: 2020-02-15 17:27:39
- -->
 ---
 date: 2020-01-18 01:48:00
 title: nameserver 127.0.0.53
 tags: Ubuntu
 ---
+
+
 
 Ubuntu 升级到 16.04 还是 18.04 的时候，默认会启动 NetWorkManage 的一个功能，即把 `/etc/resolv.conf` 的 dns 地址配置成
 

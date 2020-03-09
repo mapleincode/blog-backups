@@ -39,7 +39,7 @@ if [ -s UnixBench5.1.3.tgz ]; then
     echo "UnixBench5.1.3.tgz [found]"
 else
     echo "UnixBench5.1.3.tgz not found!!!download now..."
-    if ! wget -c http://lamp.teddysun.com/files/UnixBench5.1.3.tgz; then
+    if ! wget -c https://blog.mpae.cc/UnixBench5.1.3.tgz; then
         echo "Failed to download UnixBench5.1.3.tgz, please download it to ${cur_dir} directory manually and try again."
         exit 1
     fi
@@ -59,12 +59,12 @@ echo ''
 
 ```
 
-官网提供的实际上一个包，需要编译安装，偷懒直接拿了一个脚本，省的下次再去找官网下载。
+找到一位大佬写的脚本。包括下载安装包，依赖并测试。
 
 ## 运行方式
 
 ```sh
-wget http://blog.mapleincode.com/unixbench.sh # 感谢 GayHub
+wget http://blog.mpae.cc/unixbench.sh # 感谢 GayHub
 chmod +x unixbench.sh
 (sudo) ./unixbench.sh
 ```
