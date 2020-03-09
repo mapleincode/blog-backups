@@ -1,9 +1,3 @@
-###
- # @Author: maple
- # @Date: 2019-04-29 18:05:34
- # @LastEditors: maple
- # @LastEditTime: 2020-03-09 10:57:31
- ###
 #! /bin/bash
 #==============================================================#
 #   Description:  Unixbench script                             #
