@@ -64,13 +64,13 @@ echo ''
 ## 运行方式
 
 ```sh
-sh -c "$(curl -fsSL https://blog.mpae.cc/unixbench.sh)"
+sudo bash -c "$(curl -fsSL https://blog.mpae.cc/unixbench.sh)"
 ```
 
 OR
 
 ```sh
-sh -c "$(wget https://blog.mpae.cc/unixbench.sh -O -)"
+sudo bash -c "$(wget https://blog.mpae.cc/unixbench.sh -O -)"
 ```
 
 ## Result
