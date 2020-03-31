@@ -416,3 +416,4 @@ patch(root, patches)
 ## 6 References
 
 <https://github.com/Matt-Esch/virtual-dom/blob/master/vtree/diff.js>
+
