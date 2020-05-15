@@ -24,16 +24,65 @@ tags: [黑群晖]
 
 [<https://pan.baidu.com/s/1BVbFroBwtCCdNm2xCuaCHg#list/path=%2F>](https://pan.baidu.com/s/1BVbFroBwtCCdNm2xCuaCHg#list/path=%2F)
 
+> 已失效
+
 ## 安装群晖系统
 
-1. 首先获取 nas 的 mac 并记录。获取办法建议通过路由器。
-2. 获取 U 盘的 vid 和 cid 。通过 ChipEasy 获取。linux 上可以通过 `lsusb` 指令获取。
-3. 用 Win32DiskImager 写入 img 启动镜像到 U 盘。
-4. 打开 DiskGenius 找到 U盘目录下 `/grup/grup.cfg` (大致目录记不清了)。右键复制到桌面
-5. 用文本编辑软件打开，修改 vid 、cid 、mac 地址。(搜索下 mac 就能定位地址)。
-6. 将 cfg 文件覆盖回 U 盘。
-7. 在 nas 上用 u 盘启动。
-8. 然后按照下一步下载 & 安装系统即可。
+### 1. 首先获取 nas 设备的 mac。
+
+mac 地址相当于是网卡的唯一编号。最简单的办法就是看下路由器。
+
+### 2. 获取启动 U 盘的 vid 和 cid 。
+
+windows 环境通过 `ChipEasy` 获取。
+
+linux 上可以通过 `lsusb` 指令获取。
+
+> 前同事之前买了一个号称无比便宜的 U 盘。结果发现里面没有 `vid` 和 `cid`。
+>
+> 因为启动 U 盘需要作为引导，需要一直插在 nas 上。
+>
+> 推荐购买闪迪的酷豆，价格也便宜，最主要小巧。
+>
+> ![O1CN01qdRZDD1IOud3Pl6Jp_!!2616970884](https://raw.githubusercontent.com/mapleincode/images/master/img/20200516063418.jpg)
+>
+> 而容量只要有 100MB 就绰绰有余了。
+
+### 3. 写入启动文件
+
+用 Win32DiskImager 把 syno 启动镜像 img 文件写入到 U 盘。
+
+这个步骤太简单了，选取 bin 文件。然后选取有盘盘符，然后写入。
+
+
+
+### 4. 修改 grup.cfg
+
+打开 DiskGenius ，找到 U盘目录下 `ESP[0]/grup/grup.cfg` 。
+
+注意一点是，文件是不会出现在左边的文件框中，而是在右边。
+
+![image-20200516063738659](/Users/maple/Library/Application Support/typora-user-images/image-20200516063738659.png)
+
+右键复制到桌面。
+
+![image-20200516063751842](/Users/maple/Library/Application Support/typora-user-images/image-20200516063751842.png)
+
+然后用文本编辑软件打开，修改 vid 、cid 、mac 地址。(搜索下 mac 就能定位地址)。
+
+![image-20200516062928427](https://raw.githubusercontent.com/mapleincode/images/master/img/20200516062928.png)
+
+最后把将 cfg 文件覆盖回 U 盘。
+
+### 5. 安装系统
+
+u 盘插入 nas ，就会进入到愉快的安装界面。
+
+这里有一点需要注意，nas 的启动盘因为是破解的，所以无法按照启动盘之后的文件。
+
+
+
+例如我一个启动盘支持的是 6.2 23824。那我系统也只能安装 23824 并且要对应启动盘的设备版本。
 
 ##  PhotoStation 支持视频缩略图
 
