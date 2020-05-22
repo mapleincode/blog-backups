@@ -2,7 +2,7 @@
  * @Author: maple
  * @Date: 2020-05-22 17:47:08
  * @LastEditors: maple
- * @LastEditTime: 2020-05-22 19:07:52
+ * @LastEditTime: 2020-05-22 22:15:07
 -->
 <footer class="footer footer-unloaded">
     <!-- social  -->
@@ -22,8 +22,8 @@
     <div class="busuanzi-container">
         <% var sloganPieces = theme.busuanzi_slug.split('${count}') %>
         <% if(theme.busuanzi_pv_or_uv === 'pv') { %>
-        <span id="busuanzi_container_site_pv"><%- sloganPieces[0] %><span
-                id="busuanzi_value_site_pv"></span><%- sloganPieces[1] %></span>
+        <span id="busuanzi_container_site_pv"  style="color: #939393;"><%- sloganPieces[0] %><span id="busuanzi_value_site_pv"
+                style="color: #939393;"></span><%- sloganPieces[1] %></span>
         <% } else if (theme.busuanzi_pv_or_uv === 'uv') { %>
         <span id="busuanzi_container_site_uv"><%- sloganPieces[0] %><span
                 id="busuanzi_value_site_uv"></span><%- sloganPieces[1] %></span>
@@ -31,9 +31,15 @@
         <% } %>
     </div>
 
-    <div  class="busuanzi-container">
-        <span id="busuanzi_container_site_uv">
-            备案号: 浙ICP20017606号-1
-        </span>
+    <div class="busuanzi-container">
+        <div id="busuanzi_container_site_pv" style="width:300px;margin:0 auto; padding:20px 0;">
+            <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33011002014704"
+                style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                <img src="/assets/beian.png" style="float:left;" />
+                <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">浙公网安备
+                    33011002014704号</p>
+            </a>
+        </div>
+
     </div>
 </footer>
