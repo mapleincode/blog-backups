@@ -1,3 +1,9 @@
+/**
+ * @Author: maple
+ * @Date: 2020-05-22 17:47:08
+ * @LastEditors: maple
+ * @LastEditTime: 2020-05-22 18:35:52
+ */
 const gulp = require('gulp'),
   webpack = require('webpack'),
   sass = require('gulp-sass'),
@@ -65,6 +71,4 @@ gulp.task('webpack-prod', function (cb) {
   })
 })
 
-gulp.task('build', ['sass', 'webpack-prod'], function () {
-  console.log(process.argv)
-})
+gulp.task('build', ['sass', 'webpack-prod'], function() {});

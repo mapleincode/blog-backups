@@ -41,17 +41,18 @@ about:
 # title of the site (good for SEO)
 SEO_title: Maple's Blog
 # keywords for site (good for SEO)
-# SEO_keywords:
-#   - hexo
-#   - blog
+SEO_keywords:
+  - hexo
+  - blog
+  - 'hexo-blog'
 # main title shown in header image
 main_title: Maple's Blog.
 # subtitle
 subtitle: keep coding and having fun
 # site haeder image
-site_header_image: '/assets/11.jpg'
+site_header_image: 'https://raw.githubusercontent.com/mapleincode/images/master/img/20200522183020.jpg'
 # post haeder image
-post_header_image: '/assets/11.jpg'
+post_header_image: 'https://raw.githubusercontent.com/mapleincode/images/master/img/20200522181805.png'
 # 404 image
 _404_image: '/intro/404-bg.jpg'
 
@@ -83,7 +84,18 @@ comment:
   # Valine  site: https://valine.js.org/
   valine_appId: 
   valine_appKey: 
-  valine_placeHolder: 
+  valine_placeHolder:
+  # gitalk site: https://github.com/gitalk/gitalk#options  
+  gitalk_client_id: 
+  gitalk_client_secret: 
+  gitalk_admin: 
+  gitalk_owner: 
+  gitalk_repo: 
+  # utteranc site: https://utteranc.es/
+  utteranc_repo:  
+  utteranc_label: 
+  utteranc_theme: 
+  utteranc_issue_term: 
 
 # ========== Analytics ========== #
 # enable Busuanzi analytics
@@ -91,7 +103,7 @@ busuanzi: true
 # fill in pv or uv
 busuanzi_pv_or_uv: 'pv'
 # custom analytic slogan, '${count}' is the analytic number, DO NOT modify it.
-busuanzi_slug: '访问人数: ${count} '
+busuanzi_slug: 'PV: ${count} '
 # Baidu analytics
 baidu_analytics: 
 # Google analytics
@@ -101,7 +113,7 @@ CNZZ_analytics:
 
 # ========== Others ========== #
 # favicon
-favicon: '/assets/favicon.ico'
+favicon: '/assets/favicon.png'
 # truncate length of abstracts in index page (the default is 300, there will be no abstruct if you input 0)
 truncate_length: 
 # enable toc

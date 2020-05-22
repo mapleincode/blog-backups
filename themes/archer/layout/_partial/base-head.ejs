@@ -1,3 +1,9 @@
+<!--
+ * @Author: maple
+ * @Date: 2020-05-22 17:47:08
+ * @LastEditors: maple
+ * @LastEditTime: 2020-05-22 18:36:09
+--> 
 <!-- title -->
 <% var title = "" %>
 <% if (page.title) { %>
@@ -9,7 +15,6 @@
 <% var keywords = "" %>
 <% var keywordsArr = [page.keywords, theme.SEO_keywords] %>
 <% var keywords = keywordsArr.filter(function(item){ return item }).join(',') %>
-<% console.log(keywords) %>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >

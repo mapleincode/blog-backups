@@ -59,7 +59,7 @@ class MetaInfo {
   }
 
   _createPostsDom(corrArr) {
-    console.log(corrArr)
+    // console.log(corrArr)
     let frag = document.createDocumentFragment()
     this.postContainer.innerHTML = ''
     for (let i = 0; i < corrArr.length; i++) {

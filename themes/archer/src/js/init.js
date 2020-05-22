@@ -1,3 +1,9 @@
+/**
+ * @Author: maple
+ * @Date: 2020-05-22 17:47:08
+ * @LastEditors: maple
+ * @LastEditTime: 2020-05-22 18:35:12
+ */
 import AnchorJS from 'anchor-js'
 
 let init = function() {
@@ -8,7 +14,7 @@ let init = function() {
 
   if (bgRegResult.length < 2) {
     console.log('...')
-    console.log(bgRegResult)
+    // console.log(bgRegResult)
     return
   }
 
