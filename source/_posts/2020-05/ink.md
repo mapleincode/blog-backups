@@ -65,26 +65,17 @@ Safari 写了四五个月没洗笔，状况都很良好
 
 阳离子染料 (参考第一化工网站上试药级有的药品)
 
-- Victoria Blue B
+- Victoria Blue B (维多利亚蓝 B)
 
-- Toluidine Blue
-
+- Toluidine Blue (甲苯胺蓝)
 - Rhodamine B(粉紫红色超美，关灯照紫外光还会有橘黄色萤光)
-
-- Safranine
-
-- Neutral Red
-
+- Safranine (臧红)
+- Neutral Red 中性红 
 - Malachite Green(孔雀石绿，蓝蓝绿绿的)
-
 - Fuchsin Crystal Violate(紫药水差不多就这玩意)
-
-- Chrysoidine G
-
-- Brilliant Green
-
+- Chrysoidine G (碱性橙色，淘宝搜 532-82-1)
+- Brilliant Green (亮绿  633-03-4）
 - Azure II
-
 - Methylene Blue(国高中生物实验常用的亚甲蓝)
 
 我做过可以的就crystal violate, rhodamine B, malachite green
