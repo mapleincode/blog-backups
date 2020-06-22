@@ -8,9 +8,19 @@ tags: [ VMware, ESXi ]
 
 目前的做法是，在搭建 Ubuntu 的宿主机安装 VMware Station ，然后利用其 VMware Server ，通过客户端连接。
 
-被一个朋友吐槽为什么不用 ESXi。
 
-早期的想法是能用就行，加上对虚拟机的功能也不是很了解。但是慢慢的，简单化的 VMware Server 不能满足我的需求。与 ESXi 不同，VMware Server 底层还是 Ubuntu 服务，相当于  ESXi 的硬件虚拟，Server 采用软件虚拟。性能较差，而且在我目前的需求：使用 Windows 安装聊天软件使用等情况下，发现 Server 稳定性极差，稍微不慎就会崩溃死机。
+
+结果被一个朋友吐槽为什么不用 ESXi。
+
+
+
+早期的想法是能用就行，加上对虚拟机的功能也不是很了解。
+
+ESXi 直接是作为一个虚拟化管理的一个系统，本身并不依赖其他的系统。
+
+与 ESXi 不同，VMware Server 底层还是 Linux，相当于  ESXi 直接与硬件交互，而 VMware Server 则与 Linux 交互。
+
+其实性能上也没有感受到很大的差距，但是 VMware Server 的虚拟机，因为功能有限，很多情况并不能得到有效的解决，而 esxi 本身就是为了虚拟机化服务而存在。无论是功能性还是稳定性，逗比 VMware Station 要好的多。
 
 于是打算花若干时间来安装使用 ESXi 代替 Server。
 
@@ -18,9 +28,14 @@ tags: [ VMware, ESXi ]
 
 ## 配置
 
-- 华南 x79
+- 华南 x79 主板
+
+  > 其实很不推荐用华南主板来当 esxi ，不仅本身硬件稳定性不准确（毕竟华南主板是为了普通用户设计）。网卡也不被 esxi 支持。而且其他服务器主板所需要的功能都比较欠缺。
+
 - 8GB ecc-reg 内存 x 4 = 32G
+
 - E5 2660 v2 (10C20T )
+
 - 存储盘若干
 
 
