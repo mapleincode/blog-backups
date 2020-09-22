@@ -16,16 +16,16 @@ Buffer的API非常多，本文仅挑选 比较常用/容易理解 的API进行�
 
 ## 创建
 
-- new Buffer(array)
+- Buffer.from(array)
 - Buffer.alloc(length)
 - Buffer.allocUnsafe(length)
 - Buffer.from(array)
 
-### 通过 new Buffer(array)
+### 通过 Buffer.from(array)
 
 ```
-// Creates a new Buffer containing the ASCII bytes of the string 'buffer'
-const buf = new Buffer([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
+// Creates a Buffer.from containing the ASCII bytes of the string 'buffer'
+const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
 ```
 
 验证下：
@@ -196,7 +196,7 @@ console.log(arr.sort(Buffer.compare));
 
 这里稍微研究下Buffer.from(array)。下面是官方文档对API的说明，也就是说，每个array的元素对应1个字节（8位），取值从0到255。
 
-> Allocates a new Buffer using an array of octets.
+> Allocates a Buffer.from using an array of octets.
 
 ### 数组元素为数字
 
