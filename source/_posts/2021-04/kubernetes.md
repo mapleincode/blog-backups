@@ -1,6 +1,6 @@
 ---
-title: kebuernetes学习
-tags: ["kebuernets", "docker"]
+title: "kubernetes 学习"
+tags: [ kubernetes, docker ]
 date: 2021-04-12 16:12:11
 ---
 

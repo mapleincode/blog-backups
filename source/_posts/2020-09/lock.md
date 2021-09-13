@@ -1,6 +1,6 @@
 ---
 title: 悲观锁 & 乐观锁
-tags: SQL
+tags: [ sql ]
 date: 2020-09-09 13:48:34
 ---
 

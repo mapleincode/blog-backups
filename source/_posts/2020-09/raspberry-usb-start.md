@@ -1,7 +1,7 @@
 ---
 title: raspberry 4B Ubuntu 系统 USB 启动
 date: 2020-09-22 13:57:33
-tags: 'raspberry'
+tags: [ raspberry ]
 ---
 
 

@@ -1,7 +1,7 @@
 ---
 title: 常用数据库(缓存)的简单安装配置
 date: 2017-11-21 17:35:52
-tags: [ mysql, mongodb, redis, memcache]
+tags: [ mysql, mongodb, redis, memcache ]
 ---
 
 用于日常代码调试测试开发。

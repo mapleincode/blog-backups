@@ -1,7 +1,7 @@
 ---
 title: GraphQL
 date: 2021-04-23 11:22:19
-tags: [ GraphQL ]
+tags: [ graphql ]
 ---
 
 

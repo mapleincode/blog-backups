@@ -1,7 +1,7 @@
 ---
 title: Node.js 安装依赖编译 C++ node-gyp 报错 unknown type name 
 date: 2018-06-01 11:32:46
-tags: [ 'C++', 'Node.js' ]
+tags: [ c++, nodejs ]
 ---
 
 前段时间更新 Mac OS 的系统，也同样更新了 Xcode。在公司的项目中，用了死月大佬封装 C++ ons 版本得到的 [Aliyun ons](https://github.com/XadillaX/aliyun-ons)。在重新安装依赖时，发现在编译 ons 的时候不停爆出`unknown type name 'uint32_t'`这样的错误。

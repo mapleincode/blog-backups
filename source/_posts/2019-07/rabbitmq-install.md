@@ -1,7 +1,7 @@
 ---
 title: RabbitMQ 安装 & 添加登录用户[转载]
 date: 2019-01-11 00:00:46
-tags: [ RabbitMQ ]
+tags: [ rabbitmq ]
 ---
 
 > 本文转载自 [https://www.dev-heaven.com/posts/1914.html]()

@@ -1,7 +1,7 @@
 ---
 date: 2020-8-13 15:07:55
 title: Python & Ubuntu
-tags: [ Python, Ubuntu ]
+tags: [ python, ubuntu ]
 ---
 
 ## 关于 Python3 和 Python2

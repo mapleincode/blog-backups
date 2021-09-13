@@ -1,7 +1,7 @@
 ---
 title: 树莓派安装 PIVPN
 date: 2020-01-18 02:06:34
-tags: OpenVPN, Raspberry
+tags: [ openvpn, raspberry ]
 ---
 
 

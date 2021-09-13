@@ -1,7 +1,7 @@
 ---
 title: 命令执行控制 && 与 ||(转)
 date: 2017-11-24 15:24:09
-tags: [linux, shell]
+tags: [ linux, shell ]
 ---
 ## &&
 

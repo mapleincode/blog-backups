@@ -1,6 +1,6 @@
 ---
 title: 解决 Chrome 无法自动填充账号密码的问题
-tags: Chrome
+tags: [ chrome ]
 date: 2020-05-18 09:46:08
 ---
 

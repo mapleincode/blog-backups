@@ -1,7 +1,7 @@
 ---
 date: 2020-05-02 00:41:01
 title: 群晖 Drive 反复同步问题
-tags: [ Synology ]
+tags: [ synology ]
 ---
 
 2020-05-25： 

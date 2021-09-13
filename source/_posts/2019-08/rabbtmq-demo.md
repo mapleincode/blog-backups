@@ -1,7 +1,7 @@
 ---
 title: RabbitMQ Node demo
 date: 2019-09-05 15:19:00
-tags: [RabbitMQ]
+tags: [ rabbitmq ]
 ---
 
 

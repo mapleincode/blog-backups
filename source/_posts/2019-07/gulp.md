@@ -1,7 +1,7 @@
 ---
 title: Gulp 常用插件(转)
 date: 2017-12-21 16:53:22
-tags: gulp
+tags: [ gulp ]
 ---
 
 

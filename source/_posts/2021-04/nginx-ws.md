@@ -1,6 +1,6 @@
 ---
 date: 2021-04-08 18:38:24
-tags: nginx
+tags: [ nginx ]
 title: Nginx 支持 WebSocket
 ---
 

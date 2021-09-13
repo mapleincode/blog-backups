@@ -1,7 +1,7 @@
 ---
 title: 五种开源协议(GPL,LGPL,BSD,MIT,Apache)(转载)
 date: 2018-03-05 21:24:02
-tags: license
+tags: [ license ]
 ---
 
 ### 什么是许可协议？

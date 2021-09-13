@@ -1,7 +1,7 @@
 ---
 title: 唯一 ID 生成
 date: 2019-07-05 15:47:37
-tags: [ mysql]
+tags: [ mysql ]
 ---
 
 ## MySQL 自增 ID

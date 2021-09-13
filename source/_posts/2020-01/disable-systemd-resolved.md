@@ -1,7 +1,7 @@
 ---
 date: 2020-01-18 01:48:00
 title: nameserver 127.0.0.53
-tags: Ubuntu
+tags: [ ubuntu ]
 ---
 
 

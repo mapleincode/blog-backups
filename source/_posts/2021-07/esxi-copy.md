@@ -1,6 +1,6 @@
 ---
 date: 2021-07-21 11:45:34
-tags: ESXi
+tags: [ esxi ]
 title: ESXi 支持复制粘贴
 ---
 

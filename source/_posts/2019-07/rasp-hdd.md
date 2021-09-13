@@ -1,7 +1,7 @@
 ---
 title: 树莓派用机械硬盘当系统盘
 date: 2018-01-22 13:52:28
-tags: [raspberry]
+tags: [ raspberry ]
 ---
 >   全程参考一个大佬的文章 [https://mynook.info/blog/post/boot-raspberrypi-from-external-hdd]()
 

@@ -1,7 +1,7 @@
 ---
 title: esxi 下 DSM 创建 ddsm IP 显示 169.254.x.x 问题解决
 date: 2020-06-17 21:39:47
-tags: [ esxi,Synology, Docker ]
+tags: [ esxi, synology, docker ]
 ---
 
 群晖在  6.2.x 版本退出了 DDSM，即通过容器 docker 技术虚拟出一个 DSM 来以供特殊需求。

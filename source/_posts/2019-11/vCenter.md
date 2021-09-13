@@ -1,7 +1,7 @@
 ---
 date: 2019-11-11 02:31:16
 title: vCenter 和 vCSA 对比
-tags: VMware
+tags: [ vmware ]
 ---
 
 vCenter Server与vCenter Server Virtual Appliance（vCSA）都提供对企业中[VMware vSphere](https://baike.baidu.com/item/VMware vSphere)部署的集中管理。虽然拥有相同的功能，两者安装却不同，所支持的功能也不同。

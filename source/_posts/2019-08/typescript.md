@@ -1,7 +1,7 @@
 ---
 title: TypeScript 学习笔记
 date: 2018-07-03 18:01:01
-tags: [ TypeScript ]
+tags: [ typescript ]
 ---
 
 > 首先要弄清楚 TypeScript 可以做什么。

@@ -1,7 +1,7 @@
 ---
 title: React.js 小书 - 第三阶段 - 学习笔记
 date: 2018-05-08 17:38:23
-tags: [ React.js, Redux ]
+tags: [ reactjs, redux ]
 ---
 
 > [React.js 小书](http://huziketang.mangojuice.top/books/react/)

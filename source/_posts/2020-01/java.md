@@ -1,7 +1,7 @@
 ---
 title: Java 学习路线
 date: 2020-01-18 02:43:45
-tags: Java
+tags: [ java ]
 ---
 
 基友推荐的 Java 教程，源地址:

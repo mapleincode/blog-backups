@@ -1,7 +1,7 @@
 ---
 title: Vue.js 数据绑定原理
 date: 2018-04-12 17:17:03
-tags: [ javascirpt, vue ]
+tags: [ javascript, vue ]
 ---
 
 作为一个后端开发，对于`set` 和`get`一般都不会陌生。在面向对象开发中，一个对象一般都有 get 和 set 的属性，赋值既是`set`，得值就是`get`。刚接触 JavaScript 的时候，似乎还没有这个特性（也可能自己太菜），随着 Vue.js 的流行慢慢火热起来。其实原理很简单，就是看怎么搞。

@@ -1,7 +1,7 @@
 ---
 title: mac os codesign
 date: 2019-06-17 14:12:50
-tags: ["mac os"]
+tags: [ "mac os" ]
 ---
 
 

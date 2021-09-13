@@ -1,7 +1,7 @@
 ---
 title: Linux 静态 IP 设置
 date: 2018-03-28 18:00:35
-tags: [ Linux, Ubuntu ]
+tags: [ linux, ubuntu ]
 ---
 整理虚拟机的 IP。
 

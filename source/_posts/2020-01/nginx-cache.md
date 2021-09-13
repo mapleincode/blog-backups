@@ -1,7 +1,7 @@
 ---
 title: Nginx 降低 IO 负荷
 date: 2020-03-10 13:19:25
-tags: Nginx 
+tags: [ nginx ]
 ---
 
 V 站上一个帖子提问：

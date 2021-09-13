@@ -1,7 +1,7 @@
 ---
 title: systemctl 命令(转)
 date: 2018-04-23 15:33:58
-tags: [ Linux ]
+tags: [ linux ]
 ---
 
 **systemctl命令**是系统服务管理器指令，它实际上将 [service](http://man.linuxde.net/service) 和 [chkconfig](http://man.linuxde.net/chkconfig) 这两个命令组合到一起。

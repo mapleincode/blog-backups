@@ -1,6 +1,6 @@
 ---
 date: 2020-05-08 11:03:09
-tags: zfs
+tags: [ zfs ]
 title: 初学者指南：ZFS 是什么，为什么要使用 ZFS？(转载)
 ---
 

@@ -1,6 +1,6 @@
 ---
 date: 2019-11-11 10:09:46
-tags: [Shell]
+tags: [ shell ]
 title: Shell 自动输入 sudo 密码
 ---
 

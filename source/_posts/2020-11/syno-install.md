@@ -1,7 +1,7 @@
 ---
 title: 黑群晖 6.2.3 安装指南
 date: 2020-11-13 16:48:42
-tags: Synology
+tags: [ synology ]
 ---
 
 ## 1. 准备设备

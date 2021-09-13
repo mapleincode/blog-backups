@@ -1,7 +1,7 @@
 ---
 title: HashMap和HashTable的区别
 date: 2020-07-06 16:52:05
-tags: Java
+tags: [ java ]
 ---
 
 

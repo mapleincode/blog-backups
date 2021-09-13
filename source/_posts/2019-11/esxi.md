@@ -1,7 +1,7 @@
 ---
 title: ESXi 使用笔记
 date: 2019-11-08 10:27:05
-tags: [ VMware, ESXi ]
+tags: [ vmware, esxi ]
 ---
 
 作为不想折腾开发环境的懒人，长期部署若干个服务器用于自己开发学习。

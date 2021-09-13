@@ -1,7 +1,7 @@
 ---
 title: k8s mysql demo
 date: 2021-05-25 14:59:08
-tags: kubernetes
+tags: [ kubernetes ]
 ---
 
 

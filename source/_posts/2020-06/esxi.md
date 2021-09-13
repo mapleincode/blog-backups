@@ -1,6 +1,6 @@
 ---
 title: esxi 安装
-tags: ESXi
+tags: [ esxi ]
 date: 2020-06-17 02:23:41
 ---
 

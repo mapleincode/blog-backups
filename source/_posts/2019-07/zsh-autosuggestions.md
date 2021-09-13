@@ -1,7 +1,7 @@
 ---
 title: oh-my-zsh 安装 zsh-autosuggestions 插件
 date: 2018-03-18 03:29:13
-tags: oh-my-zsh
+tags: [ oh-my-zsh ]
 ---
 
 zsh-autosuggestions 是 oh-my-zsh 的一个试用插件，可以实现动态显示历史输入记录的效果。

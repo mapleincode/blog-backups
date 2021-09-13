@@ -1,7 +1,7 @@
 ---
 title: Kafka-node 的使用 Demo
 date: 2019-01-07 03:20:39
-tags: ['kafka', 'nodejs']
+tags: [ kafka, nodejs ]
 ---
 
 

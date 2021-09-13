@@ -1,7 +1,7 @@
 ---
 title: Nodejs memcached 包的基本用法 
 date: 2018-07-05 18:38:41
-tags: [ nodejs, memcached]
+tags: [ nodejs, memcached ]
 ---
 
 ```javascript

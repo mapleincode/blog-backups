@@ -1,7 +1,7 @@
 ---
 title: Xms Xmx PermSize MaxPermSize 的含义
 date: 2018-04-13 13:58:01
-tags: [ Java ]
+tags: [ java ]
 ---
 
 [转载](https://blog.csdn.net/qq_27258799/article/details/51599093)

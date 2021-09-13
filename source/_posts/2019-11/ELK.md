@@ -1,7 +1,7 @@
 ---
 date: 2019-11-12 10:56:21
 title: ELK 搭建
-tags: ELK
+tags: [ elk ]
 ---
 
 

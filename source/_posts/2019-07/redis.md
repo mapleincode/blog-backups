@@ -1,7 +1,7 @@
 ---
 title: redis 学习笔记
 date: 2019-05-23 15:48:09
-tags: [ Redis ]
+tags: [ redis ]
 ---
 ## Redis 数据类型
 

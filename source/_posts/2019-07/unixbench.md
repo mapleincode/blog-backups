@@ -1,7 +1,7 @@
 ---
 title: 使用 Unixbench 测试 CPU 性能
 date: 2018-03-18 03:36:52
-tags: [ CPU, Linux ]
+tags: [ cpu, linux ]
 ---
 
 Unixbench 是 Linux 用来测试 CPU 综合性能的工具。

@@ -1,6 +1,6 @@
 ---
 title: Let's encrypt 证书申请
-tag: OpenSSL
+tags: [ openssl ]
 date: 2019-07-21 03:17:32
 ---
 

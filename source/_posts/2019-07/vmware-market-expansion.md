@@ -1,7 +1,7 @@
 ---
 title: VMware 虚拟机硬盘文件扩容
 date: 2018-11-01 11:25:38
-tags: [ VMware ]
+tags: [ vmware ]
 ---
 
 因为开发和测试需要，在家里常年跑了 vmware 虚拟机。然后通过 MAC 端的 VMware Fusion 对其进行连接。在上面操作。

@@ -1,7 +1,7 @@
 ---
 title: Nginx 部署 react 项目返回 404
 date: 2018-05-16 00:36:30
-tags: [ Nginx, React.js ]
+tags: [ nginx, reactjs ]
 ---
 
 前端时间苦学 React.js，作为愚蠢的后端开发，在面对如此复杂的前端框架，真的是...

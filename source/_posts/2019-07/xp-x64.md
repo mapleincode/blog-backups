@@ -1,7 +1,7 @@
 ---
 title: MSDN Windows XP Professional x64 Edition with SP2 +VL简体中文语言包+序列号
 date: 2018-05-28 15:07:37
-tags: [ XP ]
+tags: [ xp ]
 ---
 
 ## 简介

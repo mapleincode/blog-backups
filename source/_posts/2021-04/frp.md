@@ -1,7 +1,7 @@
 ---
 title: frp 的使用
 date: 2021-05-24 13:46:33
-tags: frp
+tags: [ frp ]
 ---
 
 [TOC]

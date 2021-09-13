@@ -1,7 +1,7 @@
 ---
 title: WordPress 绑定多域名
 date: 2020-04-01 00:37:26
-tags: PHP
+tags: [ php ]
 ---
 
 WordPress 是基于 PHP 的博客服务。大量配置都是基于 MySQL 进行配置。

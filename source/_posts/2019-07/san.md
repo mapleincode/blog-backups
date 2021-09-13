@@ -1,7 +1,7 @@
 ---
 title: 生成 SAN 证书并自签
 date: 2018-02-26 14:16:30
-tags: [ SAN, OpenSSL]
+tags: [ san, openssl ]
 ---
 
 生成 SAN 证书。因为群晖的证书生成有个 BUG， 创造多域名证书居然不能输入`*`。只好网上找资料手动创建多域名证书 SAN certificater(SubjectAltName Certificater)。
