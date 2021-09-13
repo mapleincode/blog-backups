@@ -1,6 +1,6 @@
 ---
-title: CentOS 5.x 版本 repo 地址
-date: 2019-11-13 16:32:214
+title: "CentOS 5.x 版本 repo 地址"
+date: "2019-11-13 16:32:21"
 tags: [ centos ]
 ---
 
