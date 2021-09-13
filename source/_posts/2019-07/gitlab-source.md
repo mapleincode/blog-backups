@@ -2,7 +2,7 @@
 
 title: GitLab Ubuntu 使用清华镜像站
 date: 2019-04-16 15:39:20
-tag: GitLab
+tags: [ gitlab ]
 ---
 
 

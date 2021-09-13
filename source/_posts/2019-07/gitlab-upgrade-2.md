@@ -1,7 +1,7 @@
 ---
 title: GitLab 推送了更新(二) - 安装 docker GitLab
 date: 2017-10-27 16:40:53
-tags: [ Docker, GitLab ]
+tags: [ docker, gitlab ]
 ---
 
 >之前在树莓派安装 GitLab 因为配置过低的原因，导致 GitLab 一直无法正常使用。
