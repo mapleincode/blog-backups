@@ -1,7 +1,7 @@
 ---
 title: 常用数据库(缓存)的简单安装配置
 date: 2017-11-21 17:35:52
-tags: [ MySQL, MongoDB, Redis, Memcache ]
+tags: [ mysql, mongodb, redis, memcache]
 ---
 
 用于日常代码调试测试开发。
@@ -37,6 +37,16 @@ CREATE USER "hello"@"%" IDENTIFIED BY "password";
 * `hello`: 用户名
 * `%`: 访问的 IP 或者 IP 段。`%`表示不限制。
 * `password`: 登录密码。 
+
+> 新版本 mysql 创建用户之后，用 GUI 登录会返回密码错误。
+>
+> 需要创建时加入 `WITH mysql_native_password` 参数
+>
+> ```
+> CREATE USER "hello"@"%" IDENTIFIED WITH mysql_native_password BY 'yourpassword';
+> ```
+>
+> 
 
 #### 授权用户
 

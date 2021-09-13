@@ -1,14 +1,11 @@
 ---
 title: Nodejs memcached 包的基本用法 
 date: 2018-07-05 18:38:41
-tags: [ Node.js, Memcached ]
+tags: [ nodejs, memcached]
 ---
 
 ```javascript
-'use strict';
-
 const Memcached = require('memcached');
-
 const memcached = new Memcached('127.0.0.1:11211');
 
 /**

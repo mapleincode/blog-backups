@@ -1,7 +1,7 @@
 ---
-title: git 拉取所有远程分支
+title: "git 拉取所有远程分支"
 date: 2018-07-09 01:22:30
-tags: Git
+tags: git
 ---
 ```
 git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done

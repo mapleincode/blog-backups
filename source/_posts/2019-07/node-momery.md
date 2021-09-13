@@ -1,7 +1,7 @@
 ---
 title: 取消 Node 对内存上限的限制条件
 date: 2018-06-06 16:36:15
-tags: [ Node.js ]
+tags: [ nodejs ]
 ---
 
 ```shell

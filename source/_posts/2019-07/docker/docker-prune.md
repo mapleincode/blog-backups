@@ -1,7 +1,7 @@
 ---
 title: Docker 运行文件清理工具 prune
 date: 2018-05-22 14:19:02
-tags: [ Docker ]
+tags: [ docker]
 ---
 
 [原文地址](https://docs.docker.com/config/pruning/)

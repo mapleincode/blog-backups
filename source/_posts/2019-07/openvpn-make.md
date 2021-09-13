@@ -1,7 +1,7 @@
 ---
 title: 编译 OpenVPN 及解决相关依赖问题
-date: 2018-05-17 10:31:18
-tags: [ OpenVPN ]
+date: "2018-05-17 10:31:18"
+tags: [ openvpn ]
 ---
 
 

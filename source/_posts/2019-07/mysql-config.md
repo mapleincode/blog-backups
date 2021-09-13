@@ -1,7 +1,7 @@
 ---
 title: my.cnf 参数解释 & 优化 (转载)
 date: 2017-11-03 23:00:50
-tags: MySQL
+tags: mysql
 ---
 
 `my.cnf` 参数解析

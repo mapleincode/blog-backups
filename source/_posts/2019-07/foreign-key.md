@@ -1,7 +1,7 @@
 ---
-title: MySQL 外键
+title: "MySQL 外键"
 date: 2018-11-09 02:17:48
-tags: [ MySQL ]
+tags: [ mysql]
 ---
 
 >如果公共关键字在一个关系中是主关键字，那么这个公共关键字被称为另一个关系的外键。

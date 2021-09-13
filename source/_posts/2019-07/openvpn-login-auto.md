@@ -1,7 +1,7 @@
 ---
 title: 使用 Expect 自动登录 OpenVPN
 date: 2018-02-22 17:23:19
-tags: [ Expect, Linux, OpenVPN, Shell ]
+tags: [ expect, linux, openvpn, shell]
 ---
 
 公司使用 OpenVPN 作为外网办公网络，本来只设置了用户名密码，但是为了安全，公司的网(yun)管(wei)同事升级了安全配置，添加了谷歌验证的输入需求。

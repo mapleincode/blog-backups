@@ -1,7 +1,7 @@
 ---
 title: 自动科学上网 & PAC 
 date: 2018-02-07 16:58:56
-tags: [ PAC ]
+tags: [ pac ]
 ---
 
 

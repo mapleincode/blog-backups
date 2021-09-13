@@ -1,7 +1,7 @@
 ---
 title: Nodejs进阶 - 核心模块 Buffer 常用 API 使用总结
 date: 2018-08-09 18:22:15
-tags: Node.js
+tags: nodejs
 ---
 
 转载自 [https://segmentfault.com/a/1190000009547330](https://segmentfault.com/a/1190000009547330)

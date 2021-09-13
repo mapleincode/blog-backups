@@ -1,7 +1,7 @@
 ---
 title: git merge --no-ff
 date: 2017-12-26 15:13:10
-tags: Git
+tags: git
 ---
 
 `--no-ff` 指的是强行关闭`fast-forward`方式。

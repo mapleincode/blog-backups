@@ -1,7 +1,7 @@
 ---
 title: 群晖 SFTP 连接失败
 date: 2018-04-07 23:24:52
-tags: [ 黑群辉 ]
+tags: [ synology ]
 ---
 
 群晖系统(Synology DiskStation)可以说是 NAS 系统中最完美的系统（虽然我也就用了他一个）。基本他集成了所有我们所需要的功能，而且性能强大。

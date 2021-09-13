@@ -1,7 +1,7 @@
 ---
 title: Kafka auto.offset.reset 值
 date: 2018-10-31 16:13:29
-tags: [ Kafka ]
+tags: [ kafka ]
 ---
 
 

@@ -1,7 +1,7 @@
 ---
 title: Base64 JavaScript 实现
 date: 2018-05-21 16:25:33
-tags: [ JavaScript ]
+tags: [ javascript ]
 ---
 
 基于 JavaScript 实现的 Base64 算法

@@ -1,14 +1,8 @@
 ---
 title: 唯一 ID 生成
 date: 2019-07-05 15:47:37
-tags: [ MySQL ]
+tags: [ mysql]
 ---
-
-
-
-> 参考公司内网某童鞋的文档。
-
-
 
 ## MySQL 自增 ID
 

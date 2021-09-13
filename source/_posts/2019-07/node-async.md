@@ -1,7 +1,7 @@
 ---
 title: Node 异步三种方式的对比 Demo
 date: 2018-06-06 11:37:59
-tags: Node.js
+tags: nodejs
 ---
 
 ```javascript

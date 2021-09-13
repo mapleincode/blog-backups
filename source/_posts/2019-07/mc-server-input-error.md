@@ -1,7 +1,7 @@
 ---
 title: MC 服务器启动之后无法在服务端输入指令
 date: 2019-02-25 15:21:42
-tags: [ MineCraft, Java ]
+tags: [ mc, java ]
 ---
 
 
@@ -25,38 +25,38 @@ java.io.IOException: Resource temporarily unavailable
 
 查询到问题的原因是不久前升级的 Ubuntu 内核导致，附上原文：
 
-All,
-
-This is a message to let you know that Ubuntu has recently pushed what appears to be a bad kernel update to Ubuntu 18.04 users.
-
-If you are using Ubuntu 18.04, please note that the following kernel appears to have issues handling console input: 
-
-4.15.0-44-generic #47-Ubuntu SMP Mon Jan 14 11:26:59 UTC 2019 
-
-Older (e.g.  4.15.0-43-generic #46-Ubuntu SMP Thu Dec 6 14:45:28 UTC 2018 ) kernels are not affected.
-
-If you are using this kernel and have a message along the lines of "java.io.IOException: Resource temporarily unavailable", this is the reason.
-
- We are still investigating the exact cause / reason for this.
-
-
-
-If you are affected by this issue there are a number of workarounds available (you only need to use one).
-
-1. Spigot / BungeeCord: Add -Djline.terminal=jline.UnsupportedTerminal to your Java arguments
-2. Spigot: Add --nojline to your Spigot arguments
-3. Reboot your server and select 4.15.0-43, or any other non broken Linux kernel.
-4. Install a non broken kernel: apt install linux-image-4.15.0-43-generic, remove the broken one: apt remove linux-image-4.15.0-44-generic, and reboot.
-
-Please direct any queries to the 1.13.2 discussion thread, or general forums:
-
-
-
-https://www.spigotmc.org/threads/344189/
-
-
-
-EDIT: Please see the below post for updates.
+>All,
+>
+>This is a message to let you know that Ubuntu has recently pushed what appears to be a bad kernel update to Ubuntu 18.04 users.
+>
+>If you are using Ubuntu 18.04, please note that the following kernel appears to have issues handling console input: 
+>
+>4.15.0-44-generic #47-Ubuntu SMP Mon Jan 14 11:26:59 UTC 2019 
+>
+>Older (e.g.  4.15.0-43-generic #46-Ubuntu SMP Thu Dec 6 14:45:28 UTC 2018 ) kernels are not affected.
+>
+>If you are using this kernel and have a message along the lines of "java.io.IOException: Resource temporarily unavailable", this is the reason.
+>
+> We are still investigating the exact cause / reason for this.
+>
+>
+>
+>If you are affected by this issue there are a number of workarounds available (you only need to use one).
+>
+>1. Spigot / BungeeCord: Add -Djline.terminal=jline.UnsupportedTerminal to your Java arguments
+>2. Spigot: Add --nojline to your Spigot arguments
+>3. Reboot your server and select 4.15.0-43, or any other non broken Linux kernel.
+>4. Install a non broken kernel: apt install linux-image-4.15.0-43-generic, remove the broken one: apt remove linux-image-4.15.0-44-generic, and reboot.
+>
+>Please direct any queries to the 1.13.2 discussion thread, or general forums:
+>
+>
+>
+>https://www.spigotmc.org/threads/344189/
+>
+>
+>
+>EDIT: Please see the below post for updates.
 
 
 

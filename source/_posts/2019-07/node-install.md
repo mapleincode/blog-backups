@@ -1,7 +1,7 @@
 ---
 title: Ubuntu 安装 Node.js 环境
 date: 2018-02-21 18:29:17
-tags: [ Node.js, Linux ]
+tags: [ nodejs, linux ]
 ---
 
 ## 官方编译版本安装

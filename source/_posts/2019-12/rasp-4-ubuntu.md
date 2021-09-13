@@ -1,7 +1,7 @@
 ---
 date: 2019-12-24 07:56:03
 title: Raspberry4 安装 Ubuntu
-tags: [ 树莓派, Ubuntu ]
+tags: [ raspberry, Ubuntu ]
 ---
 
 > 随着自己年纪越来越大，事情越来越多，而相对的，记忆力却越来越差。

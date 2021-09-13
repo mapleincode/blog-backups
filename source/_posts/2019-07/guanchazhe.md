@@ -1,7 +1,7 @@
 ---
 title: Node 和观察者设计模式
 date: 2018-08-27 15:39:38
-tags: [ Node.js ]
+tags: [ nodejs ]
 ---
 
 # 观察者设计模式

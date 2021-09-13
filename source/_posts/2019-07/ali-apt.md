@@ -1,7 +1,7 @@
 ---
 title: Ubuntu APT 更换阿里源
 date: 2017-12-09 21:36:34
-tags: Ubuntu
+tags: ubuntu
 ---
 备份原 APT 源
 

@@ -1,7 +1,7 @@
 ---
 title: JavaScript Proxy 对象
 date: 2018-11-01 11:22:35
-tags: [ JavaScript, Node.js ]
+tags: [ javascript, nodejs ]
 ---
 
 ## Usage

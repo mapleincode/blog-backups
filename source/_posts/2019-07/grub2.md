@@ -1,7 +1,7 @@
 ---
 title: 关于 grub2 的修复
 date: 2019-02-21 10:49:48
-tags: [ Linux ]
+tags: [ linux ]
 ---
 
 现在 Linux 的版本做的优化也是越来越到位，无论是功能，样式还是上手度都比以前好了很多。但是 Linux 的多样化造成经常一更新代码就挂掉。(表示更新 Fedora、OpenSUSE、Linux Mint 全部挂掉了)。不过因为相互兼容，所以重装也比较方便。但是以前重装 Windows 就不一样了。重装完 Windows 之后 Grub2 会被删的一干二净。
