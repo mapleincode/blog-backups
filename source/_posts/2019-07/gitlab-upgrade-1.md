@@ -1,7 +1,7 @@
 ---
 title: GitLab 推送了更新(一) - 树莓派安装GitLab
 date: 2017-10-26 11:16:52
-tags: [ 树莓派, Ubuntu, GitLab ]
+tags: [ raspberry, Ubuntu, GitLab ]
 ---
 
 >家里常年挂了一个树莓派，因为噪音小(之前主机都放在卧室)，被动散热就可以满足，因此用来挂一些简单的脚本。
