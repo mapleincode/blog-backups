@@ -1,6 +1,7 @@
 ---
+title: "set: Illegal option -o pipefail;ubuntu 执行 bash 脚本发生报错"
 date: 2020-10-14 14:43:48
-title: set: Illegal option -o pipefail
+tags: [ ubuntu ]
 ---
 
 **造成原因，Debian 和 Ubuntu 的 /bin/sh 指向的是 dash 而不是 bash。**
