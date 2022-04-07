@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Maple's Bolg
-subtitle: a coder
+title: Maple's Blog
+subtitle: keep coding and having fun
 description: 
 author: Maple
 language:
-timezone:
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -37,11 +37,11 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
-highlight:
-  enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace:
+# highlight:
+#   enable: true
+#   line_number: true
+#   auto_detect: false
+#   tab_replace:
   
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -69,35 +69,27 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
-# Extensions
-## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
 theme: archer
-# theme: landscape
-# theme: aloha
-# Deployment
-## Docs: https://hexo.io/docs/deployment.html
+
+highlight:
+  enable: true
+  auto_detect: false
+  line_number: true
+  line_threshold: 0
+  tab_replace: ''
+  exclude_languages:
+    - example
+  wrap: true
+  hljs: false
+prismjs:
+  enable: false
+  preprocess: true
+  line_number: true
+  line_threshold: 0
+  tab_replace: ''
 deploy:
   type: git
   repo: git@github.com:mapleincode/mapleincode.github.io.git
-  #jsonContent:
-  #meta: false
-  #pages: false
-  #posts:
-          #title: true
-    #date: true
-    #path: true
-    #text: false
-    #raw: false
-    #content: false
-    #slug: false
-    #updated: false
-    #comments: false
-    #link: false
-    #permalink: false
-    #excerpt: false
-    #categories: false
-    #tags: true
 # 自动生成sitemap
 sitemap: 
   path: sitemap.xml

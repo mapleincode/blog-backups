@@ -1,4 +1,3 @@
-@import '../../_variables.scss';
 // ========== sidebar archive ========== //
 .sidebar-panel-archives {
   padding: 1rem;
@@ -18,11 +17,12 @@
 }
 
 .archive-post-item {
-  vertical-align: middle;
+  font-family: $base-font-family;
+  display: flex;
+  align-items: baseline;
   border-left: 1px solid #bbb;
   margin-left: 0.3rem;
-  padding: 0.1rem 0 0.1rem 0.5rem;
-  box-sizing: border-box;
+  padding: 0.2rem 0 0.3rem 0.5rem;
   &:hover {
     border-left-color: $feature-color;
     .archive-post-date,
@@ -37,11 +37,15 @@
 }
 
 .site-search {
-  cursor: pointer;
+  &.site-search-loading {
+    display: none;
+  }
+
   .search-icon {
+    cursor: pointer;
     color: $feature-color;
-    line-height: 1.9rem;
-    font-size: 1.5rem;
+    line-height: 2.3rem;
+    font-size: 1.4rem;
     position: relative;
     margin-left: 0.5rem;
   }
@@ -55,16 +59,18 @@
 
 .archive-year {
   font-size: 1rem;
-  margin-bottom: 0.3rem;
+  margin: 0.3rem 0 0.3rem 0;
 }
 
 .archive-post-date {
+  // align-self: center;
   font: 0.9rem/1rem $feature-font-family;
   color: #999;
 }
 
 .archive-post-title {
   font-size: 1rem;
+  line-height: 1.4rem;
   margin-left: 0.8rem;
   text-align: left;
   color: #ccc;

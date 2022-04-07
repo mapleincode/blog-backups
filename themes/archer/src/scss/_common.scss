@@ -13,7 +13,7 @@ body {
   z-index: 100;
   position: relative;
   background-color: $body-background-color;
-  overflow-x: hidden;
+  transition: $transition-animation;
 }
 
 .wrapper {
@@ -21,15 +21,15 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 100vh;
-  transition: all 0.3s ease-in 0s;
+  min-height: 100%;
+  transition: transform 0.3s ease-in;
   transform: translate3d(0, 0, 0);
   position: relative;
   box-shadow: -3px 0 2px 0 rgba(0, 0, 0, 0.6);
 }
 
 .wrapper-sidebar-active {
-  transform: translate3d(400px, 0, 0);
+  transform: translate3d($sidebar-width, 0, 0);
 }
 
 .main {
@@ -45,14 +45,13 @@ body {
   display: flex;
   padding: $container-margin-top 0 0 0;
   position: relative;
-  background-color: #fff;
+  background-color: $body-background-color;
   top: 0;
   left: 0;
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  overflow: hidden;
-  transition: all 0.5s ease-out 0s;
+  transition: $transition-animation;
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
@@ -71,49 +70,32 @@ li {
   list-style-type: none;
 }
 
-// ========== back top ========== //
-.back-top {
-  position: fixed;
-  display: block;
-  left: 1rem;
-  bottom: 1rem;
-  z-index: 10;
-  opacity: 0;
-  width: 1.5rem;
-  height: 1.5rem;
-  text-align: center;
-  line-height: 1.5rem;
-  border: 2px solid #000;
-  background-color: rgba(255, 255, 255, 0.8);
-  cursor: pointer;
-  &:hover {
-    background-color: #000;
-    color: #fff;
-  }
-}
-
-.back-top-show {
-  opacity: 1;
-  pointer-events: initial;
-}
-
 // selection
 ::selection {
-  background: $selection-color;
-  color: #eee;
-}
-
-::-moz-selection {
-  background: $selection-color;
-  color: #eee;
-}
-
-::-webkit-selection {
-  background: $selection-color;
-  color: #eee;
+  background: $selection-background-color;
+  color: $selection-text-color;
 }
 
 .fancy-link {
   padding: 0 !important;
   margin: 0 !important;
+}
+
+// notes
+.note {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 0.35rem solid;
+  border-radius: 0.35rem;
+  transition: $transition-animation;
+
+  .title {
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+
+  &.note-warning {
+    background-color: #fdf8ea;
+    border-color: #f0ad4e;
+  }
 }

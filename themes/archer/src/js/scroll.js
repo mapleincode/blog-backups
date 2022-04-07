@@ -1,23 +1,28 @@
 import archerUtil from './util'
+window.preventPostPageBannerDefault = false
 
-let scroll = function() {
-  let $banner = $('.banner:first'),
+const scroll = function () {
+  const $banner = $('.banner:first'),
     $postBanner = $banner.find('.post-title a'),
     $bgEle = $('.site-intro:first'),
-    $homeLink = $('.home-link:first'),
+    $header = $('.header'),
+    $headerActions = $('.header-actions'),
     $backTop = $('.back-top:first'),
     $sidebarMenu = $('.header-sidebar-menu:first'),
-    bgTitleHeight = $bgEle.offset().top + $bgEle.outerHeight(),
     $tocWrapper = $('.toc-wrapper:first'),
     $tocCatalog = $tocWrapper.find('.toc-catalog'),
     $progressBar = $('.read-progress')
 
-  // toc的收缩
-  $tocCatalog.on('click', function() {
+  const bgTitleHeight =
+    $bgEle.offset().top + $bgEle.outerHeight() - $header.height() / 2
+
+  // toc 的收缩
+  $tocCatalog.on('click', function () {
     $tocWrapper.toggleClass('toc-hide-children')
   })
 
   // 滚动式切换文章标题和站点标题
+  const showBannerScrollHeight = -200
   let previousHeight = 0,
     continueScroll = 0
 
@@ -27,7 +32,7 @@ let scroll = function() {
       // 向下滑动
       continueScroll = 0
       return 1
-    } else if (continueScroll < -800) {
+    } else if (continueScroll < showBannerScrollHeight) {
       // 向上滑动
       continueScroll = 0
       return -1
@@ -40,7 +45,7 @@ let scroll = function() {
   let crossingState = -1
   let isHigherThanIntro = true
   function isCrossingIntro(currTop) {
-    // 向下滑动超过intro
+    // 向下滑动超过 intro
     if (currTop > bgTitleHeight) {
       if (crossingState !== 1) {
         crossingState = 1
@@ -48,7 +53,7 @@ let scroll = function() {
         return 1
       }
     } else {
-      // 向上滑动超过intro
+      // 向上滑动超过 intro
       if (crossingState !== -1) {
         crossingState = -1
         isHigherThanIntro = true
@@ -58,7 +63,7 @@ let scroll = function() {
     return 0
   }
 
-  // 判断是否为post-page
+  // 判断是否为 post-page
   let isPostPage = false
   let articleHeight, articleTop
   if ($('.post-body').length) {
@@ -73,7 +78,7 @@ let scroll = function() {
   }
 
   function updateProgress(scrollTop, beginY, contentHeight) {
-    let windowHeight = $(window).height()
+    const windowHeight = $(window).height()
     let readPercent
     if (scrollTop < bgTitleHeight) {
       readPercent = 0
@@ -83,54 +88,65 @@ let scroll = function() {
     }
     // 防止文章过短，产生负百分比
     readPercent = readPercent >= 0 ? readPercent : 100
-    let restPercent = readPercent - 100 <= 0 ? readPercent - 100 : 0
+    const restPercent = readPercent - 100 <= 0 ? readPercent - 100 : 0
+    $progressBar[0].style.opacity = '1'
     $progressBar[0].style.transform = `translate3d(${restPercent}%, 0, 0)`
   }
 
-  // rAF操作
+  // rAF 操作
   let tickingScroll = false
   function updateScroll(scrollTop) {
-    let crossingState = isCrossingIntro(scrollTop)
-    // intro边界切换
+    const crossingState = isCrossingIntro(scrollTop)
+    // intro 边界切换
     if (crossingState === 1) {
       $tocWrapper.addClass('toc-fixed')
-      $homeLink.addClass('home-link-hide')
-      $backTop.addClass('back-top-show')
+      $header.removeClass('header-mobile')
+      $headerActions.addClass('header-actions-hide')
       $sidebarMenu.addClass('header-sidebar-menu-black')
+      $backTop.removeClass('back-top-hidden')
     } else if (crossingState === -1) {
       $tocWrapper.removeClass('toc-fixed')
-      $homeLink.removeClass('home-link-hide')
+      $header.addClass('header-mobile')
+      $headerActions.removeClass('header-actions-hide')
       $banner.removeClass('banner-show')
-      $backTop.removeClass('back-top-show')
       $sidebarMenu.removeClass('header-sidebar-menu-black')
+      $backTop.addClass('back-top-hidden')
     }
-    // 如果不是post - page 以下忽略
+    // 文章页
     if (isPostPage) {
-      // 上下滑动一定距离显示/隐藏header
-      let upDownState = isScrollingUpOrDown(scrollTop)
-      if (upDownState === 1) {
-        $banner.removeClass('banner-show')
-      } else if (upDownState === -1 && !isHigherThanIntro) {
-        $banner.addClass('banner-show')
+      // 当 window.preventPostPageBannerDefault 为真时，避免此处 Banner 显示或隐藏的行为
+      if (!window.preventPostPageBannerDefault) {
+        // 向上滑动一定距离显示 header banner
+        // 向下滑动隐藏 header banner
+        const upDownState = isScrollingUpOrDown(scrollTop)
+        if (upDownState === 1) {
+          $banner.removeClass('banner-show')
+        } else if (upDownState === -1 && !isHigherThanIntro) {
+          $banner.addClass('banner-show')
+        }
       }
       // 进度条君的长度
       updateProgress(scrollTop, articleTop, articleHeight)
     }
     previousHeight = scrollTop
     tickingScroll = false
+    window.preventPostPageBannerDefault = false
   }
 
-  // scroll回调
+  // scroll 回调
   function onScroll() {
-    let scrollTop = $(document).scrollTop()
-    let bindedUpdate = updateScroll.bind(null, scrollTop)
+    const scrollTop = $(document).scrollTop()
+    const bindedUpdate = updateScroll.bind(null, scrollTop)
     archerUtil.rafTick(tickingScroll, bindedUpdate)
   }
 
-  $(document).on('scroll', onScroll)
+  onScroll()
 
-  // 返回顶部
-  ;[$postBanner, $backTop].forEach(function(ele) {
+  const throttleOnScroll = archerUtil.throttle(onScroll, 25, true)
+  $(document).on('scroll', throttleOnScroll)
+
+  // 绑定返回顶部事件
+  ;[$postBanner, $backTop].forEach(function (ele) {
     ele.on('click', archerUtil.backTop)
   })
 }

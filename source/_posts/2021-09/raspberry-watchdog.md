@@ -25,7 +25,7 @@ tags: [ raspberry ]
 
 1. 在 config.txt 从硬件上打开 watchdog 功能
 
-   ```shell
+   ```
    sudo echo 'dtparam=watchdog=on' >> /boot/config.txt
    sudo reboot
    ```
@@ -34,7 +34,7 @@ tags: [ raspberry ]
 
 2. 安装 watchdog 依赖
 
-   ```shell
+   ```
    sudo apt-get update
    sudo apt-get install watchdog
    ```
@@ -43,7 +43,7 @@ tags: [ raspberry ]
 
 3. 配置 watchdog
 
-   ```shell
+   ```
    sudo echo 'watchdog-device = /dev/watchdog' >> /etc/watchdog.conf
    sudo echo 'watchdog-timeout = 15' >> /etc/watchdog.conf
    sudo echo 'max-load-1 = 24' >> /etc/watchdog.conf
@@ -53,7 +53,7 @@ tags: [ raspberry ]
 
 4. 启动服务
 
-   ```shell
+   ```
    sudo systemctl enable watchdog   # 设置自动启动
    sudo systemctl start watchdog    # 启动
    sudo systemctl status watchdog   # 查看状态
@@ -65,7 +65,7 @@ tags: [ raspberry ]
 
 输入报错指令
 
-```shell
+```
 sudo bash -c ':(){ :|:& };:'
 ```
 
