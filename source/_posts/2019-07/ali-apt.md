@@ -12,7 +12,7 @@ sudo mv /etc/sources.list /etc/sources.list.bak
 重新编辑一份新的`sources.list`
 
 ## 16.04
-```bash
+```shell
 # deb cdrom:[Ubuntu 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.1)]/ xenial main restricted
 deb-src http://archive.ubuntu.com/ubuntu xenial main restricted #Added by software-properties
 deb http://mirrors.aliyun.com/ubuntu/ xenial main restricted

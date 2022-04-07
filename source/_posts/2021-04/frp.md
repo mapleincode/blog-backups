@@ -41,7 +41,7 @@ frp 堪称一神器。只要你拥有一台公网服务器，然后开启一个 
 
 frp 包含客户端 (frpc) 和服务端 （frps）。
 
-```
+```shell
 frps -c frps.ini # 服务端，部署到有公网 IP 的服务器上
 frpc -c frpc.ini # 客户端，部署到需要穿透的服务器或者 PC 上
 ```

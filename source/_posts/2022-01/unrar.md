@@ -83,7 +83,7 @@ rar_file.extract(name, folder_name)
 
 ## 完整代码
 
-```
+```python
 import sys, time
 
 

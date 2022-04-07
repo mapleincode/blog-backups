@@ -16,7 +16,7 @@ redis.incr();
 
 
 
-```js
+```javascript
 async funciton lock(key) {
   const value = uuid.v4();
   const expire = 120 * 1000;
