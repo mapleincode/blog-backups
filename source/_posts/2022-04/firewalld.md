@@ -1,6 +1,16 @@
+---
+title: "Centos7 防火墙 firewalld 基本配置与端口转发"
+date: 2022-04-19 16:34:06
+tags: ['centos', 'linux', 'firewalld']
+---
+
+
+
 # Centos7 防火墙 firewalld 基本配置与端口转发
 
 [转载自 https://cloud.tencent.com/developer/article/1404032](https://cloud.tencent.com/developer/article/1404032)
+
+
 
 # 1. firewalld 基本介绍
 

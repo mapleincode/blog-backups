@@ -1,3 +1,11 @@
+---
+title: "linux 端口转发 iptables"
+date: 2022-04-19 16:33:29
+tags: [liunx, iptables]
+---
+
+
+
 # linux 端口转发 iptables
 
 **centos 7 使用 firewalld 服务而不是 iptables，如果 centos7 以上需要注意！！**
