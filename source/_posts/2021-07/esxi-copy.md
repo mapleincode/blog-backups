@@ -10,7 +10,7 @@ title: ESXi 支持复制粘贴
 
 添加
 
-```shell
+```
 isolation.tools.copy.disable FALSE
 isolation.tools.paste.disable FALSE
 ```
@@ -19,7 +19,7 @@ isolation.tools.paste.disable FALSE
 
 ## 其他
 
-```sh
+```
 isolation.tools.dnd.disable  禁用拖放(drag n drop)
 isolation.tools.hgfs.disable = FALSE 共享文件夹
 ```
