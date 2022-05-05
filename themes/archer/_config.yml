@@ -7,15 +7,15 @@ author: Maple
 signature: coding & have fun
 # SNS (you can custom the order)
 social:
-  email: 12345@qq.com
-  github: //github.com/fi3ework
+  email: llkj13579@126.com
+  github: //github.com/mapleincode
   # wechat should be a path of qr-code image path
-  wechat: /assets/example_qr.png
+  wechat:
   # qq should be a path of qr-code image path
   qq: 
   telegram: 
   weibo: 
-  zhihu: 
+  zhihu: //www.zhihu.com/people/mapleincode
   douban: 
   facebook: 
   twitter: 
@@ -24,7 +24,7 @@ social:
   segmentFault: 
   juejin: 
   v2ex: 
-  bilibili: 
+  bilibili: //space.bilibili.com/830610
   linkedin: 
   steam: 
   others: 
