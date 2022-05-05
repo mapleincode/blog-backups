@@ -1,3 +1,9 @@
+<!--
+ * @Author: maple
+ * @Date: 2022-04-20 16:27:18
+ * @LastEditors: maple
+ * @LastEditTime: 2022-05-05 14:10:53
+-->
 <footer class="footer footer-unloaded">
     <!-- social  -->
     <% if(theme.social) { %>
@@ -21,7 +27,7 @@
                 <% const beianPath = theme.website_approve.beian_img %>
                 <img class="beian-img" src="<%- url_for(beianPath) %>" />
                 <span id="beian-approve" class="beian-approve">
-                    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=<%- theme.website_approve.beian_approve %>" target="_blank">京公网安备 <%- theme.website_approve.beian_approve %>号</a>
+                    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=<%- theme.website_approve.beian_approve %>" target="_blank"><%- theme.website_approve.beian_title %><%- theme.website_approve.beian_approve %>号</a>
                 </span>
             <% } %>
         </div>

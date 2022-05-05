@@ -182,7 +182,8 @@ copyright:
 website_approve:
   enable: true
   icp_approve: 浙ICP备20017606号-1
-  beian_approve: 浙公网安备33011002014704号
+  beian_title: 浙公网安备
+  beian_approve: 33011002014704
   beian_img: /assets/beian.png
 # Blog page article timeliness note
 outdated_threshold:
