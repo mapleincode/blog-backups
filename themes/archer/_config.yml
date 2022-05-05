@@ -180,9 +180,9 @@ copyright:
   license: '本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可'
 # Website Approve
 website_approve:
-  enable: false
-  icp_approve: 
-  beian_approve: 
+  enable: true
+  icp_approve: 浙ICP备20017606号-1
+  beian_approve: 浙公网安备33011002014704号
   beian_img: /assets/beian.png
 # Blog page article timeliness note
 outdated_threshold:
