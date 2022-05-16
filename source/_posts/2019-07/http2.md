@@ -62,17 +62,23 @@ $: make -j4
 # ./configure: error: the HTTP XSLT module requires the libxml2/libxslt
 # libraries. You can either do not enable the module or install the libraries.
 
-sudo apt-get install libxml2
-sudo apt-get install libxslt1-dev
+sudo apt-get install libxml2 -y
+sudo apt-get install libxslt1-dev -y
 
 # ./configure: error: the HTTP image filter module requires the GD library.
 # You can either do not enable the module or install the libraries.
 
-sudo apt-get install libgd2-xpm-dev
+sudo apt-get install libgd2-xpm-dev -y
  
 # ./configure: error: the GeoIP module requires the GeoIP library.
 # You can either do not enable the module or install the library.
-sudo apt-get install libgeoip-dev
+sudo apt-get install libgeoip-dev -y
+
+# the HTTP rewrite module requires the PCRE library.
+sudo apt install libpcre3 libpcre3-dev -y
+
+# 完整版本
+sudo apt install libpcre3 libpcre3-dev libgeoip-dev libgd2-xpm-dev libxslt1-dev libxml2 -y
 ```
 
 
@@ -84,8 +90,6 @@ sudo apt-get install libgeoip-dev
 
 
 安装之后，如果还是提示库不存在。则可能需要刷新下 so 库。
-
-
 
 ```shell
 ldconfig
