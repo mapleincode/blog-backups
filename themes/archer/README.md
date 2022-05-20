@@ -361,7 +361,6 @@ Archer 主题内置了对[浮动元素](https://developer.mozilla.org/zh-CN/docs
 Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa vel lacinia pellentesque lorem ipsum dolor.
 
 <div class="archer-float-right">
-  <img src="https://cdn.jsdelivr.net/gh/fi3ework/hexo-theme-archer/source/avatar/Misaka.jpg" alt="this is a float image!">
 </div>
 
 Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna.

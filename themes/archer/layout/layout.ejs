@@ -1,10 +1,16 @@
+<!--
+ * @Author: maple
+ * @Date: 2022-04-20 16:27:18
+ * @LastEditors: maple
+ * @LastEditTime: 2022-05-20 14:21:17
+-->
 <!DOCTYPE html>
 <html lang="<%- config.language %>">
     <%- partial('_partial/base-head') %>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript">
         if (typeof window.$ == undefined) {
-            console.warn('jquery load from jsdelivr failed, will load local script')
+            console.warn('jquery load from bootcdn failed, will load local script')
             document.write('<script src="<%- url_for('lib/jquery.min.js') %>" />')
         }
     </script>
@@ -55,7 +61,7 @@
         <!-- dark mode -->
         <script src="<%- url_for('scripts/dark.js') %>?v=<%- theme.source_version %>"></script>
         <!-- fancybox -->
-        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" defer></script>
+        <script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" defer></script>
         <!-- algolia -->
         <% if (theme.algolia_search.enable) { %>
             <%- partial('_partial/algolia') %>
@@ -85,7 +91,7 @@
         <% } %>
         <!-- mermaid -->
         <% if (is_post() && theme.mermaid.enable) { %>
-            <script src='https://cdn.jsdelivr.net/npm/mermaid@<%= theme.mermaid.version %>/dist/mermaid.min.js'></script>
+            <script src='https://cdn.bootcdn.net/ajax/libs/mermaid/<%= theme.mermaid.version %>/mermaid.min.js'></script>
             <script>
                 if (window.mermaid) {
                     mermaid.initialize({theme: '<%= theme.mermaid.theme %>'});

@@ -1,3 +1,9 @@
+<!--
+ * @Author: maple
+ * @Date: 2022-04-20 16:27:18
+ * @LastEditors: maple
+ * @LastEditTime: 2022-05-20 14:19:08
+-->
 <% if (theme.math.mathjax.enable === true) { %>
     <script>
         MathJax = {
@@ -9,5 +15,5 @@
     </script>
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@<%- theme.math.mathjax.version %>/es5/tex-mml-chtml.js"></script>
+    <script id="MathJax-script" async src="https://cdn.bootcdn.net/ajax/libs/mathjax/<%- theme.math.mathjax.version %>/es5/tex-mml-chtml.min.js"></script>
 <% } %>
