@@ -1,5 +1,5 @@
 ---
-title: 'RabbitMQ 客户端(nodejs)',
+title: RabbitMQ 客户端(nodejs)
 tags: [nodejs, rabbitmq]
 date: 2022-05-27 17:30:48
 ---
