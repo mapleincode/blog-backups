@@ -265,6 +265,8 @@ client.exists("/",  true);
 的办法，把 watcher 绑定到对应的路径和方法。
 
 > 除了需要的 EventType , None 类型的事件也会被监听到，所以需要过滤。
+>
+> 除了 None 之外，其他类型的 EventType 只会在设置后被监听到一次，所以在处理完事件之后，需要重新进行设置。
 
 
 
@@ -290,3 +292,4 @@ client.removeWatches("/", watcher, Watcher.WatcherType.Any, true);
 - https://github.com/HelloGitHub-Team/HelloZooKeeper
 - https://www.runoob.com/w3cnote/zookeeper-acl.html
 - https://curator.apache.org/curator-recipes/persistent-watcher.html
+
