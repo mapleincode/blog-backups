@@ -214,7 +214,74 @@ client.close();
 
 ## Wathcer
 
+> 研究的是 Java SDK 里的方法
+
+注册 watcher 有三种方式：
+
+- getData
+- exists
+- getChildren
+
+
+
+而通过源码查看了 EventType 有 8 种：
+
+```java
+None(-1),
+// 其他的消息
+
+// 对应 exists
+NodeCreated(1),
+NodeDeleted(2),
+
+// 对应 getChildren
+NodeDataChanged(3),
+
+// 对应 getData
+NodeChildrenChanged(4),
+
+// exists 和 getData 某路径的监听被移除；实际 watcher 依然存在
+// client.removeWatches("/", watcher, Watcher.WatcherType.Data, true);
+DataWatchRemoved(5),
+
+// getChildren 某路径的监听被移除； watcher 依然存在
+// client.removeWatches("/", watcher, Watcher.WatcherType.Children, true);
+ChildWatchRemoved(6),
+
+// 永久设置 watcher 被移除
+// client.addWatch("/", watcher, AddWatchMode.PERSISTENT);
+// client.removeWatches("/", watcher, Watcher.WatcherType.Any, true);
+PersistentWatchRemoved(7)
+```
+
+> 
+
+watcher 对象相当于一个监听者，可以通过在 client 只设置一个通用 watcher 的办法，然后通过类似
+
+```
+client.exists("/",  true);
+```
+
+的办法，把 watcher 绑定到对应的路径和方法。
+
+> 除了需要的 EventType , None 类型的事件也会被监听到，所以需要过滤。
+
+
+
+#### Persistent Recursive Watcher
+
+A managed persistent persistent watcher. The watch will be managed such that it stays set through connection lapses, etc.
+
+从定义上来看，即使与  zk 断开，依然保持链接。
+
 > 客户端发送请求给服务端是通过 TCP 长连接建立网络通道，底层默认是通过 java 的 NIO 方式，也可以配置 netty 实现方式。
+
+默认监听路径里所有的事件。
+
+```java
+client.addWatch("/", watcher, AddWatchMode.PERSISTENT);
+client.removeWatches("/", watcher, Watcher.WatcherType.Any, true);
+```
 
 
 
@@ -222,3 +289,4 @@ client.close();
 
 - https://github.com/HelloGitHub-Team/HelloZooKeeper
 - https://www.runoob.com/w3cnote/zookeeper-acl.html
+- https://curator.apache.org/curator-recipes/persistent-watcher.html
