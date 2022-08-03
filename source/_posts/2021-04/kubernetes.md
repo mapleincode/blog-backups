@@ -12,7 +12,7 @@ date: 2021-04-12 16:12:11
 
 
 
-## 工具 & 环境
+## 1. 工具 & 环境
 
 参考：https://kubernetes.io/zh/docs/tasks/tools/
 
@@ -30,11 +30,11 @@ date: 2021-04-12 16:12:11
 
 
 
-## 安装
+## 2. 安装
 
 
 
-### 管理端工具安装
+### 2.1 管理端工具安装
 
 #### 安装 kubectl (macOS)
 
@@ -45,8 +45,6 @@ date: 2021-04-12 16:12:11
    ```
    brew install kubectl
    ```
-
-   
 
 2. 直接安装
 
@@ -66,14 +64,13 @@ date: 2021-04-12 16:12:11
 
 
 
+### 2.2 服务端安装
 
-### 服务端 (Pod) 安装
+> Pod
 
-#### 安装 Docker (ubuntu 20.04)
+#### 2.2.1 Docker
 
 考虑到 kubeadm 初始化会检测 Docker，所以考虑先安装 Docker。
-
-
 
 ```
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
@@ -81,13 +78,17 @@ curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 
 
 
+##### 1. 镜像加速
+
 > --mirror Aliyun 使得安装时采用阿里云源，减少安装时间
 
-> 阿里云有提供一个速度还算不错的 docker  镜像加速器。个人可以免费使用。
->
-> 在控制台搜索 < 容器镜像服务 >，选择 - 镜像工具 - 镜像加速器。按照配置镜像加速器的方式进行配置。
+阿里云有提供一个速度还算不错的 docker  镜像加速器。个人可以免费使用。
+
+在控制台搜索 < 容器镜像服务 >，选择 - 镜像工具 - 镜像加速器。按照配置镜像加速器的方式进行配置。
 
 
+
+##### 2. 默认账户没有 docker 权限问题
 
 默认 Docker sock 需要 root 权限才能访问，在本地开发测试，可以使用:
 
@@ -99,13 +100,13 @@ sudo usermod -aG docker ${USER}
 
 
 
-#### 安装 kubeadm
+#### 2.2.2 kubeadm
 
 > Pod 工具
 
 官方教程需要在 ubuntu apt 安装一个授权 key，但是域名是 *.google.com
 
-这决定了很多 linux 环境，尤其是生产都很难方面的安装。后来在网上搜到了一份教程，作者通过替换镜像等方式解决这个问题
+这决定了很多 linux 环境，尤其是生产都很难方面的安装。后来在网上搜到了一份教程，作者通过替换镜像等方式解决这个问题。
 
 
 
@@ -119,13 +120,11 @@ deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main
 EOF
 ```
 
-
-
-> 这里注意是 xenial ，虽然 xenial 是 16.04。而作为最新 LTS 18.04 和 20.04，aliyun 都没有更新。实际操作并无影响，不需要额外替换。apt 可以正常识别。
+**这里注意是 xenial ，虽然 xenial 是 16.04。而作为最新 LTS 18.04 和 20.04，aliyun 都没有更新。实际操作并无影响，不需要额外替换。apt 可以正常识别。**
 
 
 
-#### 安装 kubeadm / kubectl / kubelet
+#### 2.2.3 安装 kubeadm / kubectl / kubelet
 
 ```
 apt-get update
@@ -142,12 +141,14 @@ apt-mark hold kubelet kubeadm kubectl
 > apt-mark hold 是为了标记 kubelet 不自动升级
 >
 > 可以选择 apt-mark unhold kubelet  取消标记
+>
+> 
 
+#### 2.2.4 pull kubernetes 镜像
 
+> 国外的朋友可以跳过这一步
 
-#### 拉取 kubernetes 镜像
-
-使用默认的命令，在没有安装代理的前提下，是无法运行的:
+如果在国内，直接运行`kubeadm init` 会一直卡主不懂。原因是因为默认镜像拉取的是谷歌源。
 
 ```
 $ sudo kubeadm init
@@ -163,16 +164,16 @@ $ sudo kubeadm init
 
 解决办法是用国内的 docker 镜像加速。
 
-首先查看 kubelet 版本：
+**第一种版本是手动替换：**
+
+1. 首先查看 kubelet 版本：
 
 ```
 $ kubelet --version
 Kubernetes v1.21.0
 ```
 
-
-
-使用 kubeadm config image pull 命令查看所需要 image 名称和版本:
+2. 使用 kubeadm config image pull 命令查看所需要 image 名称和版本:
 
 ```
 $ kubeadm config images list --kubernetes-version v1.21.0
@@ -185,11 +186,7 @@ k8s.gcr.io/etcd:3.4.13-0
 k8s.gcr.io/coredns/coredns:v1.8.0
 ```
 
-
-
-这里要手动替换 `k8s.gcr.io` 为 `k8smx`，并使用 docker pull 的方式下载镜像。
-
-
+3. 这里要手动替换 `k8s.gcr.io` 为 `k8smx`，并使用 docker pull 的方式下载镜像。
 
 ```
 docker pull k8smx/kube-apiserver:v1.21.1
@@ -201,13 +198,9 @@ docker pull k8smx/etcd:3.4.13-0
 docker pull coredns/coredns:1.8.0
 ```
 
-
-
 > coredns/coredns 直接拉取，要注意 version 需要从 v1.8.0 改成 1.8.0 否则 pull 不下来
 
-
-
-然后对镜像进行重命名
+4. 然后对镜像 tag 进行重命名
 
 ```
 docker tag k8smx/kube-apiserver:v1.21.1 k8s.gcr.io/kube-apiserver:v1.21.1
@@ -221,22 +214,27 @@ docker tag coredns/coredns:1.8.0 k8s.gcr.io/coredns/coredns:v1.8.0
 
 
 
-```
-kubeadm init
-```
+**第二种办法是使用自动下载脚本:**
 
-> 需要 root 权限
-
-
-
-```
-kubeadm join 192.168.3.242:6443 --token plr2xt.a19ifb79gl4l3uxr \
-	--discovery-token-ca-cert-hash sha256:f1d2929b4ce2414dabfe5b37ba740a22dd320099df13168e06cc245c380e4176
+```shell
+for i in `kubeadm config images list`; do
+  imageName=${i#k8s.gcr.io/}
+  docker pull registry.aliyuncs.com/google_containers/$imageName
+  docker tag registry.aliyuncs.com/google_containers/$imageName k8s.gcr.io/$imageName
+  docker rmi registry.aliyuncs.com/google_containers/$imageName
+done;
 ```
 
+> coredns/coredns 镜像无法通过自动操作，需要手动
+
+```
+docker pull coredns/coredns:1.8.0
+docker tag coredns/coredns:1.8.0 k8s.gcr.io/coredns/coredns:v1.8.0
+```
+
+### 2.3 安装过程可能遇到的问题
 
 
-#### 安装过程遇到的问题：
 
 ##### cproupfs 和 systemd 两个驱动的区别
 
@@ -302,7 +300,7 @@ cgroupfs 和 systemd 都是 cgroup 的管理工具（驱动）。systemd 作为�
 
 
 
-## kubeadm init
+## 3. kubeadm init
 
 > 初始化 kubernetes
 
@@ -327,10 +325,6 @@ You should now deploy a pod network to the cluster.
 Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
   https://kubernetes.io/docs/concepts/cluster-administration/addons/
 ```
-
-
-
-
 
 
 
@@ -381,19 +375,24 @@ Please, check the contents of the $HOME/.kube/config file.
 返回：
 
 ```
-[preflight] Running pre-flight checks
-[preflight] Reading configuration from the cluster...
-[preflight] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -o yaml'
-[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.yaml"
-[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/kubelet/kubeadm-flags.env"
-[kubelet-start] Starting the kubelet
-[kubelet-start] Waiting for the kubelet to perform the TLS Bootstrap...
+To start using your cluster, you need to run the following as a regular user:
 
-This node has joined the cluster:
-* Certificate signing request was sent to apiserver and a response was received.
-* The Kubelet was informed of the new secure connection details.
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
+Alternatively, if you are the root user, you can run:
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 192.168.3.242:6443 --token 17s2zk.29hdphqfeerxkm18 \
+	--discovery-token-ca-cert-hash sha256:90adf2e95cb044d436c6d4849ce2804050adb9db0c7168585dd0522ccb201fbf
 ```
 
 然后在第一台服务器输入
