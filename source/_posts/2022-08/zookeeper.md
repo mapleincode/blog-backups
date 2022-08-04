@@ -20,7 +20,7 @@ tags: zookeeper
 
 ## 节点持久类型
 
-```
+```bash
 PERSISTENT			// 持久节点，一旦创建成功不会被删除，除非客户端主动发起删除请求
 PERSISTENT_SEQUENTIAL		// 持久顺序节点，会在用户路径后面拼接一个不会重复的自增数字后缀，其他同上
 EPHEMERAL			// 临时节点，当创建该节点的客户端链接断开后自动被删除
@@ -281,8 +281,8 @@ A managed persistent persistent watcher. The watch will be managed such that it 
 默认监听路径里所有的事件。
 
 ```java
-client.addWatch("/", watcher, AddWatchMode.PERSISTENT);
-client.removeWatches("/", watcher, Watcher.WatcherType.Any, true);
+client.addWatch("/", watcher, AddWatchMode.PERSISTENT); // 添加监听
+client.removeWatches("/", watcher, Watcher.WatcherType.Any, true); // 删除监听
 ```
 
 

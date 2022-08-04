@@ -1,5 +1,7 @@
 ---
-titlte: maven settings.xml 笔记
+title: maven settings.xml 笔记
+date: 2022-08-04 10:43:29
+tags: [maven]
 ---
 
 
