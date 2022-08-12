@@ -1,7 +1,7 @@
 ---
 title: zookeeper 笔记
 date: 2022-08-03 15:51:29
-tags: zookeeper
+tags: [java, zookeeper]
 ---
 
 
