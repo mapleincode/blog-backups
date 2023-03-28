@@ -603,3 +603,180 @@ openstack add create admin # 创建角色
 4. 同一个 domain 下不同的 project 有些资源可能互通。比如共享 network， 同享的 image，还有 flavor。
 
    
+
+
+
+# 分享
+
+https://docs.openstack.org/install-guide/openstack-services.html
+
+https://docs.openstack.org/install-guide/openstack-services.html#minimal-deployment-for-xena
+
+
+
+## [Minimal deployment for Xena](https://docs.openstack.org/install-guide/openstack-services.html#minimal-deployment-for-xena)
+
+At a minimum, you need to install the following services. Install the services in the order specified below:
+
+- Identity service – [keystone installation for Xena](https://docs.openstack.org/keystone/xena/install/)
+- Image service – [glance installation for Xena](https://docs.openstack.org/glance/xena/install/)
+- Placement service – [placement installation for Xena](https://docs.openstack.org/placement/xena/install/)
+- Compute service – [nova installation for Xena](https://docs.openstack.org/nova/xena/install/)
+- Networking service – [neutron installation for Xena](https://docs.openstack.org/neutron/xena/install/)
+
+We advise to also install the following components after you have installed the minimal deployment services:
+
+- Dashboard – [horizon installation for Xena](https://docs.openstack.org/horizon/xena/install/)
+- Block Storage service – [cinder installation for Xena](https://docs.openstack.org/cinder/xena/install/)
+
+
+
+
+
+## domain
+
+```shell
+# domain
+openstack domain create t1_domain
+
+# +-------------+----------------------------------+
+# | Field       | Value                            |
+# +-------------+----------------------------------+
+# | description |                                  |
+# | enabled     | True                             |
+# | id          | 2410e860fc98445ca2f61e84e16f87ca |
+# | name        | t1_domain                        |
+# | options     | {}                               |
+# | tags        | []                               |
+# +-------------+----------------------------------+
+
+openstack domain list
+
+# 删除 domain
+openstack domain set testdomain --disable
+openstack domain delete testdomain # 删除前必须先 distable
+```
+
+
+
+共用:
+
+- role 角色
+- network 网络
+- image 镜像
+- flavor 规格
+- snapshot
+  - 可以通过 role 限制
+
+
+
+不共用:
+
+- project
+- user
+
+
+
+## project
+
+```shell
+# project
+openstack project create --domain t1_domain t1_project
+openstack porject list
+openstack project delete t1_porject
+```
+
+
+
+> Invalid credentials.
+
+
+
+## User
+
+
+
+```shell
+openstack role list
+#+----------------------------------+--------+
+#| ID                               | Name   |
+#+----------------------------------+--------+
+#| 05e56359e3704b86b11915eafb3a7dd3 | admin  |
+#| 41bc8eee42bb4e1d8e6897d70810a4c7 | member |
+#| a4f79cf33e614a53a0b559a64a72d660 | myrole |
+#| d1197901083f4fbeb38ed56da99f793d | reader |
+#+----------------------------------+--------+
+
+openstack role show member
+
+
+
+
+openstack user create --domain t1_domain --password-prompt admin
+```
+
+
+
+> You are not authorized for any projects or domains.
+
+
+
+## role
+
+```shell
+openstack role add --project t1_project --user admin admin --project-domain t1_domain --user-domain t1_domain
+```
+
+
+
+## Network
+
+```shell
+openstack network create  --share --external   --provider-physical-network provider   --provider-network-type flat provider
+openstack subnet create --network provider   --allocation-pool start=192.168.201.200,end=192.168.201.210   --dns-nameserver 114.114.114.114 --gateway 192.168.201.1   --subnet-range 192.168.201.0/24 provider
+```
+
+
+
+## flavor
+
+```shell
+openstack flavor create --id 0 --vcpus 1 --ram 64 --disk 1 m1.nano
+```
+
+
+
+## image
+
+```shell
+wget http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
+openstack image create "cirros" \
+  --file cirros-0.3.4-x86_64-disk.img \
+  --disk-format qcow2 --container-format bare \
+  --public
+```
+
+https://cloud-images.ubuntu.com/
+
+https://cloud.centos.org/centos/7/images/
+
+https://cloud.debian.org/images/cloud/
+
+
+
+## key
+
+```shell
+openstack keypair create --public-key ~/.ssh/id_rsa.pub mykey
+```
+
+
+
+## server
+
+```shell
+openstack server create --flavor m1.nano --image cirros   --nic net-id="a2197965-1a9e-4584-892e-c38ea26da077" --security-group default   --key-name mykey provider-instance
+```
+
+
+
