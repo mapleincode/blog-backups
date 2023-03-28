@@ -1,5 +1,5 @@
 ---
-title: MySQL 启动 error [InnoDB: Missing MLOG_CHECKPOINT]
+title: "MySQL 启动 error [InnoDB: Missing MLOG_CHECKPOINT]"
 date: 2023-02-28 09:59:20
 tags: [mysql]
 ---
