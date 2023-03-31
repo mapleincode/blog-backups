@@ -5,6 +5,8 @@ date: 2022-05-27 17:30:48
 ---
 
 ```javascript
+const amqplib = require('amqplib');
+
 class RabbitMQChannel {
   constructor (options) {
     const {
@@ -249,3 +251,6 @@ class RabbitMQ {
 }
 ```
 
+
+
+ mysql-connector 包会不兼容新的密码组件。推荐  mysql-connector-python。

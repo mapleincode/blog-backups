@@ -707,7 +707,13 @@ print('worker exit.')
 
 
 
-## datetime
+
+
+## 內建模块
+
+
+
+### datetime
 
 ```python
 from datetime import datetime, timedelta, timezone
@@ -754,9 +760,9 @@ if __name__ == '__main__':
 
 
 
-## collections
+### collections
 
-### namedtuple
+#### namedtuple
 
 定义名称、字段和个数的元组
 
@@ -769,7 +775,7 @@ p.y # 2
 
 
 
-### deque
+#### deque
 
 队列，快速插入和删除元素
 
@@ -783,7 +789,7 @@ q.popleft()
 
 
 
-### defaultdict
+#### defaultdict
 
 默认值
 
@@ -794,19 +800,19 @@ dd = defaultdict(lambda: 'N/A')
 
 
 
-### OrderedDict
+#### OrderedDict
 
 字段 key 有序。（按照插入顺序）。
 
 
 
-### ChainMap
+#### ChainMap
 
 链接多个 dict，并按照优先级返回
 
 
 
-### Counter
+#### Counter
 
 计数器
 
@@ -826,7 +832,7 @@ c = Counter()
 
 
 
-## argparse
+### argparse
 
 参数解析
 
@@ -875,7 +881,7 @@ if __name__ == '__main__':
 
 
 
-## base64
+### base64
 
 ```python
 import base64
@@ -891,13 +897,13 @@ b'i\xb7\x1d\xfb\xef\xff'
 
 
 
-## struct
+### struct
 
 字节处理
 
 
 
-## hashlib
+### hashlib
 
 ```python
 import hashlib
@@ -916,7 +922,7 @@ print(md5.hexdigest())
 
 
 
-## hmac
+### hmac
 
 ```python
 import hmac
@@ -930,7 +936,7 @@ h.hexdigest()
 
 
 
-## itertools
+### itertools
 
 迭代对象工具
 
@@ -949,9 +955,7 @@ itertools.groupby()
 
 
 
-
-
-## contextlib
+### contextlib
 
 封装支持 with 函数的方法
 
@@ -972,17 +976,630 @@ with create_query(name) as q:
 
 
 
+### urllib
+
+```python
+from urllib import request
+
+req = request.Request('http://www.douban.com/')
+req.add_header('User-Agent', 'Mozilla/6.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/8.0 Mobile/10A5376e Safari/8536.25')
+with request.urlopen(req) as f:
+    print('Status:', f.status, f.reason)
+    for k, v in f.getheaders():
+        print('%s: %s' % (k, v))
+    print('Data:', f.read().decode('utf-8'))
+```
+
+
+
+模拟微博登录
+
+```python
+from urllib import request, parse
+
+print('Login to weibo.cn...')
+email = input('Email: ')
+passwd = input('Password: ')
+login_data = parse.urlencode([
+    ('username', email),
+    ('password', passwd),
+    ('entry', 'mweibo'),
+    ('client_id', ''),
+    ('savestate', '1'),
+    ('ec', ''),
+    ('pagerefer', 'https://passport.weibo.cn/signin/welcome?entry=mweibo&r=http%3A%2F%2Fm.weibo.cn%2F')
+])
+
+req = request.Request('https://passport.weibo.cn/sso/login')
+req.add_header('Origin', 'https://passport.weibo.cn')
+req.add_header('User-Agent', 'Mozilla/6.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/8.0 Mobile/10A5376e Safari/8536.25')
+req.add_header('Referer', 'https://passport.weibo.cn/signin/login?entry=mweibo&res=wel&wm=3349&r=http%3A%2F%2Fm.weibo.cn%2F')
+
+with request.urlopen(req, data=login_data.encode('utf-8')) as f:
+    print('Status:', f.status, f.reason)
+    for k, v in f.getheaders():
+        print('%s: %s' % (k, v))
+    print('Data:', f.read().decode('utf-8'))
+```
 
 
 
 
-## urllib
 
 
 
-## XML
+### XML
+
+pass
 
 
 
-## HTMLParser
+### HTMLParser
+
+```python
+class MyHTMLParser(HTMLParser):
+
+    def handle_starttag(self, tag, attrs):
+        print('<%s>' % tag)
+
+    def handle_endtag(self, tag):
+        print('</%s>' % tag)
+
+    def handle_startendtag(self, tag, attrs):
+        print('<%s/>' % tag)
+
+    def handle_data(self, data):
+        print(data)
+
+    def handle_comment(self, data):
+        print('<!--', data, '-->')
+
+    def handle_entityref(self, name):
+        print('&%s;' % name)
+
+    def handle_charref(self, name):
+        print('&#%s;' % name)
+
+parser = MyHTMLParser()
+parser.feed('''<html>
+<head></head>
+<body>
+<!-- test html parser -->
+    <p>Some <a href=\"#\">html</a> HTML&nbsp;tutorial...<br>END</p>
+</body></html>''')
+```
+
+
+
+## 第三方模块
+
+
+
+### Pillow
+
+
+
+```python
+from PIL import Image, ImageFilter
+
+im = Image.open("test.jpg")
+
+# 压缩图片
+w, h = im.size()
+im.thunbnail(w/2, h/2)
+
+# 滤镜；模糊
+im2 = im.filter(ImageFilter.BLUR)
+
+im.save('new.jpg', 'jpeg')
+```
+
+
+
+### requests
+
+```python
+import request
+
+# timeout 超时单位秒
+r = requests.get("https://www.baidu.com", params = {'a'='b'}, headers = {}, timeout=2.5)
+
+print(r.status_code)
+print(r.text)
+print(r.json())
+
+# post 请求
+# data -> form-data
+# json -> raw json
+request.post("https://www.baidu.com", data = {}, json = {})
+
+# 上传图片
+upload_files = { 'file': open('xxx.txt', 'rb') }
+r = request.post(url, files=upload_files)
+
+print(r.cookies['ts'])
+```
+
+
+
+### chardet
+
+> 编码检测
+
+
+
+```python
+data = '离离原上草，一岁一枯荣'.encode('gbk')
+chardet.detect(data)
+# {'encoding': 'GB2312', 'confidence': 0.7407407407407407, 'language': 'Chinese'}
+```
+
+
+
+### psutil
+
+系统信息获取
+
+
+
+```python
+import psutil
+
+psutil.cpu_count() # CPU逻辑数量
+psutil.cpu_count(logical=False) # CPU物理核心
+psutil.cpu_times() # cpu 用户 / 系统 / 空闲时间
+psutil.cpu_percent(interval=1, percpu=True) # cpu 负载
+
+# 内存
+psutil.virtual_memory() # 物理内存
+psutil.swap_memory() # swap 交换区
+
+# 磁盘
+psutil.disk_partitions() # 磁盘分区信息
+psutil.disk_usage('/') # 磁盘使用情况
+psutil.disk_io_counters() # 磁盘IO
+
+# 网络
+psutil.net_io_counters() # 获取网络读写字节／包的个数
+psutil.net_if_addrs() # 获取网络接口信息
+psutil.net_if_stats() # 获取网络接口状态
+psutil.net_connections() # 网络连接信息 （ 需要 root 权限 ）
+
+# 进程
+psutil.pids() # 所有进程ID
+p = psutil.Process(3776) # 进程对象
+
+```
+
+
+
+## venv
+
+> python 虚拟机环境之一
+
+
+
+```shell
+mkdir venv && cd venv
+python3 -m venv .
+cd bin && source activate
+(venv) bin$
+```
+
+
+
+## 图形界面
+
+pass
+
+
+
+## 网络编程
+
+pass
+
+
+
+## 电子邮件
+
+
+
+### SMTP 发送邮件
+
+```python
+from email.mime.text import MIMEText
+
+# header 不直接支持中文编码，需要转换
+def _format_addr(s):
+    name, addr = parseaddr(s)
+    return formataddr((Header(name, 'utf-8').encode(), addr))
+
+# 输入Email地址和口令:
+from_addr = input('From: ')
+password = input('Password: ')
+# 输入收件人地址:
+to_addr = input('To: ')
+# 输入SMTP服务器地址:
+smtp_server = input('SMTP server: ')
+
+# 构建消息对象
+msg = MIMEText('hello, send by Python...', 'plain', 'utf-8')
+# msg = MIMEText('<html>...</html>', 'html', 'utf-8')
+
+# 增加消息体
+msg['From'] = _format_addr('Python爱好者 <%s>' % from_addr)
+msg['To'] = _format_addr('管理员 <%s>' % to_addr)
+msg['Subject'] = Header('来自SMTP的问候……', 'utf-8').encode()
+
+
+# 添加附件就是加上一个MIMEBase，从本地读取一个图片:
+with open('/Users/michael/Downloads/test.png', 'rb') as f:
+    # 设置附件的MIME和文件名，这里是png类型:
+    mime = MIMEBase('image', 'png', filename='test.png')
+    # 加上必要的头信息:
+    mime.add_header('Content-Disposition', 'attachment', filename='test.png')
+    mime.add_header('Content-ID', '<0>')
+    mime.add_header('X-Attachment-Id', '0')
+    # 把附件的内容读进来:
+    mime.set_payload(f.read())
+    # 用Base64编码:
+    encoders.encode_base64(mime)
+    # 添加到MIMEMultipart:
+    msg.attach(mime)
+
+import smtplib
+server = smtplib.SMTP(smtp_server, 25) # SMTP协议默认端口是25
+
+# SSL 端口
+# smtp_port = 587
+# server = smtplib.SMTP(smtp_server, smtp_port)
+# server.starttls()
+
+server.set_debuglevel(1) # 打印 debug 信息
+
+server.login(from_addr, password)
+server.sendmail(from_addr, [to_addr], msg.as_string())
+server.quit()
+```
+
+
+
+Message 对象分层
+
+```
+Message
++- MIMEBase
+   +- MIMEMultipart
+   +- MIMENonMultipart
+      +- MIMEMessage
+      +- MIMEText
+      +- MIMEImage
+```
+
+
+
+### POP3 协议接受邮件
+
+
+
+```python
+import poplib
+
+# ------------- pop 获取邮件 ----------------
+
+# 输入邮件地址, 口令和POP3服务器地址:
+email = input('Email: ')
+password = input('Password: ')
+pop3_server = input('POP3 server: ')
+
+# 连接到POP3服务器:
+server = poplib.POP3(pop3_server)
+# 可以打开或关闭调试信息:
+server.set_debuglevel(1)
+# 可选:打印POP3服务器的欢迎文字:
+print(server.getwelcome().decode('utf-8'))
+
+# 身份认证:
+server.user(email)
+server.pass_(password)
+
+# stat()返回邮件数量和占用空间:
+print('Messages: %s. Size: %s' % server.stat())
+# list()返回所有邮件的编号:
+resp, mails, octets = server.list()
+# 可以查看返回的列表类似[b'1 82923', b'2 2184', ...]
+print(mails)
+
+# 获取最新一封邮件, 注意索引号从1开始:
+index = len(mails)
+resp, lines, octets = server.retr(index)
+
+# lines存储了邮件的原始文本的每一行,
+# 可以获得整个邮件的原始文本:
+msg_content = b'\r\n'.join(lines).decode('utf-8')
+
+# 稍后解析出邮件:
+msg = Parser().parsestr(msg_content)
+
+# 可以根据邮件索引号直接从服务器删除邮件:
+# server.dele(index)
+# 关闭连接:
+server.quit()
+
+
+# ------------ email 解析邮件 -------------
+from email.parser import Parser
+from email.header import decode_header
+from email.utils import parseaddr
+
+import poplib
+
+# 解码被编码的中文
+def decode_str(s):
+    value, charset = decode_header(s)[0]
+    if charset:
+        value = value.decode(charset)
+    return value
+
+# 邮件正文
+def guess_charset(msg):
+    charset = msg.get_charset()
+    if charset is None:
+        content_type = msg.get('Content-Type', '').lower()
+        pos = content_type.find('charset=')
+        if pos >= 0:
+            charset = content_type[pos + 8:].strip()
+    return charset
+  
+# indent用于缩进显示:
+def print_info(msg, indent=0):
+    if indent == 0:
+        for header in ['From', 'To', 'Subject']:
+            value = msg.get(header, '')
+            if value:
+                if header=='Subject':
+                    value = decode_str(value)
+                else:
+                    hdr, addr = parseaddr(value)
+                    name = decode_str(hdr)
+                    value = u'%s <%s>' % (name, addr)
+            print('%s%s: %s' % ('  ' * indent, header, value))
+    if (msg.is_multipart()):
+        parts = msg.get_payload()
+        for n, part in enumerate(parts):
+            print('%spart %s' % ('  ' * indent, n))
+            print('%s--------------------' % ('  ' * indent))
+            print_info(part, indent + 1)
+    else:
+        content_type = msg.get_content_type()
+        if content_type=='text/plain' or content_type=='text/html':
+            content = msg.get_payload(decode=True)
+            charset = guess_charset(msg)
+            if charset:
+                content = content.decode(charset)
+            print('%sText: %s' % ('  ' * indent, content + '...'))
+        else:
+            print('%sAttachment: %s' % ('  ' * indent, content_type))
+
+```
+
+
+
+
+
+## 数据库访问
+
+
+
+### SQLite
+
+```python
+import sqlite3
+
+
+def main():
+    with sqlite3.connect("test.sqlite") as conn:
+        try:
+            cursor = conn.cursor()
+            cursor.execute("create table user (id varchar(20) primary key, name varchar(20))")
+            cursor.execute("insert into user (id, name) values (\'1\', \'Michael\')")
+						
+            # 默认事务?
+            conn.commit()
+						
+            # 查询不需要事务
+            cursor.execute('select * from user where name=?', ('Michael', ))
+            values = cursor.fetchall()
+
+            print(values)
+
+        finally:
+            cursor.close()
+
+
+if __name__ == "__main__":
+    main()
+
+```
+
+
+
+### MySQL
+
+使用 mysql-connector-python 插件
+
+```python
+import mysql.connector
+
+
+def main():
+    with mysql.connector.connect(host='127.0.0.1', port='3306', user='root',
+                                 password='', database='test') as conn:
+
+        cursor = conn.cursor()
+
+        try:
+            cursor.execute('create table user (id varchar(20) primary key, name varchar(20))')
+            cursor.execute('insert into user (id, name) values (%s, %s)', ['1', 'Michael'])
+
+            conn.commit()
+
+            cursor.execute('select * from user where id = %s', ('1',))
+            users = cursor.fetchall()
+
+            print(users)
+
+        finally:
+            cursor.close()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+
+
+使用 mysql-connector 插件
+
+```python
+import mysql.connector
+
+
+def main():
+    conn = mysql.connector.connect(host='127.0.0.1', port='3306', user='root',
+                                 password='', database='test',
+                                 auth_plugin='mysql_native_password')
+    try:
+        cursor = conn.cursor()
+
+        try:
+            cursor.execute('create table user (id varchar(20) primary key, name varchar(20))')
+            cursor.execute('insert into user (id, name) values (%s, %s)', ['1', 'Michael'])
+
+            conn.commit()
+
+            cursor.execute('select * from user where id = %s', ('1',))
+            users = cursor.fetchall()
+
+            print(users)
+
+        finally:
+            cursor.close()
+    finally:
+        conn.close()
+
+
+if __name__ == "__main__":
+    main()
+
+```
+
+
+
+mysql-connector-python 和 mysql-connector 使用上的区别
+
+- mysql-connector-python 支持 `with xxx as conn` 而 mysql-connector 不支持
+- mysql-connector 默认使用 `caching_sha2_password` 进行链接 (MySQL 8 默认 auth 方式)，如果使用 native_password ，需要在 connect 参数上增加 `auth_plugin='mysql_native_password'`
+
+
+
+
+
+### SQLAlchemy
+
+pass
+
+
+
+
+
+## Web 开发
+
+
+
+# Flask
+
+```python
+from flask import Flask
+from flask import request
+
+app = Flask(__name__)
+
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    return '<h1>Home</h1>'
+
+@app.route('/signin', methods=['GET'])
+def signin_form():
+    return '''<form action="/signin" method="post">
+              <p><input name="username"></p>
+              <p><input name="password" type="password"></p>
+              <p><button type="submit">Sign In</button></p>
+              </form>'''
+
+@app.route('/signin', methods=['POST'])
+def signin():
+    # 需要从request对象读取表单内容：
+    if request.form['username']=='admin' and request.form['password']=='password':
+        return '<h3>Hello, admin!</h3>'
+    return '<h3>Bad username or password.</h3>'
+
+if __name__ == '__main__':
+    app.run()
+```
+
+
+
+## 异步 IO
+
+协程
+
+
+
+### asyncio
+
+> Python 3.4 引入
+
+```python 
+import threading
+import asyncio
+
+@asyncio.coroutine
+def hello():
+    print('Hello world! (%s)' % threading.currentThread())
+    yield from asyncio.sleep(1)
+    print('Hello again! (%s)' % threading.currentThread())
+
+loop = asyncio.get_event_loop()
+tasks = [hello(), hello()]
+loop.run_until_complete(asyncio.wait(tasks))
+loop.close()
+```
+
+
+
+yield from 本质意义和在 Nodejs 里的 yield 甚至 await 是同个作用。
+
+区别在于 python 最外层不支持，所以需要封装一层。
+
+
+
+
+
+### async / await
+
+> Python 3.5 支持
+>
+> em.............
+
+
+
+```Python
+async def hello():
+    print("Hello world!")
+    r = await asyncio.sleep(1)
+    print("Hello again!")
+```
+
+
 
