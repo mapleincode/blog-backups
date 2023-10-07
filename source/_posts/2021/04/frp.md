@@ -91,7 +91,7 @@ dashboard_pwd = password   # 控制台密码
 # 就相当于是一个反向代理，因为所有 http 都是共用一个端口。所以必须需要一个域名绑定 ip 才能正常访问。
 # 公网 dns, 本地 dns 甚至 /etc/hosts 都行。不熟悉的小伙伴还是放弃直接用 tcp 绑定吧。
 vhost_http_port = 8080   # http 端口。注意如果用 80 端口的话，就必须有 root 权限。我这边是用 nginx 又做了一层 http 代理。 
-subdomain_host = vmko.cc # 默认域名的主域名，这个后面 http 转发会提到 
+subdomain_host = vvcat.cn # 默认域名的主域名，这个后面 http 转发会提到 
 ```
 
 
@@ -144,11 +144,11 @@ custom_domains = frp.xx.com  # http 访问的完整域名
 
 #### custom_domains & subdomain 的区别
 
-服务端配置有个参数是 `subdomain_host`。我设置的 `vmko.cc`。
+服务端配置有个参数是 `subdomain_host`。我设置的 `vvcat.cn`。
 
 两个参数有且只能填写一个。其中 `custom_domains` 支持多参数。两者区别主要是，`custom_domains` 填写的是完整的域名。而 `subdomain` 填写的是子域名部分。
 
-例如 `subdomain` 参数填写的是 `frp`。则配合 `subdomain_host` 组合之后，完整的访问域名是 `frp.vmko.cc`。
+例如 `subdomain` 参数填写的是 `frp`。则配合 `subdomain_host` 组合之后，完整的访问域名是 `frp.vvcat.cn`。
 
 而 `custom_domains` 可以直接填写整个域名: `www.frptest.com`。
 

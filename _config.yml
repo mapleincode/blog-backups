@@ -5,14 +5,14 @@
 # Site
 title: Maple's Blog
 subtitle: keep coding and having fun
-description: 
+description:
 author: Maple
 language:
 timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://blog.vmko.cc
+url: https://blog.vvcat.cn
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -42,16 +42,16 @@ future: true
 #   line_number: true
 #   auto_detect: false
 #   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: ""
   per_page: 10
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -76,7 +76,7 @@ highlight:
   auto_detect: false
   line_number: true
   line_threshold: 0
-  tab_replace: ''
+  tab_replace: ""
   exclude_languages:
     - example
   wrap: true
@@ -86,14 +86,14 @@ prismjs:
   preprocess: true
   line_number: true
   line_threshold: 0
-  tab_replace: ''
+  tab_replace: ""
 deploy:
   type: git
   repo: git@github.com:mapleincode/mapleincode.github.io.git
 # 自动生成sitemap
-sitemap: 
+sitemap:
   path: sitemap.xml
-baidusitemap: 
+baidusitemap:
   path: bdsite.xml
 
 jsonContent:
