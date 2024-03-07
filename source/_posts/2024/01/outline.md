@@ -68,7 +68,7 @@ linx-server 作者是作为一个附件服务器。
 
 最简单的办法，登录 linx-sever 的系统，然后输入 id ，返回当前用户的 id，再在宿主机上对无权限的文件夹进行 chmod 授权即可。
 
-> 后面发现直接授权 chown nobody:nogroup data 也应该是可以的
+> 后面发现直接授权 chown nobody:nogroup -R liux 也应该是可以的
 
 
 
