@@ -7,18 +7,23 @@ tags: [ mysql, mongodb, redis, memcache ]
 用于日常代码调试测试开发。
 如果稳定使用建议 docker 搭建数据库。
 
-## 环境
+## 1. 环境
 
 树莓派 Ubuntu 16.04
 
-## MySQL
+> 目前版本已经使用了 Ubuntu 22.04
 
-### 安装
+## 2. MySQL
+
+### 2.1 MySQL 的安装
+
 ```bash
 sudo apt install mysql-server
 ```
 
-### 配置
+
+
+### 2.2 配置
 
 MySQL 的配置文件位于 `/etc/mysql/`。
 
@@ -26,9 +31,19 @@ MySQL 的配置文件位于 `/etc/mysql/`。
 
 因为一般开发用的 MySQL 都是外网调用，所以需要修改`bind-address`。注释或者修改成你所在的局域网的 IP。(如果数据库在公网暴露且有信息存储，请勿注释该代码)。
 
-### 创建用户并授权
 
-#### 创建用户
+
+### 2.2.1 MySQL 的初始密码
+
+早期 MySQL 在安装过程中，需要用户填写初始的 root 密码。而后期，MySQL 直接会初始一个默认密码。
+
+密码文件为 `/etc/mysql/debian.cnf`;
+
+
+
+### 2.3 创建用户并授权
+
+#### 2.3.1 创建用户
 
 ```sql
 CREATE USER "hello"@"%" IDENTIFIED BY "password";
@@ -38,7 +53,7 @@ CREATE USER "hello"@"%" IDENTIFIED BY "password";
 * `%`: 访问的 IP 或者 IP 段。`%`表示不限制。
 * `password`: 登录密码。 
 
-> 新版本 mysql 创建用户之后，用 GUI 登录会返回密码错误。
+> mysql 8.0 创建用户之后，用 GUI 登录会返回密码错误。
 >
 > 需要创建时加入 `WITH mysql_native_password` 参数
 >
@@ -46,9 +61,8 @@ CREATE USER "hello"@"%" IDENTIFIED BY "password";
 > CREATE USER "hello"@"%" IDENTIFIED WITH mysql_native_password BY 'yourpassword';
 > ```
 >
-> 
 
-#### 授权用户
+#### 2.3.2 授权用户
 
 ```sql
 GRANT SELECT,UPDATE ON 'DATABASE'.'TABLE' TO 'user'@'%';
@@ -67,7 +81,7 @@ GRANT ALL ON *.* to 'USER'@'%';
 ```
 
 
-#### MySQL中的操作权限
+#### 2.3.3 MySQL中的操作权限
 ```sql
 | `ALTER`                  | Allows use of `ALTER TABLE`.             |
 | ------------------------ | ---------------------------------------- |
@@ -98,19 +112,47 @@ GRANT ALL ON *.* to 'USER'@'%';
 | `USAGE`                  | Allows connection without any specific privileges. |
 ```
 
-## MongoDB
+#### 2.3.4 删除用户
 
-### 安装
-
-```bash
-sudo apt install mongodb
+```mysql
+DROP USER user;
 ```
 
-### 配置
 
-Mongo 的配置文件一般为 `/etc/mongodb.conf`。
 
-#### bind-ip
+## 3. MongoDB
+
+### 3.1 安装
+
+ubuntu 默认的 apt 库不再包含 mongodb；
+
+需要通过引入 ubuntu 官方源进行安装：
+
+https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
+
+> 这里使用的是 ubuntu 22.04 作为安装环境。
+
+```bash
+sudo apt-get install gnupg curl
+
+curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
+   sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \
+   --dearmor
+   
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+
+sudo apt-get update
+
+sudo apt-get install -y mongodb-org
+```
+
+
+
+### 3.2 配置
+
+Mongo 的配置文件为 `/etc/mongodb.conf`。
+
+#### 3.2.1 bind-ip
 要修改的点还是 `bind_ip`。
 
 修改为：
@@ -121,7 +163,7 @@ bind_ip = 0.0.0.0
 
 通过注释`bind_ip`并不能生效。
 
-#### 开启权限
+#### 3.2.2 开启权限
 
 其实是权限问题。Mongo 默认是不开启权限。但是 Mongo 不像 MySQL 安装时会配置一个 root 用户。
 
@@ -132,15 +174,31 @@ bind_ip = 0.0.0.0
 ```javascript
 use admin; // 切换数据库
 
+// 创建用户
 db.createUser({
     user: "userName",
     pwd: "password"
     roles: [
-        "root"
+        "root",
+    	{
+    		role: 'dbAdmin',
+    		db: 'test'
+		}
     ]
 });
-// 创建用户成功
+// root 相当于系统管理员
+// dbAdmin, 数据库管理员
+
+// 修改密码
+db.changeUserPassword('用户名','新密码')； 
+
+// 修改用户授权
+db.grantRolesToUser('user', [{
+    [role]
+}])
 ```
+
+
 
 官方给的`createUser`文档:
 
@@ -155,15 +213,19 @@ db.createUser({
 }
 ```
 
+
+
 其实还有个快捷的方法(应该说是准备被淘汰的方法):
 
 ```javascript
 db.addUser('username', 'password');
 ```
 
+
+
 创建完用户之后，可以修改`mongodb.conf` `auth yes`开启权限。
 
-#### 命令行鉴权
+#### 3.2.3 命令行鉴权
 
 在`mongo`命令行的方式为:
 ```javascript
@@ -171,25 +233,27 @@ use admin;
 db.auth('username', 'password');
 ```
 
-## Redis
 
 
-### 安装
+## 4. Redis
+
+
+### 4.1 安装
 ```shell
 sudo apt install redis-server
 ```
 
-### 配置
+### 4.2 配置
 
 redis 的配置文件一般为`/etc/redis/redis.conf`。
 
-#### bind-ip
+#### 4.2.1 bind-ip
 
 注释 conf 中的 `# bind 127.0.0.1`。
 
 > 新版本需要配置`protected-mode no`,否则会无法访问
 
-#### 开启权限
+#### 4.2.2 开启权限
 
 redis 并没有用户系统。但是可以设置口令登录。
 
@@ -202,15 +266,15 @@ requirepass password
 重启 redis 服务即可。
 
 
-## Memcache
+## 5. Memcache
 
-### 安装
+### 5.1 安装
 
 ```shell
 sudo apt install memcached
 ```
 
-### 配置
+### 5.2 配置
 
 memcached 默认没有启动，需要手动启动。
 
@@ -218,7 +282,7 @@ memcached 默认没有启动，需要手动启动。
 
 
 
-#### Memcached服务加固方案
+### 5.3 Memcached服务加固方案
 
 1.  配置访问控制。
     建议用户不要将服务发布到互联网上而被黑客利用，可以通过[ECS安全组规则](https://help.aliyun.com/document_detail/25475.html.html)或IPtables配置访问控制规则。
@@ -248,5 +312,4 @@ memcached 默认没有启动，需要手动启动。
 
 5.  备份数据。
     为避免数丢失，升级前请做好备份，或者建立ECS硬盘快照。
-
 
