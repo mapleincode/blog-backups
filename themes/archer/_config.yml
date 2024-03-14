@@ -124,7 +124,7 @@ comment:
   # Livere  site: https://livere.com/
   livere_uid: 
   # Disqus  site: https://disqus.com/
-  disqus_shortname: blog-mapleincode-com
+  disqus_shortname: mapleincode
   # Gitment  site: https://github.com/imsun/gitment
   gitment_owner: 
   gitment_repo: 
